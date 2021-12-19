@@ -1,0 +1,27 @@
+body {
+  background-color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  color: #0a0a0a;
+}
+
+a {
+  color: #006483;
+  text-decoration: none;
+  border-bottom: 1px dotted #006483;
+}
+
+a:hover {
+  color: #004362;
+  text-decoration: none;
+  border-bottom: 1px solid #004362;
+}
+
+h1, h2, h3 {
+  font-family: "Oswald", sans-serif;
+  color: #500000;
+}
+
+h4, h5, h6 {
+  font-family: "Open Sans", sans-serif;
+  color: #500000
+}
