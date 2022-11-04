@@ -1,0 +1,40 @@
+For programming assignment 5, follow these instructions:
+	(1) Use the triangle python package (see my website for more info) to make your mesh
+	(2) Use the following weights / points for the quadrature rule on the unit triangle:
+		xq = [[0.5,0],[0.5,0.5],[0,0.5]]
+		wq = [1/6,1/6,1/6]
+	These weights and points assume that you are estimating an integral of the form
+	int_{T} f(x) dx ~= sum_i wq[i] * f(xq[i])
+	
+	where T is the unit triangle with vertices [[0,0],[1,0],[0,1]]
+	(3) Test your code with the following manufactured solution:
+		
+		um(x) = sin(pi*x[0])*sin(pi*x[1])
+	
+	The corresponding function f for this manufactured solution is
+	
+		f(x) = 2*pi^2*sin(pi*x[0])*sin(pi*x[1])
+	
+	(4) Let uh be the vector of coefficients for the approximate solution after implementing the scheme, and let u = [um(v)] be the vector consisting of the manufactured solution um evaluated at the vertices v of your mesh. Then I want you to compute the discrete l2 error
+	
+		||u-uh|| = sqrt(sum_i (u[i]-uh[i])^2)
+		
+	and record that error in a table.
+	
+	(5) If we let h = 1/(2^k), then I want you to compute the error above for k = 1,2,3,4,5,6 and record that in a table.
+	
+	(6) If we let e[k] denote the error computed for h[k] = 1/2^k, then use this to compute the order of convergence o[k] with e[k] and e[k-1]:
+	
+		o[k] = ln(e[k]/e[k-1])/ln(h[k]/h[k-1])
+	
+	This is slightly different from what we've been doing, but I found this way of approximating the order of convergece better than what we've beend doing.
+	
+	(7) All I want you to turn in is the following error table:
+	
+		k	error	order
+		1	e[1]	
+		2	e[2]	o[2]
+		3	e[3]	o[3]
+		4	e[4]	o[4]
+		5	e[5]	o[5]
+		6	e[6]	o[6]
