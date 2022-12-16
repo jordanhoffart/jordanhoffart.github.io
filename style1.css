@@ -2,7 +2,7 @@ body {
     background-color:rgb(255,255,255);
     color: rgb(0,0,0);
     font-family:Arial, Helvetica, sans-serif;
-    max-width:60ch;
+    max-width:60ch; 
     margin:auto;
     padding:2rem;
     position:relative;
@@ -65,6 +65,7 @@ nav {
     display: flex;
     flex-direction:row;
     justify-content:space-between;
+    /* box-shadow: 0px 3px 5px 0px rgb(112, 112, 112); */
 }
 
 nav a:link {
@@ -79,7 +80,7 @@ nav a:link {
     padding-top: min(2vw, 1rem);
     padding-bottom: min(2vw, 1rem);
     margin:0;
-    border-right:1px dotted rgb(255,255,255);
+    border-right:1px solid white;
     width:25%;
 }
 
@@ -89,9 +90,11 @@ nav a:hover {
 
 nav a:visited {
     color: rgb(255, 255, 255);
+    border-right:1px solid white;
 }
 
 nav a.active {
+    /* background-color: rgb(116,79,40); */
     background-color: rgb(60,0,0);
 }
 
