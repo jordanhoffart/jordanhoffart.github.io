@@ -30,17 +30,20 @@ li {
 
 a:link {
     color:rgb(0,100,131);
-    text-decoration-style:dotted;
+    text-decoration-style:solid;
+    text-decoration-thickness:1px;
 }
 
 a:visited {
     color: rgb(0, 100, 131);
-    text-decoration-style:dotted;
+    text-decoration-style:solid;
+    text-decoration-thickness:1px;
 }
 
 a:hover {
     color:rgb(0,67,98);
     text-decoration-style:solid;
+    text-decoration-thickness:3px;
 }
 
 a:active {
