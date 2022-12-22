@@ -1,8 +1,8 @@
 body {
     background-color:rgb(255,255,255);
-    color: rgb(0,0,0);
+    color: rgb(40,40,40);
     font-family:Arial, Helvetica, sans-serif;
-    max-width:60ch; 
+    max-width:80ch; 
     margin:auto;
     padding:2rem;
     position:relative;
@@ -13,6 +13,7 @@ h1 {
     background-color:rgb(80,0,0);
     padding:1rem;
     text-align:center;
+    border-radius:10px;
 }
 
 h2,h3,h4,h5,h6 {
@@ -52,9 +53,10 @@ a:active {
 }
 
 img {
-    border:2px;
+    border:1px;
     border-style:solid;
-    border-color:rgb(0,0,0);
+    border-color:black;
+    border-radius:999px;
 }
 
 hr {
@@ -63,6 +65,7 @@ hr {
     border-style:solid;
     border-color:rgb(167, 167, 167);
     background-color:rgb(167,167,167);
+    border-radius:999px;
 }
 
 nav {
@@ -86,6 +89,7 @@ nav a:link {
     margin:0;
     border-right:1px solid white;
     width:25%;
+    border-radius:10px;
 }
 
 nav a:hover {
