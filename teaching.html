@@ -8,13 +8,17 @@
     <meta name="author" content="Jordan Hoffart">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Teaching</title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" id="favicon" href="favicon.ico">
+    <link rel="stylesheet" id="stylesheet" href="style_dark.css">
+    <script src="scripts.js"></script>
 </head>
 
 <body>
+    <button type="button" id="dark" onclick="darkMode(); switchButtons();">Dark mode</button>
+    <button type="button" id="light" onclick="lightMode(); switchButtons();">Light mode</button>
+    <script>switchButtons();</script>
     <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html" class="first">Home</a>
         <a href="cv.html">CV</a>
         <a href="teaching.html" class="active">Teaching</a>
         <a href="works.html" class="last">Selected Works</a>

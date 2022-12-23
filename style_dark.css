@@ -1,6 +1,6 @@
 body {
-    background-color:rgb(255,255,255);
-    color: rgb(40,40,40);
+    background-color:rgb(30,30,30);
+    color: hsl(0, 0%, 90%);
     font-family:Arial, Helvetica, sans-serif;
     max-width:80ch; 
     margin:auto;
@@ -13,15 +13,15 @@ body {
 }
 
 h1 {
-    color:rgb(255,255,255);
-    background-color:#500000;
+    color:hsl(0, 0%, 90%);
+    background-color:#269dd9;
     padding:1rem;
     text-align:center;
     border-radius:10px;
 }
 
 h2,h3,h4,h5,h6 {
-    color:rgb(80,0,0);
+    color:hsl(200,70%,50%);
 }
 
 .center {
@@ -34,25 +34,25 @@ li {
 }
 
 a:link {
-    color:rgb(0,100,131);
+    color:hsl(245, 100%, 80%);
     text-decoration-style:solid;
     text-decoration-thickness:1px;
 }
 
 a:visited {
-    color: rgb(0, 100, 131);
+    color: hsl(245, 100%, 80%);
     text-decoration-style:solid;
     text-decoration-thickness:1px;
 }
 
 a:hover {
-    color:rgb(0,67,98);
+    color:hsl(245, 100%, 90%);
     text-decoration-style:solid;
     text-decoration-thickness:2px;
 }
 
 a:active {
-    color: rgb(115, 47, 47);
+    color: hsl(15, 100%, 70%);
     text-decoration-style:solid;
     text-decoration-thickness:3px;
 }
@@ -60,7 +60,7 @@ a:active {
 img {
     border:2px;
     border-style:solid;
-    border-color:black;
+    border-color:rgb(230,230,230);
     border-radius:999px;
 }
 
@@ -68,8 +68,8 @@ hr {
     margin-top:3vh;
     margin-bottom:3vh;
     border-style:solid;
-    border-color:rgb(167, 167, 167);
-    background-color:rgb(167,167,167);
+    border-color:rgb(80, 80, 80);
+    background-color:rgb(80,80,80);
     border-radius:999px;
 }
 
@@ -86,29 +86,29 @@ nav a:link {
     justify-content:center;
     flex: auto;
     text-align:center;
-    background-color:rgb(80,0,0);
-    color: rgb(255,255,255);
+    background-color:hsl(200,70%,50%);
+    color: hsl(0,0%,90%);
     text-decoration: none;
     padding-top: min(2vw, 1rem);
     padding-bottom: min(2vw, 1rem);
     margin:0;
-    border-right:1px solid white;
+    border-right:1px solid rgb(30,30,30);
     width:25%;
     /* border-radius:10px; */
 }
 
 nav a:hover {
-    background-color:rgb(60,0,0);
+    background-color:hsl(200,70%,35%);
 }
 
 nav a:visited {
-    color: rgb(255, 255, 255);
-    border-right:1px solid white;
+    color: hsl(0, 0%, 90%);
+    border-right:1px solid rgb(30,30,30);
 }
 
 nav a.active {
     /* background-color: rgb(116,79,40); */
-    background-color: rgb(60,0,0);
+    background-color: hsl(200,70%,35%);
 }
 
 nav a.last {
@@ -118,8 +118,8 @@ nav a.last {
 }
 
 nav a.first {
-    border-top-left-radius:10px;
     border-bottom-left-radius:10px;
+    border-top-left-radius:10px;
 }
 
 button {
