@@ -87,10 +87,12 @@ nav a:link {
     background-color:rgb(80,0,0);
     color: rgb(255,255,255);
     text-decoration: none;
-    padding:min(4vh,4vw);
+    padding:min(3vh,3vw);
     margin:0;
     border-right:1px solid white;
     width:25%;
+    font-size:large;
+    font-weight:bold;
 }
 
 nav a:hover {

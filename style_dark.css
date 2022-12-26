@@ -88,11 +88,13 @@ nav a:link {
     background-color:hsl(200,70%,50%);
     color: hsl(0,0%,90%);
     text-decoration: none;
-    padding:min(4vw,4vh);
+    padding:min(3vw,3vh);
     margin:0;
     border-right:1px solid rgb(30,30,30);
     width:25%;
     /* border-radius:10px; */
+    font-size:large;
+    font-weight:bold;
 }
 
 nav a:hover {
