@@ -4,18 +4,14 @@ body {
     font-family:Arial, Helvetica, sans-serif;
     max-width:80ch; 
     margin:auto;
-    padding-top:2vh;
-    padding-bottom:2vh;
-    padding-left:2vw;
-    padding-right:2vw;
-    position:relative;
+    padding:min(2vh,2vw);
     line-height:1.5;
 }
 
 h1 {
     color:hsl(0, 0%, 90%);
     background-color:#269dd9;
-    padding:1rem;
+    padding:min(2vh,2vw);
     text-align:center;
     border-radius:10px;
 }
@@ -30,7 +26,8 @@ h2,h3,h4,h5,h6 {
 }
 
 li {
-    margin:1rem;
+    margin-top:min(2vw,2vh);
+    margin-bottom:min(2vw,2vh);
 }
 
 a:link {
@@ -65,8 +62,8 @@ img {
 }
 
 hr {
-    margin-top:3vh;
-    margin-bottom:3vh;
+    margin-top:min(2vw,2vh);
+    margin-bottom:min(2vw,2vh);
     border-style:solid;
     border-color:rgb(80, 80, 80);
     background-color:rgb(80,80,80);
@@ -74,6 +71,8 @@ hr {
 }
 
 nav {
+    margin-top:min(2vh,2vw);
+    margin-bottom:min(2vw,2vh);
     display: flex;
     flex-direction:row;
     justify-content:space-between;
@@ -89,8 +88,7 @@ nav a:link {
     background-color:hsl(200,70%,50%);
     color: hsl(0,0%,90%);
     text-decoration: none;
-    padding-top: min(2vw, 1rem);
-    padding-bottom: min(2vw, 1rem);
+    padding:min(4vw,4vh);
     margin:0;
     border-right:1px solid rgb(30,30,30);
     width:25%;
@@ -123,8 +121,19 @@ nav a.first {
 }
 
 button {
-    margin-top:2vh;
-    margin-bottom:2vh;
-    padding-top:1vh;
-    padding-bottom:1vh;
+    margin-top:min(1vh,1vw);
+    margin-bottom:min(1vh,1vw);
+    padding:min(2vh,2vw);
+ }
+
+ button#light {
+    color:hsl(0,0%,90%);
+    background-color:hsl(200,70%,50%);
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+ }
+
+ button#light:hover {
+    background-color:hsl(200,70%,35%);
  }
