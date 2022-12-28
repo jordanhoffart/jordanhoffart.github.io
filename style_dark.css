@@ -1,5 +1,5 @@
 body {
-    background-color:rgb(30,30,30);
+    background-color:hsl(0, 0%, 12%);
     color: hsl(0, 0%, 90%);
     font-family:Arial, Helvetica, sans-serif;
     max-width:80ch; 
@@ -9,15 +9,15 @@ body {
 }
 
 h1 {
-    color:hsl(0, 0%, 90%);
-    background-color:#269dd9;
+    color:hsl(0, 0%, 70%);
+    background-color:hsl(0, 0%, 20%);
     padding:min(2vh,2vw);
     text-align:center;
     border-radius:10px;
 }
 
 h2,h3,h4,h5,h6 {
-    color:hsl(200,70%,50%);
+    color:hsl(200,70%,70%);
 }
 
 .center {
@@ -31,25 +31,25 @@ li {
 }
 
 a:link {
-    color:hsl(245, 100%, 80%);
+    color:hsl(200, 50%, 50%);
     text-decoration-style:solid;
     text-decoration-thickness:1px;
 }
 
 a:visited {
-    color: hsl(245, 100%, 80%);
+    color: hsl(200, 50%, 50%);
     text-decoration-style:solid;
     text-decoration-thickness:1px;
 }
 
 a:hover {
-    color:hsl(245, 100%, 90%);
+    color:hsl(200, 50%, 80%);
     text-decoration-style:solid;
     text-decoration-thickness:2px;
 }
 
 a:active {
-    color: hsl(15, 100%, 70%);
+    color: hsl(15, 50%, 70%);
     text-decoration-style:solid;
     text-decoration-thickness:3px;
 }
@@ -57,7 +57,7 @@ a:active {
 img {
     border:2px;
     border-style:solid;
-    border-color:rgb(230,230,230);
+    border-color:hsl(0, 0%, 90%);
     border-radius:999px;
 }
 
@@ -85,8 +85,8 @@ nav a:link {
     justify-content:center;
     flex: auto;
     text-align:center;
-    background-color:hsl(200,70%,50%);
-    color: hsl(0,0%,90%);
+    background-color:hsl(0,0%,20%);
+    color: hsl(0,0%,70%);
     text-decoration: none;
     padding:min(3vw,3vh);
     margin:0;
@@ -102,7 +102,7 @@ nav a:hover {
 }
 
 nav a:visited {
-    color: hsl(0, 0%, 90%);
+    color: hsl(0, 0%, 70%);
     border-right:1px solid rgb(30,30,30);
 }
 
@@ -129,8 +129,8 @@ button {
  }
 
  button#light {
-    color:hsl(0,0%,90%);
-    background-color:hsl(200,70%,50%);
+    color:hsl(0,0%,70%);
+    background-color:hsl(0,0%,20%);
     border:none;
     border-radius:10px;
     cursor:pointer;
