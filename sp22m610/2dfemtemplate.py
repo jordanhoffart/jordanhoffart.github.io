@@ -10,18 +10,28 @@ import matplotlib.pyplot as plt
 # Specify a mesh size
 mesh_size = 0.1
 
-# Pick some functions k, u, q, f, and g that satisfy the PDE in order to test 
+
+# Pick some functions k, u, q, f, and g that satisfy the PDE in order to test
 # your code
 def u(x):
     return 0
+
+
 def grad_u(x):
     return []
+
+
 def k(x):
     return 0
+
+
 def q(x):
     return 0
+
+
 def g(x):
     return 0
+
 
 # Define the vertices of your domain.
 domain_vertices = [[]]
@@ -29,25 +39,35 @@ domain_vertices = [[]]
 # Define the segments that connect the vertices of your domain.
 segments = [[]]
 
-# Implement a quadrature rule of the form 
+# Implement a quadrature rule of the form
 # integral_K f(x) dx = area(K) sum_n w_n f(x_n), where
-# K is the reference triangle with vertices [0,0], [1,0], and [0,1]. 
-# You can find tables of quadrature points and weights for the reference 
+# K is the reference triangle with vertices [0,0], [1,0], and [0,1].
+# You can find tables of quadrature points and weights for the reference
 # triangle online.
 quadrature_points = [[]]
 quadrature_weights = []
 number_quadrature_points = len(quadrature_points)
 
-# Define the basis functions on the reference triangle as well as their 
+
+# Define the basis functions on the reference triangle as well as their
 # gradients.
-def basis0(x): return 0
-def basis1(x): return 0
-def basis2(x): return 0
+def basis0(x):
+    return 0
+
+
+def basis1(x):
+    return 0
+
+
+def basis2(x):
+    return 0
+
+
 bases = [basis0, basis1, basis2]
 
-grad_basis0 = [0,0]
-grad_basis1 = [0,0]
-grad_basis2 = [0,0]
+grad_basis0 = [0, 0]
+grad_basis1 = [0, 0]
+grad_basis2 = [0, 0]
 grad_bases = [grad_basis0, grad_basis1, grad_basis2]
 
 # Let's evaluate our basis functions at the quadrature points. We will need these later.
@@ -55,15 +75,15 @@ bases_quad_points = [[phi(x) for x in quadrature_points] for phi in bases]
 
 # Let's create our meshes.
 tri = {"vertices": domain_vertices, "segments": segments}
-mesh = (tr.triangulate(tri, "pqa{}".format(mesh_size ** 2)))
+mesh = tr.triangulate(tri, "pqa{}".format(mesh_size**2))
 
 # Let's plot the first mesh.
 plt.figure()
 ax = plt.axes()
 tr.plot(ax, **mesh)
 
-# The elements are represented by a list of indices. The indices refer to 
-# which vertices in the vertices list make up the three vertices of our 
+# The elements are represented by a list of indices. The indices refer to
+# which vertices in the vertices list make up the three vertices of our
 # triangular element.
 elements = mesh["triangles"]
 vertices = mesh["vertices"]
@@ -94,10 +114,10 @@ for element in elements:
             xn = quadrature_points[n]
             wn = quadrature_weights[n]
 
-            # Compute the local quadrature point by mapping it from the 
+            # Compute the local quadrature point by mapping it from the
             # reference element
             Txn = 0
-            
+
             phi_in = bases_quad_points[i][n]
             # Compute the local contribution to the load vector:
             load_vector[row] += 0
