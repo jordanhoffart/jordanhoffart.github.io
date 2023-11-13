@@ -15,13 +15,13 @@ function switchButtons() {
 }
 
 function darkMode() {
-    document.getElementById('stylesheet').setAttribute('href', 'style_dark.css');
-    document.getElementById('favicon').setAttribute('href', 'favicon_dark.ico');
+    document.getElementById('stylesheet').setAttribute('href', 'css/style_dark.css');
+    document.getElementById('favicon').setAttribute('href', 'images/favicon_dark.ico');
     localStorage.setItem('theme', 'dark');
 }
 
 function lightMode() {
-    document.getElementById('stylesheet').setAttribute('href', 'style.css');
-    document.getElementById('favicon').setAttribute('href', 'favicon.ico');
+    document.getElementById('stylesheet').setAttribute('href', 'css/style.css');
+    document.getElementById('favicon').setAttribute('href', 'images/favicon.ico');
     localStorage.setItem('theme', 'light');
 }
