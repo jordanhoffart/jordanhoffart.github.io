@@ -1,0 +1,37 @@
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #500000;
+  font-family: "Oswald", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: #006483;
+  text-decoration: none;
+  border-bottom: 1px dotted #006483;
+}
+
+a:hover {
+  color: #004362;
+  text-decoration: none;
+  border-bottom: 1px solid #004362;
+}
+
+li {
+  margin: 1rem 0;
+}
