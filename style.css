@@ -23,6 +23,12 @@ img {
   height: auto;
 }
 
+#profile {
+  display: block;
+  margin: auto;
+  /* width: 50%; */
+}
+
 a {
   color: #006483;
   text-decoration: none;
