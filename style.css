@@ -46,10 +46,8 @@ li {
 }
 
 nav {
-  position: sticky;
   top: 0;
   width: 100%;
-  /* max-width: 80ch; */
   z-index: 1;
 }
 
@@ -62,9 +60,30 @@ nav ul {
 }
 
 nav ul li {
-  display: inline-block;
-  padding: 1ch 1ch 1ch 0;
   margin: 0;
+}
+
+@media (min-width: 433px) {
+  nav {
+    position: sticky;
+  }
+
+  nav ul li {
+    display: inline-block;
+    padding: 1ch 1ch 1ch 0;
+  }
+}
+
+@media (max-width: 432px) {
+  nav ul li {
+    padding: 1ch;
+  }
+}
+
+@media (min-height:1000px) {
+  nav {
+    position: sticky;
+  }
 }
 
 nav ul.breadcrumb li {
