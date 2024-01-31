@@ -63,7 +63,7 @@ nav ul li {
   margin: 0;
 }
 
-@media (min-width: 433px) {
+@media (min-width: 500px) {
   nav {
     position: sticky;
   }
@@ -74,7 +74,7 @@ nav ul li {
   }
 }
 
-@media (max-width: 432px) {
+@media (max-width: 500px) {
   nav ul li {
     padding: 1ch;
   }
