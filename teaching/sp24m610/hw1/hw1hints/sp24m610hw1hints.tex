@@ -1,0 +1,190 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb, mathtools}
+
+\mathtoolsset{showonlyrefs}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\R}{\mathbb R}
+\renewcommand{\d}{\mathrm d}
+
+\DeclareMathOperator*{\esssup}{ess\ sup}
+
+\title{MATH 610 Homework 1 Hints}
+\author{Jordan Hoffart}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercise 1}
+
+\subsection{Problem 1}
+A function $u$ belongs to $H^1(-1,1)$ if and only if
+\begin{enumerate}
+  \item $u$ belongs to $L^2(-1,1)$,
+  \item $u$ has a weak derivative in $L^2(-1,1)$.
+\end{enumerate}
+A function $u$ belongs to $L^2(-1,1)$ if and only if the integral 
+\begin{equation}
+  \int_{-1}^1u(x)^2\,\d x
+\end{equation}
+exists and is finite.
+One way to show this is to explicitly compute the integral.
+There is a more elegant way to do this without computing anything.
+I'll let you figure that one out.
+
+To find a weak derivative of $u$, let $\varphi$ be a test function, meaning that $\varphi \in C_0^\infty([-1,1])$, which means that 
+\begin{enumerate}
+  \item $\varphi$ is infinitely differentiable,
+  \item $\varphi(-1) = 0$,
+  \item $\varphi(1) = 0$.
+\end{enumerate}
+Then split up the integral over the pieces of $u$
+\begin{equation}
+  \int_{-1}^1u(x)\varphi'(x)\,\d x = \int_{-1}^0u(x)\varphi'(x)\,\d x + \int_0^1u(x)\varphi'(x)\,\d x
+\end{equation}
+and then do integration by parts.
+See what falls out at the end to find a candidate for the weak derivative $v$ of $u$, and then check if $v \in L^2(-1,1)$.
+
+\subsection{Problem 2}
+This is a generalization of problem 1, so we proceed similarly.
+This time, explicitly compute the integral of $u(x)^2$ where $u(x) = |x|^{\alpha}$ and see which values of $\alpha$ give you a finite integral.
+This tells you which $\alpha$ allows $u \in L^2(a,b)$.
+Then let $\varphi$ be a test function, do integration by parts over the pieces of $u$ as in problem 1, and see what falls out to give you a candidate for the weak $v$ derivative of $u$.
+This will tell you which $\alpha$ allows for the integration-by-parts to happen at all and thus give you a candidate.
+Then compute the integral of $v(x)^2$ to see which $\alpha$ allow for $v \in L^2(-1,1)$.
+
+\subsection{Problem 3}
+Be careful here.
+Observe that if $\varphi$ is a test function on $[-1,1]$, this does not mean that the restriction $\varphi|_{[-1,0]}$ is a test function on $[-1,0]$, nor is it a test function when restricted to $[0,1]$.
+Therefore, we cannot immediately do the following calculation
+\begin{align*}
+  \int_{-1}^1u(x)\varphi'(x)\,\d x &= \int_{-1}^0u_1(x)\varphi'(x)\,\d x + \int_0^1u_2(x)\varphi'(x)\,\d x \\
+                                   & = -\int_{-1}^0u_1'(x)\varphi(x)\,\d x - \int_0^1u_2'(x)\varphi(x)\,\d x
+\end{align*}
+since we can only go to the second line when $\varphi|_{[-1,0]}$ is a test function on $[-1,0]$ and $\varphi|_{[0,1]}$ is a test function on $[0,1]$.
+We have to be a bit more clever here to justify this.
+To start, we need the following theorem.
+
+\begin{theorem}
+  If $u \in H^1(a,b)$, then there is a sequence $u_n$ of smooth functions in $C^{\infty}(a,b)$ that converges to $u$ in $H^1(a,b)$.
+\end{theorem}
+
+We apply this to $u_1$ and $u_2$ to get a sequence $u_n^1$ in $H^1(-1,0)$ and a sequence $u_n^2$ in $H^1(0,1)$ where $u_n^i$ converges to $u_i$.
+Let 
+\begin{equation}
+  u_n(x) = \begin{cases}
+    u_n^1(x) & x \in (-1,0) \\
+    u_n^2(x) & x \in [0,1)
+  \end{cases}
+\end{equation}
+Then we have that 
+\begin{align}
+  \int_{-1}^1u_n(x)\varphi'(x)\,\d x &= \int_{-1}^0u_n^1(x)\varphi'(x)\,\d x + \int_0^1u_n^2(x)\varphi'(x)\,\d x \\
+                                     &= -\int_{-1}^0 (u_n^1)'(x)\varphi(x)\,\d x - \int_0^1(u_n^2)'(x)\varphi(x)\,\d x + (u_n^1(0) - u_n^2(0))\varphi(0) \\
+                                     &= - \int_{-1}^0 v_n(x)\varphi(x)\,\d x + (u_n^1(0) - u_n^2(0))\varphi(0)
+\end{align}
+where the second step follows from integration-by-parts, which is allowed now because the $u_n^i$ are classically smooth and not only in $H^1$, and 
+\begin{equation}
+  v_n(x) = \begin{cases}
+    (u_n^1)'(x) & x \in (-1,0) \\
+    (u_n^2)'(x) & x \in [0,1)
+  \end{cases}.
+\end{equation}
+Set 
+\begin{equation}
+  v(x) = \begin{cases}
+    u_1'(x) & x \in (-1,0) \\
+    u_2'(x) & x \in [0,1)
+  \end{cases}.
+\end{equation}
+Show that 
+\begin{align}
+  \int_{-1}^1u_n(x)\varphi'(x)\,\d x & \to \int_{-1}^1 u(x) \varphi'(x)\,\d x, \\
+  \int_{-1}^1v_n(x)\varphi(x)\,\d x & \to \int_{-1}^1 v(x)\varphi(x)\,\d x, \\
+  (u_n^1(0) - u_n^2(0))\varphi(0) & \to 0, \\
+  v & \in L^2(-1,1)
+\end{align}
+as $n \to \infty$ and conclude that $u \in H^1(-1,1)$ with $v$ as its weak derivative.
+You are free to use the following theorem, which is a consequence of the optional problem 5.
+
+\begin{theorem}
+  Fix $x_0 \in [a,b]$. 
+  Then the map
+  \begin{equation}
+    E_{x_0}(u) = u(x_0)
+  \end{equation}
+  is a continuous linear functional on $H^1(a,b)$.
+  In other words,
+  \begin{equation}
+    E_{x_0}(cu+v) = cE_{x_0}(u) + E_{x_0}(v)
+  \end{equation}
+  for all $u,v \in H^1(a,b)$ and all $c \in \R$, and there is a constant $C > 0$ such that 
+  \begin{equation}
+    |E_{x_0}(u)| \leq C\|u\|_{H^1(a,b)}
+  \end{equation}
+  for all $u \in H^1(a,b)$.
+\end{theorem}
+
+\subsection{Problem 4}
+Let $u \in H^1(a,b)$.
+Then there is a sequence $v_n$ of smooth functions in $C^{\infty}(a,b)$ that converges to $u$ in $H^1(a,b)$.
+Use the fact that
+\begin{equation}
+  \|v\|_{L^{\infty}(a,b)} \leq C\|v\|_{H^1(a,b)}
+\end{equation}
+when $v \in C^\infty(a,b)$ (which is a consequence of the last inequality in question 2 of exercise 2) to argue that $v_n$ is Cauchy in $L^{\infty}(a,b)$.
+Since $L^{\infty}(a,b)$ is complete, this implies that there exists $v \in L^{\infty}(a,b)$ such that $v_n \to v$ in $L^{\infty}(a,b)$. 
+Now argue that $u = v$.
+
+\section{Exercise 2}
+\subsection{Problem 1}
+Use the triangle inequality and the Cauchy-Schwarz inequality
+\begin{align}
+  |u(x)| & \leq |u(y)| + \int_0^1|u'(s)|\,\d s \\
+         & = |u(y)| + (1, |u'|)_{L^2(0,1)} \\
+         & \leq |u(y)| + \|u'\|_{L^2(0,1)}.
+\end{align}
+Now pick particular points for $y$.
+
+\subsection{Problem 2}
+For the first inequality, first integrate 
+\begin{equation}
+  u(x) = \int_0^1u(y)\,\d y + \int_0^1\int_y^xu'(s)\,\d s\,\d y.
+\end{equation}
+Then  use the triangle inequality and Cauchy-Schwarz:
+\begin{equation}
+  |u(x)| \leq |\overline u| + \|u'\|_{L^2(0,1)}
+\end{equation}
+where 
+\begin{equation}
+  \overline u = \int_0^1u(y)\,\d y.
+\end{equation}
+At some point you will need to use Young's inequality:
+\begin{equation}
+  2ab \leq a^2 + b^2,
+\end{equation}
+which follows from the fact that 
+\begin{equation}
+  (a-b)^2 \geq 0
+\end{equation}
+for all $a, b \in \R$.
+
+For the second and third inequalities, do essentially the same thing as problem 1, pick particular points for $y$, and apply Young's inequality.
+
+For the last inequality, proceed as in problem 1 to get
+\begin{equation}
+  |u(x)| \leq |u(y)| + \|u'\|_{L^2(0,1)}.
+\end{equation}
+Then square, apply Young's inequality, and integrate.
+
+
+\end{document}

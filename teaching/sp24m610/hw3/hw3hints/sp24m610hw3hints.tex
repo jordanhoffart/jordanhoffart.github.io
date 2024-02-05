@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb, mathtools}
+
+\mathtoolsset{showonlyrefs}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\R}{\mathbb R}
+\renewcommand{\d}{\mathrm d}
+
+\DeclareMathOperator*{\esssup}{ess\ sup}
+
+\title{MATH 610 Homework 3 Hints}
+\author{Jordan Hoffart}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercise 1}
+
+\subsection{Problem 1}
+Multiply by a test function, integrate by parts, and use the boundary conditions.
+Find the correct Sobolev space $V$, the right bilinear form $a : V \times V \to \mathbb R$, and the right linear form $F:V\to\mathbb R$ such that the variational problem reads as follows: Find $u \in V$ such that \[a(u,v) = F(v)\] for all $v\in V$.
+
+\subsection{Problem 2}
+You have to solve problem 1 to get the answer for this problem as well, so the hint is the same.
+
+\subsection{Problem 3}
+First find the basis functions for the unit interval $(0,1)$. 
+In other words, find $\widehat \phi_i$ for $i = 1,2,3$ that are quadratic polynomials over $(0,1)$ and which 
+\begin{align}
+  \widehat\phi_1(0) = 1, && \int_0^1\widehat \phi_1(\widehat x)\,\d\widehat x = 0, && \widehat\phi_1(1) = 0, \\
+  \widehat\phi_2(0) = 0, && \int_0^1\widehat \phi_2(\widehat x)\,\d\widehat x = 1, && \widehat\phi_2(1) = 0, \\
+  \widehat\phi_3(0) = 0, && \int_0^1\widehat \phi_3(\widehat x)\,\d\widehat x = 0, && \widehat\phi_3(1) = 1.
+\end{align}
+Now we map $(0,1)$ onto $(x_j,x_{j+1})$ via 
+\begin{equation}\label{eq:change_coordinates}
+T_j(\widehat x) = x_j + (x_{j+1} - x_j)\widehat x.
+\end{equation}
+Convince yourself (and me) that the basis function $\phi_i^j$ on $(x_j,x_{j+1})$ that you are looking for is just given by \[\phi_i^j(x) = \widehat \phi_i(T_j^{-1}(x))\] for all $x \in (x_j,x_{j+1})$.
+
+\subsection{Problem 4}
+The element stiffness matrix $S_j$ and the element mass matrix $M_j$ are given by
+\begin{align}
+(S_j)_{i,k} & = \int_{x_j}^{x_{j+1}}\frac{\mathrm d}{\mathrm dx}\phi_i^j(x)\frac{\mathrm d}{\mathrm dx}\phi_k^j(x)\,\mathrm dx, \\
+(M_j)_{i,k} & = \int_{x_j}^{x_{j+1}}\phi_i^j(x)\phi_k^j(x)\,\mathrm dx.
+\end{align}
+Use the change of coordinates \eqref{eq:change_coordinates} to transform these integrals into integrals over $(0,1)$ involving the basis functions $\widehat \phi_i$ to simplify the computation.
+
+\subsection{Problem 5}
+The homework has a typo in it.
+We define the space $V_h$ as the space of piecewise quadratics over the splitting $(x_j, x_{j+1})$ without specifying any kind of continuity.
+However, the variational problem is posed on a subspace $V$ of $H^1(0,1)$.
+Since functions in $H^1(0,1)$ are continuous, so are functions in $V$.
+Since we are working in the conforming setting, i.e. $V_h \subset V$, we must specify that $V_h$ consist of \emph{continuous} piecewise quadratics on the splitting, otherwise what we are doing doesn't fit into our theoretical framework.
+
+The Ritz system is to find $u_h \in V_h$ such that \[a(u_h,v_h) = F(v_h)\] for all $v_h \in V_h$.
+Since $V_h$ is finite dimensional, we can choose a basis $\psi_1,\dots,\psi_m$ for $V_h$ and arrive at the equivalent matrix-vector problem of finding the vector $\vec u_h$ of coefficients of $u_h$ with respect to the $\psi_i$ such that 
+\begin{equation}\label{eq:ritz}
+  A_h\vec u_h = \vec F_h,
+\end{equation}
+where 
+\begin{align}
+  (A_h)_{i,j} & = a(\psi_j,\psi_i), \\
+  \label{eq:right} (\vec F_h)_i & = F(\psi_i), \\
+  u_h & = \sum_{j=1}^m (\vec u_h)_j \psi_j.
+\end{align}
+
+The particular basis that we choose for $V_h$ is constructed from the $\phi_i^j$ in the following way.
+First, we observe that $\phi_2^j = 0$ at the endpoints $(x_j,x_{j+1})$, so we can extend these by zero to be functions in $V_h$.
+In other words, we let
+\begin{equation}
+  \psi_{j+1}(x) = \begin{cases} \phi_2^j(x) & x \in (x_j,x_{j+1}) \\ 0 & \text{otherwise} \end{cases}
+\end{equation}
+for $j = 0,\dots,n-1$.
+This gives us $n + 1$ basis functions defiend so far.
+Next, on two adjacent intervals $(x_{j-1},x_j)$ and $(x_j,x_{j+1})$, we have that $\phi_3^{j-1}(x_j) = \phi_1^j(x_j) = 1$, while $\phi_3^{j-1}(x_{j-1}) = 0$ and $\phi_1^j(x_{j+1}) = 0$.
+Therefore, we may set 
+\begin{equation}
+  \psi_{n+j}(x) = \begin{cases} \phi_3^{j-1}(x) & x \in (x_{j-1},x_j) \\ \phi_1^j(x) & x \in (x_j,x_{j+1}) \\  0 & \text{otherwise} \end{cases}
+\end{equation}
+for $j = 1,\dots,n-1$.
+This now gives us $n-1$ more basis functions, so we have $2n$ basis functions defined so far.
+Finally, since $\phi_1^0(x_1) = 0$ and $\phi_3^{n-1}(x_{n-1}) = 0$, we set 
+\begin{align}
+  \psi_{2n+1}(x) & = \begin{cases} \phi_1^{0}(x) & x \in (x_0,x_1) \\  0 & \text{otherwise} \end{cases}, \\
+  \psi_{2n+2}(x) & = \begin{cases} \phi_3^{n-1}(x) & x \in (x_{n-1},x_n) \\  0 & \text{otherwise} \end{cases}.
+\end{align}
+This gives us a grand total of $m = 2n+2$ basis functions.
+
+The global stiffness and mass matrices $S$ and $M$ are then defined as 
+\begin{align}
+  S_{i,j} = \int_0^1\psi_j'(x)\psi_i'(x)\,\d x, \\
+  M_{i,j} = \int_0^1\psi_j(x)\psi_i(x)\,\d x.
+\end{align}
+To compute these entries, split up the integrals over the elements $(x_j,x_{j+1})$, consider which integrals are nonzero, and use the element-wise stiffness and mass matrices from the previous problem.
+
+\subsection{Problem 6}
+The right hand side of the Ritz system is just given by \eqref{eq:right}.
+If we replace the boundary condition at $x = 0$, then the space of the variational problem $V$ changes as well as the conforming finite element space $V_h$ and the bilinear form $a$ and linear form $F$.
+Call the new discrete space $V_{h0}$, the new bilinear form $a_0$, and the new linear form $F_0$.
+Using the basis of $V_h$, determine the corresponding basis for $V_{h0}$ constructed as in the last problem, and use this new basis to recompute the Ritz system \eqref{eq:ritz}.
+
+\end{document}

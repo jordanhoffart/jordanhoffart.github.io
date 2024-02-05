@@ -1,0 +1,211 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb, mathtools}
+
+\mathtoolsset{showonlyrefs}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\R}{\mathbb R}
+\renewcommand{\d}{\mathrm d}
+
+\DeclareMathOperator*{\esssup}{ess\ sup}
+
+\title{MATH 610 Homework 2 Hints}
+\author{Jordan Hoffart}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercise 1}
+
+\subsection{Problem 1}
+Suppose that you have a smooth function $u$ that satisfies the boundary conditions $u(0) = u(1) = 0$ and which solves the ODE
+\begin{equation}
+    -(ku')' + bu' + qu = f
+\end{equation}
+on $(0,1)$.
+Let $v$ be another smooth function that also satisfies the boundary conditions.
+Multiply the ODE by $v$ and integrate by parts to arrive at an expression of the form
+\begin{equation}
+    a(u,v) = F(v)
+\end{equation}
+where $a(u,v)$ involves integrals with $u',v',u,v,k,b$, and $q$, and $F(v)$ involves an integral with $f$ and $v$.
+Now determine what Sobolev space $V$ that $u$ and $v$ should belong to so that the bilinear form $a:V\times V \to \mathbb R$ and the linear form $F:V\to\mathbb R$ are well-defined, \emph{and} which also incorporates the boundary conditions.
+The weak formulation is the following problem: find $u \in V$ such that 
+\begin{equation}
+    a(u,v) = F(v)
+\end{equation}
+for all $v \in V$.
+
+\subsection{Problem 2}
+Such stability estimates are also called a priori (a Latin phrase meaning ``from before") estimates.
+They are called such estimates because they are done \emph{before} we actually know if we have a solution to the ODE.
+They always start in the following way: suppose that we have a solution $u \in V$ (where $V$ is chosen in problem 1) such that 
+\begin{equation}
+    a(u,v) = F(v)
+\end{equation}
+for all $v \in V$ (where $a$ and $F$ are also from problem 1).
+If you chose $F$ correctly, you should be able to show that 
+\begin{equation}
+    F(v) \leq \|f\|_{L^2(0,1)}\|v\|_{L^2(0,1)}
+\end{equation}
+for all $v \in V$.
+If you chose $a$ correctly, you should be able to show that 
+\begin{equation}
+    a(u,u) \geq \overline k \|u'\|_{L^2(0,1)}^2
+\end{equation}
+for all $u \in V$.
+The last ingredient you will need is the following Poincar\'e inequality:
+\begin{theorem}
+    Let $x_0 \in [a,b]$ and let $H^1_{x_0}(a,b)$ be the space of all functions $u \in H^1(a,b)$ such that $u(x_0) = 0$.
+    Then there is a constant $C > 0$ such that 
+    \begin{equation}
+        \|u\|_{L^2(a,b)} \leq C\|u'\|_{L^2(a,b)}.
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    If $u$ is a smooth function such that $u(x_0) = 0$, then for any $x > x_0$ we have that 
+    \begin{equation}
+        u(x) = \int_{x_0}^xu'(t)\,\d t.
+    \end{equation}
+   Therefore, by Cauchy-Schwarz,
+   \begin{align}
+       |u(x)| \leq \int_{x_0}^x|u'(t)|\,\d t \leq \sqrt{b-a}\|u'\|_{L^2(a,b)}.
+   \end{align}
+   Now for $x < x_0$, we have that
+   \begin{equation}
+       u(x) = -\int_x^{x_0}u'(t)\,\d t,
+   \end{equation}
+   so we can repeat a similar argument to conclude that
+   \begin{equation}
+       |u(x)| \leq \sqrt{b-a}\|u'\|_{L^2(a,b)}
+   \end{equation}
+   for all $x \in [a,b]$.
+   This implies that 
+   \begin{equation}
+       \|u\|_{L^2(a,b)} \leq (b-a)\|u'\|_{L^2(a,b)}
+   \end{equation}
+   for all smooth functions $u$ such that $u(x_0) = 0$.
+   
+   Now let $u \in H^1_{x_0}(a,b)$.
+   Then since smooth functions that vanish at $x_0$ are dense in $H^1_{x_0}(a,b)$, there is a sequence $(u_n)_n$ of smooth functions that vanish at $x_0$ such that $\|u-u_n\|_{H^1(a,b)} \to 0$ as $n\to\infty$.
+   Then $\|u-u_n\|_{L^2(a,b)} \to 0$ as $n \to \infty$ and $\|u_n'\|_{L^2(a,b)} \to \|u'\|_{L^2(a,b)}$ as $n \to \infty$.
+   Then for each $n$,
+   \begin{align}
+       \|u\|_{L^2(a,b)} & \leq \|u_n\|_{L^2(a,b)} + \|u-u_n\|_{L^2(a,b)} \\ & \leq (b-a)\|u_n'\|_{L^2(a,b)} + \|u-u_n\|_{L^2(a,b)} \to (b-a)\|u'\|_{L^2(a,b)}
+   \end{align}
+   as $n\to\infty$.
+   This finishes the proof.
+\end{proof}
+Combining everything together will give you the stability result.
+
+\section{Exercise 2}
+\subsection{Problem 1}
+\subsubsection{Part a}
+Multiply by a test function and integrate by parts.
+The boundary condition at $x=1$ is something we have seen before, but now for the boundary condition at $0$, use it to substitute for $u'(0)$.
+Rearrange everything and you will get something of the form
+\begin{equation}
+    a(u,v) = F(v)
+\end{equation}
+where $a(u,v)$ involves integrals with $u',v'$ as well as values $u(0),v(0)$ and $\beta$, while $F(v)$ will involve an integral with $f,v$ as well as the values $v(0),\gamma$, and $\beta$.
+Once again, look at the bilinear form $a$ and the linear form $F$ to decide which Sobolev space the functions $u,v$ should belong to for the values $a(u,v)$ and $F(v)$ to be well-defined and to also incorporate the boundary conditions from the problem.
+Hint: you already included the boundary condition at $0$ in a weak sense when you did the substitution, but now what about the boundary condition at $x = 1$?
+
+\subsubsection{Part b}
+Check the assumptions of the Lax-Milgram Theorem, which we recall below.
+\begin{theorem}
+    Let $V$ be a Hilbert space with inner product $(\cdot,\cdot)_V$ and induced norm $\|v\|_V := \sqrt{(v,v)_V}$.
+    Let $a:V\times V\to\mathbb R$ and $F:V\to\mathbb R$ be a bilinear form and a linear form on $V$ respectively.
+    Suppose that 
+    \begin{enumerate}
+        \item $a$ is continuous on $V$: there exists $C > 0$ such that 
+        \begin{equation}
+            |a(u,v)| \leq C\|u\|_V\|v\|_V
+        \end{equation}
+        for all $v \in V$
+        \item $F$ is continuous on $V$: there exists $C' > 0$ such that 
+        \begin{equation}
+            |F(v)| \leq C'\|v\|_V
+        \end{equation}
+        for all $v \in V$
+        \item $a$ is coercive (also known as elliptic) on $V$: there exists $\alpha > 0$ such that 
+        \begin{equation}
+            a(u,u) \geq \alpha \|u\|_V^2
+        \end{equation}
+        for all $u \in V$
+    \end{enumerate}
+    Then there is a unique $u \in V$ such that 
+    \begin{equation}
+        a(u,v) = F(v)
+    \end{equation}
+    for all $v\in V$.
+\end{theorem}
+If you chose $a$, $V$, and $F$ correctly in part a, you will be able to verify all of these assumptions.
+For the continuity assumptions, you will need the following, which is a corollary from some of the results in your last homework.
+\begin{theorem}
+    There is a constant $C$ such that 
+    \begin{equation}
+        |u(x)| \leq C\|u\|_{H^1(a,b)}
+    \end{equation}
+    for all $x \in [a,b]$ and all $u \in H^1(a,b)$.
+\end{theorem}
+For coercivity, you will need to use the Poincar\'e inequality that I showed earlier.
+
+\subsubsection{Part c}
+You can show either an estimate of the form
+\begin{equation}
+    \|u\|_{H^1(0,1)} \leq E(f, \gamma, \beta)
+\end{equation}
+or 
+\begin{equation}
+    \|u'\|_{L^2(0,1)} \leq \widetilde E(f,\gamma,\beta)
+\end{equation}
+where $u$ is the solution to the weak problem that we showed exists from part b and $E(f,\gamma,\beta)$ and $\widetilde E(f,\gamma,\beta)$ are some continuous expressions involving the function $f$ and the boundary data $\gamma$ and $\beta$.
+By the Poincar\'e inequality, we have that 
+\begin{equation}
+    \|u'\|_{L^2(0,1)} \leq \|u\|_{H^1(0,1)} \leq C\|u'\|_{L^2(0,1)}
+\end{equation}
+so that the inequalities above are equivalent: one holds for some $E$ iff the other holds for some $\widetilde E$.
+The argument is similar to stuff we have done earlier in the homework: you will have to use the coercivity of $a$, the continuity of $F$, and possibly the Poincar\'e inequality.
+Also, you cannot simply cite Lax-Milgram in this problem since it asks you to derive it yourself.
+
+\subsubsection{Part d}
+If $a(u_1,v) = F(v) = a(u_2,v)$ for all $v \in V$, then
+\begin{equation}
+    a(u_1,v) - a(u_2,v) = 0
+\end{equation}
+for all $v \in V$.
+Now use bilinearity and coercivity.
+
+\subsection{Problem 2}
+\subsubsection{Part a}
+Suppose $u$ and $v$ are smooth, undo the integration by parts and use the boundary condition $u(1) = 0$ to get something of the form
+\begin{equation}
+    \int_0^1 (Du - f)v\,\d x + (\text{boundary term at }x = 0) = 0 
+\end{equation}
+for all smooth $v$ (and, by density, all $v \in V$), where $Du$ is some expression involving $u'',\alpha,$ and $u$.
+Since $V$ contains functions that vanish at $x = 0$, argue that this implies 
+\begin{align}
+    \int_0^1(Du-f)v\,\d x & = 0 \text{ for all } v \in C_c^\infty(0,1) \\
+    (\text{boundary term at }x=0) & = 0 \text{ for all } v \in V
+\end{align}
+The hint in the homework tells you what ODE $u$ satisfies on $(0,1)$, while picking $v$ to be a smooth function that does not vanish at $x = 0$ in the boundary term equation will give you another boundary term that $u$ must satisfy at $x = 0$.
+Therefore, your answer should be of the form
+\begin{align}
+    \text{ODE that } u \text{ satisfies } & \text{ on } (0,1) \\
+    \text{boundary condition at } x = 0 \\
+    \text{boundary condition at } x = 1
+\end{align}
+
+\subsubsection{Part b}
+Same routine as the last energy estimates: use coercivity of the left side, continuity of the right side, and maybe a Poincar\'e inequality depending on if you're estimating $\|u\|_{H^1(0,1)}$ or $\|u'\|_{L^2(0,1)}$.
+\end{document}
