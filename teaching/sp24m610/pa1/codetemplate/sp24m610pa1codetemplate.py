@@ -19,7 +19,7 @@ elements = [[nodes[j], nodes[j + 1]] for j in range(len(nodes) - 1)]
 
 # linear system
 A = np.zeros((N - 1, N - 1))
-F = np.zeros(N)
+F = np.zeros(N - 1)
 
 # quadrature info
 quad_pts = [0, -np.sqrt(3 / 5), np.sqrt(3 / 5)]
@@ -50,7 +50,7 @@ for k in range(1, len(elements) - 1):
         integrand = lambda x: 0  # replace this
         Fk[i] = integrate(integrand)
         for j in range(len(basis)):
-            integrand = lambda x: 0  # replace this
+            integrand = lambda x: i + j  # replace this
             Ak[i, j] = integrate(integrand)
 
     # assemble to global system
@@ -69,7 +69,7 @@ F[-1] += integrate(integrand)  # replace this
 A[-1, -1] += integrate(integrand)  # replace this
 
 # solve
-Wh = np.linalg.solve(A, b)
+Wh = np.linalg.solve(A, F)
 
 # plot
 plt.plot(nodes[1:-1], Wh)
@@ -80,8 +80,8 @@ plt.show()
 # or you can save the points as a list of x,y pairs to use in some other plotting software
 # make sure you change the filename so you don't overwrite
 plot_nodes = nodes[1:-1]
-with open("data.txt") as f:
-    for j in range(N):
+with open("data.txt", "w") as f:
+    for j in range(len(plot_nodes)):
         f.write(",".join([str(plot_nodes[j]), str(Wh[j])]) + "\n")
 
 # compute errors
