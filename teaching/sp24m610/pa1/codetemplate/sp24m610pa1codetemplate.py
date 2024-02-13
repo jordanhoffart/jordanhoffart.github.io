@@ -47,11 +47,11 @@ for k in range(1, len(elements) - 1):
 
     # local assembly
     for i in range(len(basis)):
-        integrand = lambda x: 0  # replace this
-        Fk[i] = integrate(integrand)
+        F_integrand = lambda x: 0  # replace this
+        Fk[i] = integrate(F_integrand)
         for j in range(len(basis)):
-            integrand = lambda x: i + j  # replace this
-            Ak[i, j] = integrate(integrand)
+            A_integrand = lambda x: i + j  # replace this
+            Ak[i, j] = integrate(A_integrand)
 
     # assemble to global system
     for i in range(len(basis)):
@@ -60,12 +60,17 @@ for k in range(1, len(elements) - 1):
             A[k - 1 + i, k - 1 + j] += Ak[i, j]
 
 # assemble the local entry for k = 0 yourself
-integrand = lambda x: 0  # replace this
-F[0] += integrate(integrand)  # replace this
-A[0, 0] += integrate(integrand)  # replace this
+F_integrand = lambda x: 0  # replace this
+F[0] += integrate(F_integrand)  # replace this
+
+A_integrand = lambda x: 0  # replace this
+A[0, 0] += integrate(A_integrand)  # replace this
 
 # also assemble k = N
+F_integrand = lambda x: 0  # replace this
 F[-1] += integrate(integrand)  # replace this
+
+A_integrand = lambda x: 0  # replace this
 A[-1, -1] += integrate(integrand)  # replace this
 
 # solve
@@ -96,10 +101,10 @@ for k in range(1, len(elements) - 1):
 
     W0 = Wh[k - 1]
     W1 = Wh[k]
-    integrand = lambda x: (
+    L2_integrand = lambda x: (
         W(refmap(x)) - W0 * basis[0](x) - W1 * basis[1](x)
     ) ** 2 * dmap(x)
-    L2_sq += integrate(integrand)
+    L2_sq += integrate(L2_integrand)
 
 # do the k = 0 and k = N-1 case yourself
 
