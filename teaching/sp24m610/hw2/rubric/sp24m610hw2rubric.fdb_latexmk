@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1707167014 "sp24m610hw2rubric.tex" "sp24m610hw2rubric.pdf" "sp24m610hw2rubric" 1707167015 0
+["pdflatex"] 1707837321 "sp24m610hw2rubric.tex" "sp24m610hw2rubric.pdf" "sp24m610hw2rubric" 1707837322 0
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -21,8 +21,8 @@
   "/home/jordan/work/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1701202456 4714525 6254c7c186c2fadda8b854adff76b1eb ""
   "/home/jordan/work/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1701202600 8213632 e8549edc90eb0c3dbda476b3c529b7f6 ""
   "/home/jordan/work/texlive/2023/texmf.cnf" 1701202450 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "sp24m610hw2rubric.aux" 1707167015 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "sp24m610hw2rubric.tex" 1707167012 738 833547427dac4b4d8a792ed74ecb7ca5 ""
+  "sp24m610hw2rubric.aux" 1707837322 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "sp24m610hw2rubric.tex" 1707837320 737 4cb09b8040be4785b2b038c3314e91e7 ""
   (generated)
   "sp24m610hw2rubric.aux"
   "sp24m610hw2rubric.log"
