@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1707173001 "sp24m610hw3hints.tex" "sp24m610hw3hints.pdf" "sp24m610hw3hints" 1707173001 0
+["pdflatex"] 1708447237 "sp24m610hw3hints.tex" "sp24m610hw3hints.pdf" "sp24m610hw3hints" 1708447237 0
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -65,8 +65,8 @@
   "/home/jordan/work/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1701202456 4714525 6254c7c186c2fadda8b854adff76b1eb ""
   "/home/jordan/work/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1701202600 8213632 e8549edc90eb0c3dbda476b3c529b7f6 ""
   "/home/jordan/work/texlive/2023/texmf.cnf" 1701202450 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "sp24m610hw3hints.aux" 1707173001 937 3eb5c2c7f86e6346e705e85f94fa3551 "pdflatex"
-  "sp24m610hw3hints.tex" 1707172999 5928 88daf4c74b1decde9c645167022309e0 ""
+  "sp24m610hw3hints.aux" 1708447237 937 fb5444c4630be6cafa0cca643ba29f44 "pdflatex"
+  "sp24m610hw3hints.tex" 1708447235 7468 225cf015301babd9e767ea0ca76e03fb ""
   (generated)
   "sp24m610hw3hints.aux"
   "sp24m610hw3hints.log"
