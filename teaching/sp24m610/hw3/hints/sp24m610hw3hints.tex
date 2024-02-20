@@ -84,7 +84,7 @@ In other words, we let
   \psi_{j+1}(x) = \begin{cases} \phi_2^j(x) & x \in (x_j,x_{j+1}) \\ 0 & \text{otherwise} \end{cases}
 \end{equation}
 for $j = 0,\dots,n-1$.
-This gives us $n + 1$ basis functions defiend so far.
+This gives us $n$ basis functions defiend so far.
 Next, on two adjacent intervals $(x_{j-1},x_j)$ and $(x_j,x_{j+1})$, we have that $\phi_3^{j-1}(x_j) = \phi_1^j(x_j) = 1$, while $\phi_3^{j-1}(x_{j-1}) = 0$ and $\phi_1^j(x_{j+1}) = 0$.
 Therefore, we may set 
 \begin{equation}
@@ -94,10 +94,10 @@ for $j = 1,\dots,n-1$.
 This now gives us $n-1$ more basis functions, so we have $2n$ basis functions defined so far.
 Finally, since $\phi_1^0(x_1) = 0$ and $\phi_3^{n-1}(x_{n-1}) = 0$, we set 
 \begin{align}
-  \psi_{2n+1}(x) & = \begin{cases} \phi_1^{0}(x) & x \in (x_0,x_1) \\  0 & \text{otherwise} \end{cases}, \\
-  \psi_{2n+2}(x) & = \begin{cases} \phi_3^{n-1}(x) & x \in (x_{n-1},x_n) \\  0 & \text{otherwise} \end{cases}.
+  \psi_{2n}(x) & = \begin{cases} \phi_1^{0}(x) & x \in (x_0,x_1) \\  0 & \text{otherwise} \end{cases}, \\
+  \psi_{2n+1}(x) & = \begin{cases} \phi_3^{n-1}(x) & x \in (x_{n-1},x_n) \\  0 & \text{otherwise} \end{cases}.
 \end{align}
-This gives us a grand total of $m = 2n+2$ basis functions.
+This gives us a grand total of $m = 2n+1$ basis functions.
 
 The global stiffness and mass matrices $S$ and $M$ are then defined as 
 \begin{align}
@@ -110,7 +110,7 @@ To compute these entries, split up the integrals over the elements $(x_j,x_{j+1}
   The ordering of the basis is not unique. 
   Here is a re-ordering of the basis above that can be more convenient for writing down the globally assembled stiffness and mass matrices of the problem.
 
-  First, we set $\theta_1 = \psi_{2n+1}$.
+  First, we set $\theta_1 = \psi_{2n}$.
   Then we set $\theta_2 = \psi_1$.
   Then we set $\theta_3 = \psi_{n+1}$.
   Observe that, when restricted to the first subinterval $(x_0,x_1)$, $\theta_1$ corresponds to $\phi_1^0$, $\theta_2$ corresponds to $\phi_2^0$, and $\theta_3$ corresponds to $\phi_3^0$.
@@ -118,7 +118,7 @@ To compute these entries, split up the integrals over the elements $(x_j,x_{j+1}
   We proceed similarly for the next subinterval, setting $\theta_4 = \psi_2$ and $\theta_5 = \psi_{n+2}$.
   Then $\theta_3$ corresponds to $\phi_1^1$, $\theta_4$ corresponds to $\phi_2^1$, and $\theta_5$ corresponds to $\phi_3^1$ on the subinterval $(x_1,x_2)$.
 
-  In general, for interior subintervals $(x_j,x_{j+1})$ with $1 \leq j \leq n-2$, we have the global basis functions $\theta_{2 + 3(j-1) + 1} = \psi_{n+j}$, $\theta_{2 + 3(j-1) + 2} = \psi_{j+1}$; while for the first subinterval we have $\theta_1 = \psi_{2n+1}$ and $\theta_2 = \psi_1$ and the last subinterval $(x_{n-1},x_n)$ we have $\theta_{2n} = \psi_{2n-1}$, $\theta_{2n+1} = \psi_n$, and $\theta_{2n+2} = \psi_{2n+2}$.
+  In general, for interior subintervals $(x_j,x_{j+1})$ with $1 \leq j \leq n-2$, we have the global basis functions $\theta_{2 + 3(j-1) + 1} = \psi_{n+j}$, $\theta_{2 + 3(j-1) + 2} = \psi_{j+1}$; while for the first subinterval we have $\theta_1 = \psi_{2n+1}$ and $\theta_2 = \psi_1$ and the last subinterval $(x_{n-1},x_n)$ we have $\theta_{2n-1} = \psi_{2n-1}$, $\theta_{2n} = \psi_n$, and $\theta_{2n+1} = \psi_{2n+1}$.
 
   This ordering of the basis functions is more localized in the sense that basis function $\theta_j$ only has nonzero interactions with basis functions $\theta_{j-1}$, itself, and $\theta_{j+1}$.
   However, it is less convenient to write down than the previous one.
