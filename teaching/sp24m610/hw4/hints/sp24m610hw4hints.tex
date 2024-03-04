@@ -1,0 +1,215 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb, mathtools}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\R}{\mathbb R}
+\renewcommand{\d}{\mathrm d}
+
+\DeclareMathOperator*{\esssup}{ess\ sup}
+
+\title{MATH 610 Homework 4 Hints}
+\author{Jordan Hoffart}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+This problem is deceptively tricky.
+If we try to proceed as in the proof of Lemma 4.2.2 in the class notes, then we may be tempted to use the exact solution to the ODE
+\begin{align*}
+	-W'' + bW' & = 1, \quad x \in (0,1), \\
+	W(0)       & = 0,                    \\
+	W(1)       & = 0,
+\end{align*}
+which is
+\[W(x) = \frac{1}{b(1-e^b)}(e^{bx}-1) + \frac{x}{b}.\]
+We would then set
+\[W_i = W(x_i)\]
+for each $i$.
+Now, unlike Lemma 4.2.2, the $W_i$ do \emph{not} exactly satisfy the corresponding difference equation.
+That is, it is \emph{not} true that the $W_i$ satisfy
+\begin{subequations}\label{sys:difference}
+	\begin{align}
+		-\frac{W_{i+1}-2W_i+W_{i-1}}{h^2} + b\frac{W_{i+1}-W_i}{h} & = 1, \quad i \in \{1,\dots,N\} \\
+		W_0                                                        & = 0,                           \\
+		W_{N+1}                                                    & = 0.
+	\end{align}
+\end{subequations}
+One can see this by looking at Taylor series expansions of $W$ around the points $x_i$ using the points $x_{i+1}$ and $x_{i-1}$.
+I leave the details to you, but the essential reason why the equation is not satisfied exactly is because $W$ is not a polynomial.
+We didn't have this problem in Lemma 4.2.2 because the exact solution in that case \emph{is} a polynomial, and so there is no remainder term in the Taylor series expansions.
+
+We have to proceed in a slightly different way to tackle this problem.
+What we need is not the exact ODE solution $W$, but just a vector $\vec W$ that satisfies the \emph{system of difference equations} \eqref{sys:difference} exactly.
+Does such a vector exist?
+Well, since the system \eqref{sys:difference} is a square system of linear equations, it suffices to show that if
+\begin{subequations}\label{sys:zero}
+	\begin{align}
+		-\frac{W_{i+1}-2W_i+W_{i-1}}{h^2} + b\frac{W_{i+1}-W_i}{h} & = 0, \quad i \in \{1,\dots,N\} \\
+		W_0                                                        & = 0,                           \\
+		W_{N+1}                                                    & = 0,
+	\end{align}
+\end{subequations}
+then $\vec W = \vec 0$.
+We can show this by proving that this system has a discrete maximum principle and a discrete minimum principle.
+I will partially state these below, and I will leave it to you to prove these results as well as to come up with the condition on $h$ that is sufficient for these lemmas to hold true.
+\begin{lemma}[Discrete maximum principle]
+	Suppose that $h$ satisfies some stability condition that you must explicitly find.
+	If $\vec W$ satisfies
+	\begin{align*}
+		-\frac{W_{i+1}-2W_i+W_{i-1}}{h^2} + b\frac{W_{i+1}-W_i}{h} & \leq 0, \quad i \in \{1,\dots,N\} \\
+		W_0                                                        & = 0,                              \\
+		W_{N+1}                                                    & = 0,
+	\end{align*}
+	then
+	\[\max_{i\in\{0,\dots,N+1\}}W_i = \max(W_0,W_{N+1}) = 0.\]
+\end{lemma}
+\begin{corollary}[Discrete minimum principle]
+	Suppose that $h$ satisfies the same stability condition from above.
+	If $\vec W$ satisfies
+	\begin{align*}
+		-\frac{W_{i+1}-2W_i+W_{i-1}}{h^2} + b\frac{W_{i+1}-W_i}{h} & \geq 0, \quad i \in \{1,\dots,N\} \\
+		W_0                                                        & = 0,                              \\
+		W_{N+1}                                                    & = 0,
+	\end{align*}
+	then
+	\[\min_{i\in\{0,\dots,N+1\}}W_i = \min(W_0,W_{N+1}) = 0.\]
+\end{corollary}
+\begin{corollary}[Uniqueness]
+	Under the stability condition on $h$, the square linear system \eqref{sys:zero} has only $\vec W = \vec 0$ as its solution, and therefore there is a unique vector $\vec W^0$ that solves \eqref{sys:difference}.
+\end{corollary}
+Now that we have established the existence of $\vec W^0$ that satisfies \eqref{sys:difference}, we can now proceed as in Lemma 4.2.2 from the class notes to finish the proof.
+\section*{Problem 2.1}
+It's hard to give a hint for this that isn't essentially the entire proof.
+Instead, I will show a proof of the related result in 1d, but I will present the proof in a way that can be modified for higher dimensions.
+I will leave the details to you to provide this generalization.
+\begin{theorem}
+	There is a constant $C > 0$ such that
+	\begin{equation*}
+		\sqrt{v(0)^2 + v(1)^2} \leq C(\|v\|_{L^2(0,1)} + \|v'\|_{L^2(0,1)})
+	\end{equation*}
+	for all $v \in C^1[0,1]$.
+\end{theorem}
+To prove this theorem, we will first establish a lemma.
+\begin{lemma}
+	If $v(0) = 0$, then
+	\begin{equation*}
+		|v(1)| \leq \|v'\|_{L^2(0,1)}.
+	\end{equation*}
+	Similarly, if $v(1) = 0$, then
+	\begin{equation*}
+		|v(0)| \leq \|v'\|_{L^2(0,1)}.
+	\end{equation*}
+\end{lemma}
+\begin{proof}
+	For the first inequality, we use the fundamental theorem of calculus and write
+	\begin{equation*}
+		v(1) = \int_0^1v'(x)\,dx.
+	\end{equation*}
+	Then we take absolute values and apply Cauchy-Schwarz.
+	The other inequality is proved in the exact same way.
+\end{proof}
+Now we proceed with the proof of the theorem.
+\begin{proof}
+	The trick here is to realize that we can write $v$ as $v(x) = v_1(x) + v_2(x)$, where $v_1(x) = xv(x)$ vanishes at $x=0$ and $v_2(x) = (1-x)v(x)$ vanishes at $x = 1$.
+	Then we apply the previous lemma to $v_i$ to get that
+	\begin{align*}
+		|v(1)| = |v_1(1)| \leq \|v_1'\|_{L^2(0,1)} = \|v + xv'\|_{L^2(0,1)} \leq \|v\|_{L^2(0,1)} + \|v'\|_{L^2(0,1)}, \\
+		|v(0)| = |v_2(0)| \leq \|v_2'\|_{L^2(0,1)} = \|(1-x)v'- v\|_{L^2(0,1)} \leq \|v\|_{L^2(0,1)} + \|v'\|_{L^2(0,1)}.
+	\end{align*}
+	Therefore,
+	\begin{equation*}
+		\sqrt{v(0)^2 + v(1)^2} \leq |v(0)| + |v(1)| \leq 2\left(\|v\|_{L^2(0,1)} + \|v'\|_{L^2(0,1)}\right).
+	\end{equation*}
+\end{proof}
+As a hint for the generalization, we realize that we can write $v \in C^1(\widehat K)$ as $v(\widehat x, \widehat y) = v_1(\widehat x, \widehat y) + v_2(\widehat x, \widehat y) + v_3(\widehat x, \widehat y)$ where
+\begin{align*}
+	v_1(\widehat x, \widehat y) = \widehat xv(\widehat x, \widehat y) \text{ vanishes on the part of the boundary where } \widehat x = 0, \\
+	v_2(\widehat x, \widehat y) = \widehat yv(\widehat x, \widehat y) \text{ vanishes on the part of the boundary where } \widehat y = 0, \\
+	v_3(\widehat x, \widehat y) = (1 - \widehat x - \widehat y)v(\widehat x, \widehat y) \text{ vanishes on the part of the boundary where } 1 - \widehat x - \widehat y = 0.
+\end{align*}
+Now just establish a version of Lemma 2 that bounds integrals of $v_i$ over the boundary portion where $v_j = 0$ by some constant multiple of $\|\partial_x v_i\|_{L^2(\widehat K)}$ or $\|\partial_y v_i\|_{L^2(\widehat K)}$.
+There will be 6 inequalities in total of the form
+\begin{equation*}
+	\|v_i\|_{L^2(\widehat E_j)} \leq C\|\partial_k v_i\|_{L^2(\widehat K)}
+\end{equation*}
+where $\widehat E_j$ is one of the edges of $\widehat K$ where $v_i$ is \emph{not} necessarily zero and $\partial_k$ is one of the partial derivatives.
+
+\section*{Problem 2.2}
+Denote the vertices as $v_1$, $v_2$, and $v_3$.
+Consider the vectors formed from the differences $v_2 - v_1$ and $v_3 - v_1$.
+For the inequalities, recall that all norms on finite-dimensional vector spaces are equivalent.
+This can give you the result without knowing anything about the constants.
+Also, there is a typo in this question.
+To the best of my knowledge, the constants \emph{will} depend on the diameter $h$ of the triangle $K$.
+In fact, one can show that
+\[\|DF_K\| := \sup_{\substack{\xi \in \mathbb R^2\\\xi \neq 0}} \frac{\|DF_K\xi\|}{\|\xi\|} \leq Ch\]
+where $C$ is a constant that does \emph{not} depend on the diameter.
+
+\section*{Problem 2.3}
+Time to get good at calculus.
+This is essentially an exercise in change-of-variables.
+First I will give you an unorganized collection of calculus facts that will help you do the analysis.
+
+We recall that if $f$ is a sufficiently smooth function on $K$, and if $F_K$ is the map from $\widehat K$ to $K$ from the previous part, then the multivariable change-of-variables formula is
+\begin{equation*}
+	\int_K f(x)\,dx = \int_{\widehat K}f(F_K(\widehat x))|\det DF_K|\,d\widehat x.
+\end{equation*}
+Here, I am abusing notation and letting $\widehat x$ and $x$ denote the 2d coordinates on $\widehat K$ and $K$ respectively.
+Furthermore, if $E_i$ is one of the edges of $K$, then we can enumerate the edges of $\widehat K$ such that $F_K(\widehat E_i) = E_i$.
+Set $T_i = F_K|_{\widehat E_i}$, which maps $\widehat E_i$ to $E_i$.
+
+If you did the previous part correctly, you would know that the reference transformation $F_K$ is an affine linear map of the form
+\[F_K(\widehat x) = a + B\widehat x\]
+for an invertible matrix $B$ and a vector $a$, and that $DF_K = B$.
+Furthermore, from the change-of-variables formula above, we have that
+\[|K| = \int_K1\,dx = \int_{\widehat K}|\det DF_K|\,d\widehat x = |\widehat K||\det DF_K|,\]
+where $|K|$ is the area of $K$ and $|\widehat K| = 1/2$ is the area of $\widehat K$.
+Now since $K$ is a triangle, its diameter $h$ is its longest side.
+Since the area of a triangle is $1/2 \times \text{base} \times \text{height}$, if we set the base to $h$, then the height can be written as $C_K h$ where $0 < C_K < 1$ is a constant that depends on the particular triangle $K$ but does not depend on its diameter $h$.
+Thus,
+\begin{equation*}
+	|\det DF_K| = 2|K| = C_Kh^2.
+\end{equation*}
+
+Similarly, after parameterizing $\widehat E_i$ and $E_i$ as 1d intervals, $T_i$ is of the form
+\[T_i(\widehat s) = a + b\widehat s\]
+for some scalars $a$ and $b$, with $T_i' = b$.
+Then the change-of-variables formula on this edge would be
+\begin{equation*}
+	\int_{E_i} f(s)\,ds = \int_{\widehat E_i}f(T_i(\widehat s))|T_i'|\,d\widehat s = \int_{\widehat E_i}f(F_K|_{\widehat E_i}(\widehat s))|T_i'|\,d\widehat s.
+\end{equation*}
+Also, similar to above,
+\[|E_i| = \int_{E_i}1\,ds = \int_{\widehat E_i}|T_i'|\,d\widehat s = |\widehat E_i||T_i'|.\]
+Since the smallest edge length of $\widehat K$ is $1$ and the longest edge length of $K$ is its diameter, we have that
+\[|T_i'| = \frac{|E_i|}{|\widehat E_i|} \leq h.\]
+
+Using this little grab-bag of calculus tricks, prove the result by first showing
+\begin{equation*}
+	\|v\|_{L^2(\partial K)} \leq h^{1/2}\|v\circ F_K\|_{L^2(\partial \widehat K)}.
+\end{equation*}
+Then use part 1, part 2, and the calculus tricks above to finish it off.
+You will need the chain rule for the gradient:
+\begin{equation*}
+	\nabla(v \circ F_K) = (DF_K)^T((\nabla v)\circ F_K)
+\end{equation*}
+as well as
+\begin{equation*}
+	\|(DF_K)^T((\nabla v)\circ F_K)\|_{L^2(\widehat K)} \leq \|DF_K\|\|(\nabla v)\circ F_K\|_{L^2(\widehat K)}.
+\end{equation*}
+
+
+\end{document}
