@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1707167754 "sp24m610hw3template.tex" "sp24m610hw3template.pdf" "sp24m610hw3template" 1707167755 0
+["pdflatex"] 1709540245 "sp24m610hw4template.tex" "sp24m610hw4template.pdf" "sp24m610hw4template" 1709540245 0
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -38,10 +38,10 @@
   "/home/jordan/work/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1701202456 4714525 6254c7c186c2fadda8b854adff76b1eb ""
   "/home/jordan/work/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1701202600 8213632 e8549edc90eb0c3dbda476b3c529b7f6 ""
   "/home/jordan/work/texlive/2023/texmf.cnf" 1701202450 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "sp24m610hw3template.aux" 1707167755 32 f852561997c05a7d986acd1deeb530ec "pdflatex"
-  "sp24m610hw3template.tex" 1707167752 827 ca494049e50aef900db70530f6e509a5 ""
+  "sp24m610hw4template.aux" 1709540245 32 77e0dffd05b653a64f0caf3eb9bb454a "pdflatex"
+  "sp24m610hw4template.tex" 1709540243 718 87abad9af08af2aecf1f145c492101c2 ""
   (generated)
-  "sp24m610hw3template.aux"
-  "sp24m610hw3template.log"
-  "sp24m610hw3template.pdf"
+  "sp24m610hw4template.aux"
+  "sp24m610hw4template.log"
+  "sp24m610hw4template.pdf"
   (rewritten before read)
