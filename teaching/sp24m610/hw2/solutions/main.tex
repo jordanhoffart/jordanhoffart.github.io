@@ -1,0 +1,138 @@
+\documentclass{article}
+\title{MATH 610 HW 2 Solutions}
+\author{Jordan Hoffart}
+\date{}
+\usepackage{amsmath,amsthm,amssymb}
+\begin{document}
+\maketitle
+\section*{Exercise 1}
+Consider the following boundary value problem: find $u:(0,1)\to\mathbb R$ for which \[-(ku')' + bu' + qu = f\] on $(0,1)$ with boundary conditions $u(0) = u(1) = 0$.
+Here, $f \in L^2(0,1)$, $k,q,b,b' \in L^\infty(0,1)$ satisfy $k(x) \geq \overline k > 0$ and $q(x) - b'(x)/2 \geq 0$ for almost every $x \in (0,1)$.
+\begin{enumerate}
+	\item Determine a weak formulation of the strong problem.
+	      \begin{proof}
+		      Multiply by a smooth test function $v$ such that $v(0) = v(1) = 0$.
+		      Then integrate by parts to get \[a(u,v) = \int_0^1ku'v' + bu'v + quv\,dx = \int_0^1 fv\,dx = F(v).\]
+		      The weak formulation is to find $u \in H^1_0(0,1)$ such that \[a(u,v) = F(v)\] for all $v \in H^1_0(0,1)$.
+	      \end{proof}
+	\item Show that there is a constant $C > 0$ such that \[\|u'\|_{L^2(0,1)} \leq C\|f\|_{L^2(0,1)}\] for any solution $u$ to the above weak formulation.
+	      Specify what the constant $C$ depends on.
+	      \begin{proof}
+		      Suppose that $v$ is smooth and vanishes at the boundary points.
+		      Then we have that \[a(v,v) \geq \overline k \|v'\|_{L^2(0,1)}^2 + \int_0^1bv'v + qv^2\,dx.\]
+		      Now we recall that \[(bv^2)' = b'v^2 + 2bvv'.\]
+		      Substituting this above and using the fact that $v(0) = v(1) = 0$ gives us \[a(v,v) \geq \overline k\|v'\|_{L^2(0,1)}^2 + \int_0^1\underbrace{(q - b'/2)}_{\geq 0}v^2\,dx \geq \overline k\|v'\|_{L^2(0,1)}^2.\]
+		      Observe that this holds for any smooth function $v$ that vanishes at the boundary points, not necessarily a solution to the weak problem.
+
+		      Now suppose $v \in H^1_0(0,1)$.
+		      Then we have that \[F(v) \leq \|f\|_{L^2(0,1)}\|v\|_{L^2(0,1)}.\]
+		      Now we recall the Poincar\'e inequality, which states that there is a constant $C_P > 0$ such that \[\|v\|_{L^2(0,1)} \leq C_P\|v'\|_{L^2(0,1)}\] for any $v \in H^1_0(0,1).$
+		      Applying this to $v$ shows that \[F(v) \leq \|f\|_{L^2(0,1)}C_P\|v'\|_{L^2(0,1)}.\]
+		      Once again, this holds for any $v \in H^1_0(0,1)$, not necessarily solutions to the weak problem.
+
+		      Now if $u \in H_0^1(0,1)$ solves the weak problem, then there is a sequence $u_n$ of classically smooth functions such that $u_n \to u$ in $H^1(0,1)$.
+		      Then for $0 < \varepsilon < 1$, there is $N > 0$ such that \[\|u_n\|_{L^2(0,1)} \leq \|u_n - u\|_{H^1(0,1)} + \|u\|_{L^2(0,1)} \leq 1 + \|u\|_{L^2(0,1)},\] \[\|u_n'\|_{L^2(0,1)} \leq \|u_n - u\|_{H^1(0,1)} + \|u'\|_{L^2(0,1)} \leq 1 + \|u'\|_{L^2(0,1)},\] and \[\|u_n - u\|_{H^1(0,1)} \leq \varepsilon\]
+		      for all $n > N$.
+		      Then for $n > N$,
+		      \begin{multline*}
+			      |a(u_n,u_n) - a(u,u)| \\ = \left|\int_0^1 k(u_n'^2 - u'^2) + b(u_n'u_n - u'u) + q(u_n^2-u^2)\,dx\right| \\
+			      \leq \|k\|_{L^\infty(0,1)}(\|u_n'\|_{L^2(0,1)} + \|u'\|_{L^2(0,1)})\|u_n'-u'\|_{L^2(0,1)} \\
+			      + \frac{\|b\|_{L^\infty(0,1)}}{2}\big((\|u_n'\|_{L^2(0,1)} + \|u'\|_{L^2(0,1)})\|u_n-u\|_{L^2(0,1)} \\
+			      + \|u_n'-u'\|_{L^2(0,1)}(\|u_n\|_{L^2(0,1)}+\|u\|_{L^2(0,1)})\big) \\
+			      + \|q\|_{L^\infty(0,1)}(\|u_n\|_{L^2(0,1)} + \|u\|_{L^2(0,1)})\|u_n-u\|_{L^2(0,1)} \\
+			      \leq \|k\|_{L^\infty(0,1)}(1 + \|u'\|_{L^2(0,1)})\varepsilon + \frac{\|b\|_{L^\infty(0,1)}}{2}\big((1 + \|u'\|_{L^2(0,1)})\varepsilon \\
+			      + \varepsilon(1+\|u\|_{L^2(0,1)})\big) + \|q\|_{L^\infty(0,1)}(1 + \|u\|_{L^2(0,1)})\varepsilon \\
+			      \leq C(k,b,q,u)\varepsilon
+		      \end{multline*}
+		      where
+		      \begin{multline*}
+			      C(k,b,q,u) \\ = \max\{\|k\|_{L^\infty(0,1)},\|b\|_{L^\infty(0,1)},\|q\|_{L^\infty(0,1)}\}(1 + \|u\|_{L^2(0,1)} + \|u'\|_{L^2(0,1)})
+		      \end{multline*}
+		      This implies that $a(u_n,u_n) \to a(u,u)$ as $n \to \infty$.
+		      Similarly, we have that
+		      \begin{align*}
+			      |F(u_n) - F(u)| = |F(u_n - u)| \leq \|f\|_{L^2(0,1)}\|u_n-u\|_{L^2(0,1)} \to 0
+		      \end{align*}
+		      as $n \to \infty$, so that $F(u_n) \to F(u)$ as $n \to \infty$.
+		      Therefore, by applying our previous inequalities to $v = u_n$, we have that
+		      \begin{align*}
+			      \|u'\|_{L^2(0,1)}^2 & = \lim_n \|u_n'\|_{L^2(0,1)}^2                \\
+			                          & \leq \lim_n\frac{1}{\overline k}a(u_n, u_n)   \\
+			                          & = \frac{1}{\overline k}a(u,u)                 \\
+			                          & = \frac{1}{\overline k}F(u)                   \\
+			                          & = \lim_n \frac{1}{\overline k} F(u_n)         \\
+			                          & \leq \frac{C_P}{\overline k}\|f\|_{L^2(0,1)}.
+		      \end{align*}
+		      This completes the proof.
+	      \end{proof}
+\end{enumerate}
+
+\section*{Exercise 2}
+\begin{enumerate}
+	\item Let $f$ be a given real-valued function in $L^2(0,1)$ and $\alpha > 0$.
+	      Consider the following problem: find $u$ such that \[-u'' = f\] on $(0,1)$ with $u(0) - \beta u'(0) = \gamma$ and $u(1) = 0$.
+	      Here, $\gamma \in \mathbb R$ and $\beta > 0$.
+	      \begin{enumerate}
+		      \item Write the above problem in weak form.
+		            \begin{proof}
+			            Let $\mathbb V$ be the space of all functions $u \in H^1(0,1)$ such that $u(1) = 0$.
+			            Let
+			            \[a(u,v) = \int_0^1u'v'\,dx + \frac{u(0)v(0)}{\beta}\]
+			            for all $u,v\in\mathbb V$, and let
+			            \[F(v) = \int_0^1 fv\,dx + \frac{\gamma}{\beta}v(0)\]
+			            for all $v \in \mathbb V$.
+			            The weak formulation is to find $u \in \mathbb V$ such that $a(u,v) = F(v)$ for all $v \in \mathbb V$.
+		            \end{proof}
+		      \item Prove that there is a unique solution in $\mathbb V$.
+		            \begin{proof}
+			            Suppose $u$ is smooth and $u(1) = 0$.
+			            Then by the fundamental theorem of calculus, \[-u(0) = \int_0^1u'\,dx.\]
+			            Therefore, \[|u(0)| \leq \|u'\|_{L^2(0,1)}.\]
+			            Recalling that $\mathbb V$ continuously embeds into the space of continuous functions that vanish at $x = 1$, we have that this inequality extends to $\mathbb V$ as well.
+			            Therefore, we have that \[|a(u,v)| \leq (1 + \frac{1}{\beta})\|u'\|_{L^2(0,1)}\|v'\|_{L^2(0,1)},\]
+			            which implies that $a$ is continuous on $\mathbb V$.
+
+			            Similarly, we have by the Poincar\'e inequality that \[a(u,u) \geq \frac{1}{2}\|u'\|_{L^2(0,1)}^2 + \frac{C_P}{2}\|u\|_{L^2(0,1)}^2,\]
+			            where we used the fact that $\beta > 0$ and $C_P$ is the Poincar\'e constant.
+			            Thus $a$ is coercive on $\mathbb V$ with coercivity constant $\min\{1,C_P\}/2$.
+
+			            Finally, we have that \[|F(v)| \leq (\|f\|_{L^2(0,1)} + \frac{|\gamma|}{\beta})\|v\|_{L^2(0,1)},\]
+			            which implies that $F$ is continuous on $\mathbb V$.
+			            The result then follows from Lax-Milgram.
+		            \end{proof}
+
+		      \item Derive a stability estimate.
+		            \begin{proof}
+			            For a solution $u$ to the above weak problem, coercivity of $a$ and continuity of $F$ implies \[\|u\|_{H^1(0,1)} \leq \frac{2}{\min\{1,C_P\}}\left(\|f\|_{L^2(0,1)} + \frac{|\gamma|}{\beta}\right).\]
+		            \end{proof}
+
+		      \item Assume that there exists at least one solution to the variational problem.
+		            Prove that it must be unique.
+		            \begin{proof}
+			            If there were two solutions $u_1,u_2$, then $u := u_1-u_2$ satisfies \[a(u,v) = 0\] for all $v \in \mathbb V$.
+			            Then coercivity of $a$ implies that \[0 = a(u,u) \geq \frac{\min\{1,C_P\}}{2}\|u\|_{H^1(0,1)}^2.\]
+			            Thus $u = 0$, so that $u_1 = u_2$.
+		            \end{proof}
+	      \end{enumerate}
+
+	\item Using the same assumptions and notation from the first item, consider the problem: find $u \in \mathbb V = \{ u \in H^1(0,1) : u(1) = 0\}$ such that \[a(u,v) = \int_0^1u'v' + \alpha uv\,dx = F(v) = \int_0^1fv\,dx\] for all $v \in \mathbb V$.
+	      \begin{enumerate}
+		      \item Find the strong formulation of this weak problem.
+		            You can use the fact that $C_c^\infty([0,1))$ is dense in $\mathbb V$ and that \[\int_0^1w\varphi\,dx = 0\] for all $\varphi \in C_c^\infty(0,1)$ implies $w = 0$ almost everywhere.
+		            \begin{proof}
+			            If $u \in C_c^\infty([0,1))$ satisfies $a(u,v) = F(v)$ for all $v \in C_c^\infty([0,1))$, then integrating by parts gives us \[\int_0^1(-u'' + \alpha u - f)v\,dx - u'(0)v(0) = 0\] for all $v \in C_c^\infty([0,1))$.
+			            In particular, for $v \in C_c^\infty(0,1)$, we have that \[\int_0^1(-u'' + \alpha u - f)v\,dx = 0.\]
+			            Therefore, from the hint, we have that \[-u'' + \alpha u = f\] on $(0,1)$.
+			            Then, going back to the equation above, we have that \[u'(0)v(0)=0\] for all $v \in C_c^\infty([0,1))$.
+			            In particular, since we can choose $v$ to be a smooth bump function that is $1$ at $0$ and is compactly supported in $[0,1)$, we conclude that $u'(0) = 0$.
+			            Thus the strong formulation is to find $u$ such that \[-u'' + \alpha u = f\] with boundary conditions $u'(0) = 0$ and $u(1) = 0$.
+		            \end{proof}
+		      \item Derive a stability estimate.
+		            \begin{proof}
+			            We have that $a(u,u) \geq \min\{1,\alpha\}\|u\|_{H^1(0,1)}^2$ and $|F(u)| \leq \|f\|_{L^2(0,1)}\|u\|_{H^1(0,1)}$.
+			            Therefore, any solution to the weak problem satisfies \[\|u\|_{H^1(0,1)} \leq \frac{1}{\min\{1,\alpha\}}\|f\|_{L^2(0,1)}.\]
+		            \end{proof}
+	      \end{enumerate}
+\end{enumerate}
+
+\end{document}
