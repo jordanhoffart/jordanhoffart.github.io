@@ -1,0 +1,188 @@
+\documentclass{article}
+\title{MATH 610 HW 5 Solutions}
+\author{Jordan Hoffart}
+\date{}
+
+\usepackage{amsmath,amsthm,amssymb}
+
+\begin{document}
+
+\maketitle
+
+\section*{Exercise 1}
+Let $\Omega$ be a bounded polygonal domain in $\mathbb R^2$.
+Let $f$ and $g$ be functions in $L^2(\Omega)$ and consider the following system for $u,\phi$:
+\begin{align*}
+	-\Delta u - \phi & = f \text{ in } \Omega, \\
+	u - \Delta \phi  & = g \text{ in } \Omega,
+\end{align*}
+supplemented with the boundary conditions $u = \phi = 0$ on $\partial \Omega$.
+
+\begin{enumerate}
+	\item Consider the weak formulation of the above system: seek $u \in \mathbb V$, $\phi \in \mathbb W$ such that
+	      \[a((u,\phi),(v,\psi)) = \int_\Omega fv + \int_\Omega g\psi\]
+	      for all $(v,\psi) \in \mathbb V \times \mathbb W$.
+	      Determine $\mathbb V$, $\mathbb W$, and the bilinear form $a$ that guarantees a unique solution $(u,\phi) \in \mathbb V \times \mathbb W$.
+	      \begin{proof}
+		      \begin{align*}
+			      \mathbb V = \mathbb W & = H^1_0(\Omega),                                                                            \\
+			      a((u,\phi),(v,\psi))  & = \int_\Omega \nabla u \cdot \nabla v + \nabla \phi \cdot \nabla \psi + u \psi - \phi v\,dx
+		      \end{align*}
+	      \end{proof}
+
+	\item Prove using Lax-Milgram that the weak formulation has a unique solution.
+	      Deduce a stability bound for the solution.
+	      \begin{proof}
+		      First we observe that if $b : \mathbb V \times \mathbb W \to \mathbb R$ and $c:\mathbb V \times \mathbb W \to \mathbb R$ are continuous, then so is their sum $b + c$.
+		      Similarly, so is $\alpha b$ for any constant $\alpha \in \mathbb R$.
+
+		      Now we recall that the map $\|(u,\phi)\|_{\mathbb V \times \mathbb W} = \sqrt{\|u\|_{H^1(\Omega)}^2 + \|\phi\|_{H^1(\Omega)}^2}$ is a norm on $\mathbb V \times \mathbb W$ induced by an inner product that makes $\mathbb V \times \mathbb W$ complete.
+		      Using this norm, we have that the map $((u,\phi),(v,\psi)) \mapsto (\nabla u,\nabla v)_{L^2(\Omega)}$ is continuous on $(\mathbb V \times \mathbb W)^2$.
+		      Similarly, so are the maps $((u,\phi),(v,\psi)) \mapsto (\nabla \phi,\nabla \psi)_{L^2(\Omega)}$, $((u,\phi),(v,\psi)) \mapsto (u,\psi)_{L^2(\Omega)}$, and \\ $((u,\phi),(v,\psi)) \mapsto (\phi,v)_{L^2(\Omega)}$.
+		      Since $a$ is a linear combination of these maps, $a$ is continuous on $\mathbb V \times \mathbb W$.
+
+		      Now, by the Poincar\'e inequality on $H^1_0(\Omega)$ with constant $C_P > 0$, we have that
+		      \[a((u,\phi),(u,\phi)) = \|\nabla u\|_{L^2(\Omega)}^2 + \|\nabla \phi\|_{L^2(\Omega)}^2 \geq \frac{\min\{1,C_P\}}{2}\|(u,\phi)\|_{\mathbb V \times \mathbb W}^2,\]
+		      so that $a$ is coercive on $\mathbb V \times \mathbb W$.
+
+		      Since $(v,\psi) \mapsto (f,v)_{L^2(\Omega)}$ and $(v,\psi) \mapsto (g,\psi)_{L^2(\Omega)}$ are continuous on $\mathbb V \times \mathbb W$ so is their sum $(v,\psi) \mapsto (f,v)_{L^2(\Omega)} + (g,\psi)_{L^2(\Omega)}$.
+		      Therefore, we conclude by Lax-Milgram that the weak problem indeed has a unique solution.
+
+		      Using coercivity of $a$ and continuity of the right-hand side, we have that
+		      \[\|(u,\phi)\|_{\mathbb V \times \mathbb W} \leq \frac{2}{\min\{1,C_P\}}(\|f\|_{L^2(\Omega)} + \|g\|_{L^2(\Omega)})\]
+		      for the weak solution $(u,\phi)$.
+	      \end{proof}
+
+	\item For a domain $\Omega = \Omega_d = (-d,d)^2$, show that there exists an absolute constant $c$ such that
+	      \[\|u\|_{L^2(\Omega_d)} \leq cd\|\nabla u\|_{L^2(\Omega_d)}\]
+	      for all $u \in H^1_0(\Omega_d)$.
+	      \begin{proof}
+		      We have that
+		      \[u(x,y) = \int_{-d}^y\partial_y u(x,s)\,ds = (1,\partial_y u (x,\cdot))_{L^2(-d,y)}.\]
+		      Therefore, by Cauchy-Schwarz,
+		      \[u(x,y)^2 \leq 2d\int_{-d}^d\partial_y u(x,s)^2\,ds.\]
+		      Hence,
+		      \begin{align*}
+			      \|u\|_{L^2(\Omega_d)}^2 & \leq 2d\int_{-d}^d\int_{-d}^d\int_{-d}^d\partial_yu(x,s)^2\,ds\,dx\,dy \\
+			                              & = 4d^2\|\partial_y u\|_{L^2(\Omega_d)}^2                               \\
+			                              & \leq 4d^2\|\nabla u\|_{L^2(\Omega_d)}^2.
+		      \end{align*}
+		      Taking square roots completes the proof with $c = 2$.
+	      \end{proof}
+
+	\item Consider the modified problem
+	      \begin{align*}
+		      -\Delta u + \phi & = f \text{ in } \Omega_d, \\
+		      u - \Delta \phi  & = g \text{ in } \Omega_d.
+	      \end{align*}
+	      Determine a new weak formulation and prove the existence and uniqueness of a solution provided that $d$ is small enough.
+	      Derive a stability bound.
+	      \begin{proof}
+		      The spaces $\mathbb V$ and $\mathbb W$ are essentially the same from the last problem, and the bilinear form is only slightly modified:
+		      \begin{align*}
+			      \mathbb V = \mathbb W & = H^1_0(\Omega_d),                                                                           \\
+			      a((u,\phi),(v,\psi))  & = \int_\Omega \nabla u \cdot \nabla v + \nabla \phi \cdot \nabla \psi + u \psi + \phi v\,dx.
+		      \end{align*}
+		      This bilinear form is still continuous, and the right-hand side has not changed at all.
+		      It remains to show that $a$ is coercive if $d$ is small enough.
+		      How small $d$ has to be will be determined along the way.
+
+		      Using the inequality from the previous problem, we have that
+		      \begin{align*}
+			      a((u,\phi),(u,\phi)) & = \|\nabla u\|_{L^2(\Omega_d)}^2 + \|\nabla \phi\|_{L^2(\Omega_d)}^2 + 2(u,\phi)_{L^2(\Omega_d)}                        \\
+			                           & \geq \frac{1}{2}\|\nabla u\|_{L^2(\Omega_d)}^2 + \frac{1}{2}\|\nabla u\|_{L^2(\Omega_d)}^2                              \\
+			                           & \qquad + \frac{1}{2cd}\|u\|_{L^2(\Omega_d)}^2 + 2(u,\phi)_{L^2(\Omega_d)} + \frac{1}{2cd}\|\varphi\|_{L^2(\Omega_d)}^2.
+		      \end{align*}
+		      Now if $d$ is small enough so that \[\frac{1}{2cd} > 1,\]
+		      i.e. if \[d < \frac{1}{2c},\]
+		      then by applying this inequality and the inequality from the previous problem again, we have that
+		      \begin{align*}
+			      a((u,\phi),(u,\phi)) & \geq \frac{1}{2}\|\nabla u\|_{L^2(\Omega_d)}^2 + \frac{1}{2}\|\nabla \phi\|_{L^2(\Omega_d)}^2 + \|u+\phi\|_{L^2(\Omega_d)}^2 \\
+			                           & \geq \frac{1}{4}\|\nabla u\|_{L^2(\Omega_d)}^2 + \frac{1}{4cd}\|u\|_{L^2(\Omega_d)}^2                                        \\
+			                           & \qquad + \frac{1}{4}\|\nabla \phi\|_{L^2(\Omega_d)}^2 + \frac{1}{4cd}\|\phi\|_{L^2(\Omega_d)}^2                              \\
+			                           & \geq \frac{1}{4}\|(u,\varphi)\|_{\mathbb V \times \mathbb W}^2,
+		      \end{align*}
+		      where the last inequality comes from the fact that \[\frac{1}{2cd} > 1 \implies \frac{1}{4cd} > \frac{1}{2}.\]
+		      Thus $a$ is coercive if $d$ is small enough, so we once again can apply Lax-Milgram to obtain a unique solution.
+		      Similar to the last problem, the stability bound is given by
+		      \[\|(u,\phi)\|_{\mathbb V \times \mathbb W} \leq 4(\|f\|_{L^2(\Omega_d)} + \|g\|_{L^2(\Omega_d)}),\]
+		      where we used the coercivity of $a$ and continuity of the right-hand side.
+	      \end{proof}
+\end{enumerate}
+
+\section*{Exercise 2}
+Let $K$ be a nondegenerate triangle in $\mathbb R^2$.
+Let $a_i$ denote the vertices of $K$, and let $a_{ij}$ denote the midpoint of segment $(a_i,a_j)$.
+Let $\mathbb P^2$ be the set of polynomial functions over $k$ of total degree at most $2$.
+Let $\Sigma = \{\sigma_i, \sigma_{ij}\}$ be the dofs on $\mathbb P^2$ defined by \[\sigma_i p = p(a_i)\] and \[\sigma_{ij}p = p(a_i) + p(a_j) - 2p(a_{ij}).\]
+\begin{enumerate}
+	\item Show that $\Sigma$ is a unisolvent set for $\mathbb P^2$.
+	      \begin{proof}
+		      Let $p,q \in \mathbb P^2$ be such that $\sigma_i p = \sigma_i q$ and $\sigma_{ij} p = \sigma_{ij} q$ for all $i, j$.
+		      Then $r := p - q$ satisfies $\sigma_i r = \sigma_{ij} r = 0$ for all $i,j$.
+		      We will show that $r = 0$.
+
+		      Since $\sigma_i r = \sigma_j r = 0$, this implies that $r(a_i) = r(a_j) = 0$.
+		      Therefore, $\sigma_{ij}r = -2r(a_{ij}) = 0$, so that $r(a_{ij}) = 0$ as well.
+		      Thus $r$ vanishes at the vertices $a_i$ as well as the midpoints $a_{ij}$.
+
+		      Observe that \[L_{ij}(t) = a_i(1-t) + a_jt\] is a parameterization of the line containing the segment $(a_i,a_j)$ where each component function is a degree 1 polynomial in $t$.
+		      Therefore, $r(L_{ij}(t))$ is a degree at most 2 polynomial in $t$ that vanishes on three points: $t = 0$ corresponding to $a_i$, $t = 1/2$ corresponding to $a_{ij}$, and $t = 1$ corresponding to $a_j$.
+		      Thus $r(L_{ij}(t)) = 0$ for all $t$, meaning that $r$ vanishes along the line containing segment $(a_i,a_j)$.
+
+		      Abusing notation, there is a degree 1 polynomial in 2 variables that we denote as $L_{ij}(x,y)$ such that the line containing the segment $(a_i,a_j)$ is defined as the set of all points $(x,y)$ such that $L_{ij}(x,y) = 0$.
+		      Since $r$ vanishes on this line, we have that there is a polynomial $s \in \mathbb P_1$ such that $r = L_{ij}s$.
+
+		      Since $r(a_{ik}) = r(a_{jk}) = 0$ but $L_{ij}$ is not zero at either point, we must have that $s = 0$ at these two points.
+		      But $s$ is a degree one polynomial, so it must vanish on the line containing these two points which is described as the zero-set of the degree one polynomial $L_{ij,jk}(x,y)$.
+		      Hence $s = CL_{ij,jk}$ for some constant $C$, so that $r = CL_{ij}L_{ij,jk}$.
+
+		      Now since $r(a_k) = 0$ but $L_{ij}$ and $L_{ij,jk}$ do not vanish at these points, we conclude that $C = 0$, so that $r = 0$.
+		      Hence $p = q$, so the dofs are unisolvent.
+	      \end{proof}
+	\item Compute the nodal basis of $\mathbb P^2$ that is dual to $\Sigma$.
+	      \begin{proof}
+		      Let $\widehat K$ denote the unit triangle with vertices $\widehat a_1 = (0,0)$, $\widehat a_2 = (1,0)$, and $\widehat a_3 = (0,1)$.
+		      Let $\widehat \varphi_i$ and $\widehat \varphi_{ij}$ be the dual basis functions such that
+		      \begin{align*}
+			      \widehat\sigma_i\widehat\varphi_i       & = \widehat\varphi_i(\widehat a_i) = 1,          \\
+			      \widehat\sigma_i\widehat\varphi_j       & = \widehat\varphi_j(\widehat a_i) = 0,          \\
+			      \widehat\sigma_i\widehat\varphi_{jk}    & = \widehat\varphi_{jk}(\widehat a_i) = 0,       \\
+			      \widehat\sigma_{ij}\widehat\varphi_i    & = 1 - 2\widehat\varphi_i(\widehat a_{ij}) = 0,  \\
+			      \widehat\sigma_{ij}\widehat\varphi_k    & =  -2\widehat\varphi_k(\widehat a_{ij}) = 0,    \\
+			      \widehat\sigma_{ij}\widehat\varphi_{ij} & =  -2\widehat\varphi_{ij}(\widehat a_{ij}) = 1, \\
+			      \widehat\sigma_{ij}\widehat\varphi_{ik} & =  -2\widehat\varphi_{ik}(\widehat a_{ij}) = 0.
+		      \end{align*}
+		      In particular, we have that $\widehat \varphi_1$ is a degree at most 2 polynomial that vanishes at the points $\widehat a_2, \widehat a_3$, and $\widehat a_{23}$ that lie on the line defined by $x+y=1$.
+		      Therefore, \[\widehat\varphi_1(x,y) = (1-x-y)\widehat\psi_1(x,y)\] for some polynomial $\widehat\psi_1$ of degree at most $1$.
+		      Now at the midpoints $\widehat a_{12}$ and $\widehat a_{13}$, $\widehat\varphi_1 = 1/2$.
+		      This implies that $\widehat \psi_1 = 1$ at these two points which lie on the straight line defined by $x + y = 1/2$.
+		      Therefore, \[\widehat\psi_1(x,y) = 1 + (1/2-x-y)\widehat\chi_1\] for some constant $\widehat \chi_1$.
+		      Hence \[\widehat\varphi_1(x,y) = (1-x-y) + (1-x-y)(1/2-x-y)\widehat\chi_1.\]
+		      Evaluating at $\widehat a_1$ gives us $\widehat \chi_1 = 0$, so that \[\widehat\varphi_1(x,y) = 1 - x - y.\]
+		      Proceeding similarly for $\widehat\varphi_2$ and $\widehat \varphi_3$ gives us
+		      \begin{align*}
+			      \widehat\varphi_2(x,y) & = x, \\
+			      \widehat\varphi_3(x,y) & = y.
+		      \end{align*}
+		      Now $\widehat\varphi_{12}$ vanishes at three points on the line $x = 0$, so $\widehat\varphi_{12}(x,y) = x\widehat\psi_{12}(x,y)$ for some degree at most one polynomial $\widehat\psi_{12}$.
+		      Similarly, since $\widehat\varphi_{12}$ also vanishes at two points on the line $x+y=1$ with $x > 0$, we conclude that $\widehat\psi_{12}(x,y) = (1-x-y)\widehat\chi_{12}$ for some constant $\widehat\chi_{12}$.
+		      Then $\widehat\varphi_{12}(x,y) = x(1-x-y)\widehat\chi_{12}$.
+		      Evaluating at $\widehat a_{12}$ and using the dof conditions tells us that $\widehat\chi_{12} = -2$.
+		      Therefore, \[\widehat\varphi_{12}(x,y) = -2x(1-x-y).\]
+		      Proceeding similarly, we also have that
+		      \begin{align*}
+			      \widehat\varphi_{13}(x,y) & = -2y(1-x-y), \\
+			      \widehat\varphi_{12}(x,y) & = -2xy.
+		      \end{align*}
+		      This gives us all the basis functions on the reference triangle.
+		      To get the reference functions on the physical triangle, we use the reference mapping $T$ which is affine and maps the vertices $\widehat a_i$ to $a_i$ and the midpoints $\widehat a_{ij}$ to $a_{ij}$.
+		      Explicitly, we have that
+		      \[T(\widehat x,\widehat y) = a_1 + (a_2 - a_1)\widehat x + (a_3 - a_1)\widehat y.\]
+		      Letting $B$ be the $2\times 2$ matrix with columns $a_2 - a_1$ and $a_3 - a_1$ respectively, we have that \[T^{-1}(x,y) = B^{-1}\left(\begin{pmatrix}x \\ y\end{pmatrix} - a_1\right).\]
+		      Then we obtain $\varphi_i$ via \[\varphi_i(x,y) = \widehat\varphi(T^{-1}(x,y))\] and we obtain $\varphi_{ij}$ via \[\varphi_{ij}(x,y) = \widehat\varphi_{ij}(T^{-1}(x,y)).\]
+	      \end{proof}
+	\item Evaluate the entry $m_{11}$ of the element mass matrix.
+\end{enumerate}
+
+\end{document}
