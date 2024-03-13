@@ -183,6 +183,16 @@ Let $\Sigma = \{\sigma_i, \sigma_{ij}\}$ be the dofs on $\mathbb P^2$ defined by
 		      Then we obtain $\varphi_i$ via \[\varphi_i(x,y) = \widehat\varphi(T^{-1}(x,y))\] and we obtain $\varphi_{ij}$ via \[\varphi_{ij}(x,y) = \widehat\varphi_{ij}(T^{-1}(x,y)).\]
 	      \end{proof}
 	\item Evaluate the entry $m_{11}$ of the element mass matrix.
+	      \begin{proof}
+		      We have that
+		      \begin{align*}
+			      m_{11} & = \int_K\varphi_1^2\,dx                                           \\
+			             & = \int_{\widehat K}(\varphi_1\circ T_K)^2|\det DT_K|\,d\widehat x \\
+			             & = 2|K|\int_0^1\int_0^y (1-x-y)^2\,dx\,dy                          \\
+			             & = \frac{|K|}{6},
+		      \end{align*}
+		      where $|K|$ is the area of the physical triangle.
+	      \end{proof}
 \end{enumerate}
 
 \end{document}
