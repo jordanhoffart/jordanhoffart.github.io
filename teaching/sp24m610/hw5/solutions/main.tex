@@ -195,4 +195,36 @@ Let $\Sigma = \{\sigma_i, \sigma_{ij}\}$ be the dofs on $\mathbb P^2$ defined by
 	      \end{proof}
 \end{enumerate}
 
+\section*{Exercise 3}
+Let $K$ be the unit square with vertices $q_i$ and midpoints $a_i$.
+Let $\mathcal P = \{(ax+b)(cy+d) : a,b,c,d\in\mathbb R\}$ be the space of tensor products of degree one polynomials in each variable.
+\begin{enumerate}
+	\item For $\mathcal N = \{N_i\}$ where $N_i(p) = p(q_i)$, show that the triplet $(K,\mathcal P, \mathcal N)$ is unisolvent.
+	      \begin{proof}
+		      Let $p(x,y) = (ax+b)(cy+d)$ for some constants $a,b,c,d$.
+		      Evaluating $p$ at each $q_i$ gives us the following system of equations
+		      \begin{align*}
+			      bd         & = 0, \\
+			      (a+b)d     & = 0, \\
+			      a(c+d)     & = 0, \\
+			      (a+b)(c+d) & = 0,
+		      \end{align*}
+		      from which it follows that
+		      \begin{align*}
+			      bd & = 0, \\
+			      ad & = 0, \\
+			      ac & = 0, \\
+			      bc & = 0.
+		      \end{align*}
+		      However, since $p(x,y) = acxy + adx + bcy + bd$, this implies that $p = 0$.
+		      Therefore the triplet is unisolvent.
+	      \end{proof}
+	\item For $\widetilde{\mathcal N} = \{\widetilde N_i\}$ where $\widetilde N_i(p) = p(a_i)$, show that the triplet $(K,\mathcal P, \mathcal N)$ is not unisolvent.
+	      \begin{proof}
+		      Consider $p(x,y) = (2x-1)(2y-1)$.
+		      Then $p(a_i) = 0$ for each $i$ but $p \neq 0$.
+		      Thus the triplet is not unisolvent.
+	      \end{proof}
+\end{enumerate}
+
 \end{document}
