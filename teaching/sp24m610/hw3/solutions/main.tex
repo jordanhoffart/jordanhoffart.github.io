@@ -1,7 +1,141 @@
 \documentclass{article}
+
 \title{MATH 610 HW 3 Solutions}
 \author{Jordan Hoffart}
 \date{}
+
+\usepackage{amsmath,amsthm,amssymb}
+
 \begin{document}
 \maketitle
+\section*{Exercise 1}
+Consider the following bvp: \[-u'' + u = 1 \text{ for } x \in (0,1) \text{ with } u'(0) = \beta_0 \text{ and } u'(1) + u(1) = \beta_1.\]
+Introduce the uniform grid $x_j = jh$, $h = 1/n$, $j = 0,\dots,n$ with the space $V_h$ of continuous piecewise quadratic functions over the mesh intervals $(x_j,x_{j+1})$.
+\begin{enumerate}
+	\item State the variational formulation.
+	      \begin{proof}
+		      Find $u \in H^1(0,1)$ such that \[\int_0^1u'v'+uv\,dx + u(1)v(1) = \int_0^1v\,dx + \beta_1v(1) - \beta_0v(0)\] for all $v \in H^1(0,1)$.
+	      \end{proof}
+	\item Specify the space $V$ of the variational formulation.
+	      \begin{proof}
+		      $V = H^1(0,1)$.
+	      \end{proof}
+	\item Use the following functionals for degrees of freedom \[v(x_j) \text{ for } j = 0,\dots,n \text{ and } \frac{1}{h}\int_{x_j}^{x_{j+1}}v(x)\,dx \text{ for } j = 0,\dots,n-1.\]
+	      Give formulas for the corresponding basis functions over all subintervals $(x_j,x_{j+1})$, i.e. find $\phi_i^j$ such that
+	      \begin{align*}
+		      \phi_1^j(x_j) & = 1 & \phi_1^j(x_{j+1}) & = 0 & \frac{1}{h}\int_{x_j}^{x_{j+1}}\phi_1^j(x)\,dx & = 0 \\
+		      \phi_2^j(x_j) & = 0 & \phi_2^j(x_{j+1}) & = 0 & \frac{1}{h}\int_{x_j}^{x_{j+1}}\phi_2^j(x)\,dx & = 1 \\
+		      \phi_3^j(x_j) & = 1 & \phi_3^j(x_{j+1}) & = 1 & \frac{1}{h}\int_{x_j}^{x_{j+1}}\phi_3^j(x)\,dx & = 0
+	      \end{align*}
+	      for all $j = 0,\dots,n-1$.
+	      \begin{proof}
+		      We first consider the basis functions on the reference interval $\widehat\phi_i$ such that
+		      \begin{align*}
+			      \widehat \phi_1(0) & = 1 & \widehat \phi_1(1) & = 0 & \int_0^1\widehat \phi_1(\widehat x)\,d\widehat x & = 0 \\
+			      \widehat \phi_2(0) & = 0 & \widehat \phi_2(1) & = 0 & \int_0^1\widehat \phi_2(\widehat x)\,d\widehat x & = 1 \\
+			      \widehat \phi_3(0) & = 1 & \widehat \phi_3(1) & = 1 & \int_0^1\widehat \phi_3(\widehat x)\,d\widehat x & = 0
+		      \end{align*}
+		      Since these are all quadratic polynomials, we have that
+		      \begin{align*}
+			      \widehat\phi_1(\widehat x) & = (1-\widehat x)\widehat\psi_1(\widehat x), \\
+			      \widehat\phi_2(\widehat x) & = \widehat x(1-\widehat x)\widehat\chi_2,   \\
+			      \widehat\phi_3(\widehat x) & = \widehat x\widehat\psi_3(\widehat x)
+		      \end{align*}
+		      for some degree one polynomials $\widehat \psi_1$, $\widehat \psi_3$ and a constant $\widehat \chi_2$.
+		      Writing the degree one polynomials out in the monomial basis and then using the integral dofs tells us that
+		      \begin{align*}
+			      \widehat\phi_1(\widehat x) & = (1-\widehat x)(1-3\widehat x), \\
+			      \widehat\phi_2(\widehat x) & = 6\widehat x(1-\widehat x),     \\
+			      \widehat\phi_3(\widehat x) & = \widehat x(3\widehat x - 2)
+		      \end{align*}
+		      Now we map the reference interval onto a physical interval via \[\widehat x \mapsto x_j + h\widehat x.\]
+		      Using these, we have that the basis functions are
+		      \[\phi_i^j(x) = \widehat\phi_i\left(\frac{x-x_j}{h}\right).\]
+	      \end{proof}
+	\item Compute the element stiffness and mass matrices.
+	      \begin{proof}
+		      We have that \[S_{ij} = \int_{x_k}^{x_{k+1}} (\phi_i^k)'(\phi_j^k)'\,dx = \frac{1}{h}\int_0^1\widehat\phi_i'\widehat\phi_j'\,d\widehat x.\]
+		      Using a computer and the basis functions from the previous problem, we have that
+		      \[S = \frac{2}{h}\begin{pmatrix} 2 & -3 & 1 \\ -3 & 6 & -3 \\ 1 & -3 & 2 \end{pmatrix}\]
+		      Similarly, the mass matrix is
+		      \[M_{ij} = \int_{x_k}^{x_{k+1}} \phi_i^k\phi_j^k\,dx = h\int_0^1\widehat\phi_i\widehat\phi_j\,d\widehat x,\]
+		      so that
+		      \[M = \frac{h}{30}\begin{pmatrix} 4 & -3 & -1 \\ -3 & 36 & -3 \\ -1 & -3 & 4 \end{pmatrix}.\]
+	      \end{proof}
+	\item Assemble the global stiffness and mass matrices for the above problem.
+	      \begin{proof}
+		      We use the natural ordering on the line to enumerate our global basis functions.
+		      For example, with $n = 2$, we set $\phi_0 = \phi_1^0$ on interval $K_0$ and $0$ otherwise.
+		      Then we set $\phi_1 = \phi_2^0$ on $K_0$ and $0$ otherwise.
+		      Then we set $\phi_3$ to be equal to $\phi_3^0$ on $K_0$, equal to $\phi_1^1$ on $K_1$, and $0$ otherwise.
+		      Then we set $\phi_4$ to be $\phi_2^1$ on $K_1$ and $0$ otherwise, and we set $\phi_5$ to be $\phi_2^3$ on $K_1$ and $0$ otherwise.
+
+		      More generally, we set $\phi_0 = \phi_1^0$ on $K_0$ and $0$ otherwise.
+		      Then we set $\phi_{2k+1} = \phi_2^{k-1}$ on $K_{k-1}$ and $0$ otherwise.
+		      Then we set $\phi_{2k} = \phi_3^{k-1}$ on $K_{k-1}$, $\phi_{2k} = \phi_1^k$ on $K_k$, and $\phi_{2k} = 0$ otherwise.
+		      Finally, we set $\phi_{2n} = \phi_3^{n-1}$ on $K_{n-1}$ and $0$ otherwise.
+
+		      Using this natural ordering, the global stiffness matrix is assembled with a certain block structure which we explicitly show for $n = 2$.
+		      The general case is more or less the same.
+		      \begin{equation*}
+			      S_{glob} =
+			      \begin{pmatrix}
+				      S_{11} & S_{12} & S_{13}          & 0      & 0      \\
+				      S_{21} & S_{22} & S_{23}          & 0      & 0      \\
+				      S_{31} & S_{32} & S_{33} + S_{11} & S_{12} & S_{13} \\
+				      0      & 0      & S_{21}          & S_{22} & S_{23} \\
+				      0      & 0      & S_{31}          & S_{32} & S_{33}
+			      \end{pmatrix}
+		      \end{equation*}
+		      Similarly, the global mass matrix is assembled as
+		      \begin{equation*}
+			      M_{glob} =
+			      \begin{pmatrix}
+				      M_{11} & M_{12} & M_{13}          & 0      & 0      \\
+				      M_{21} & M_{22} & M_{23}          & 0      & 0      \\
+				      M_{31} & M_{32} & M_{33} + M_{11} & M_{12} & M_{13} \\
+				      0      & 0      & M_{21}          & M_{22} & M_{23} \\
+				      0      & 0      & M_{31}          & M_{32} & M_{33}
+			      \end{pmatrix}
+		      \end{equation*}
+	      \end{proof}
+	\item Compute the right hand side of the Ritz system.
+	      Compute the global stiffness and mass matricese for the problem when the boundary condition at $x = 0$ is replaced by a homogeneous Dirichlet one.
+	      Write the Ritz system in that case.
+	      \begin{proof}
+		      The local rhs without the boundary conditions applied is computed as \[F_i = \int_{x_k}^{x_{k+1}}\phi_i^k\,dx = h\int_0^1\widehat\phi_i\,d\widehat x = \begin{cases} h & i = 2 \\ 0 & \text{ else } \end{cases}.\]
+		      We assemble this into the global rhs as follows.
+		      As before, we only show the case $n = 2$ for simplicity.
+		      We also include the boundary conditions.
+		      \[F_{glob} =
+			      \begin{pmatrix}
+				      -\beta_0 \\ h \\ 0 \\ h \\ \beta_1
+			      \end{pmatrix}.
+		      \]
+		      If we replace the boundary conditions at $x = 0$, the only effect that it has on the system is that we remove the first row and column.
+		      For example, with $n = 2$, we have that
+		      \begin{align*}
+			      S_{glob} & =
+			      \begin{pmatrix}
+				      S_{22} & S_{23}          & 0      & 0      \\
+				      S_{32} & S_{33} + S_{11} & S_{12} & S_{13} \\
+				      0      & S_{21}          & S_{22} & S_{23} \\
+				      0      & S_{31}          & S_{32} & S_{33}
+			      \end{pmatrix} \\
+			      M_{glob} & =
+			      \begin{pmatrix}
+				      M_{22} & M_{23}          & 0      & 0      \\
+				      M_{32} & M_{33} + S_{11} & M_{12} & M_{13} \\
+				      0      & M_{21}          & M_{22} & M_{23} \\
+				      0      & M_{31}          & M_{32} & M_{33}
+			      \end{pmatrix} \\
+			      F_{glob} & =
+			      \begin{pmatrix}
+				      h \\ 0 \\ h \\ \beta_1
+			      \end{pmatrix}.
+		      \end{align*}
+		      In this case, the full Ritz system is (for $n = 2$, with the obvious generalization to $n > 2$)
+		      \[\left(S_{glob} + M_{glob} + \begin{pmatrix} 0 & 0 & 0 & 0 \\  0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \right)U = F_{glob}
+	      \end{proof}
+\end{enumerate}
 \end{document}
