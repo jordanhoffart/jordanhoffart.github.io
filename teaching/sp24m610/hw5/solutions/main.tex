@@ -57,6 +57,7 @@ supplemented with the boundary conditions $u = \phi = 0$ on $\partial \Omega$.
 	      \[\|u\|_{L^2(\Omega_d)} \leq cd\|\nabla u\|_{L^2(\Omega_d)}\]
 	      for all $u \in H^1_0(\Omega_d)$.
 	      \begin{proof}
+		      Suppose that $u$ is smooth and vanishes on the boundary.
 		      We have that
 		      \[u(x,y) = \int_{-d}^y\partial_y u(x,s)\,ds = (1,\partial_y u (x,\cdot))_{L^2(-d,y)}.\]
 		      Therefore, by Cauchy-Schwarz,
@@ -67,7 +68,8 @@ supplemented with the boundary conditions $u = \phi = 0$ on $\partial \Omega$.
 			                              & = 4d^2\|\partial_y u\|_{L^2(\Omega_d)}^2                               \\
 			                              & \leq 4d^2\|\nabla u\|_{L^2(\Omega_d)}^2.
 		      \end{align*}
-		      Taking square roots completes the proof with $c = 2$.
+		      Taking square roots completes the proof with $c = 2$ for smooth functions that vanish on the boundary.
+		      The full result follows from density of such functions in $H^1_0(\Omega_d)$.
 	      \end{proof}
 
 	\item Consider the modified problem
@@ -89,20 +91,20 @@ supplemented with the boundary conditions $u = \phi = 0$ on $\partial \Omega$.
 
 		      Using the inequality from the previous problem, we have that
 		      \begin{align*}
-			      a((u,\phi),(u,\phi)) & = \|\nabla u\|_{L^2(\Omega_d)}^2 + \|\nabla \phi\|_{L^2(\Omega_d)}^2 + 2(u,\phi)_{L^2(\Omega_d)}                        \\
-			                           & \geq \frac{1}{2}\|\nabla u\|_{L^2(\Omega_d)}^2 + \frac{1}{2}\|\nabla u\|_{L^2(\Omega_d)}^2                              \\
-			                           & \qquad + \frac{1}{2cd}\|u\|_{L^2(\Omega_d)}^2 + 2(u,\phi)_{L^2(\Omega_d)} + \frac{1}{2cd}\|\varphi\|_{L^2(\Omega_d)}^2.
+			      a((u,\phi),(u,\phi)) & = \|\nabla u\|_{L^2(\Omega_d)}^2 + \|\nabla \phi\|_{L^2(\Omega_d)}^2 + 2(u,\phi)_{L^2(\Omega_d)}                             \\
+			                           & \geq \frac{1}{2}\|\nabla u\|_{L^2(\Omega_d)}^2 + \frac{1}{2}\|\nabla \phi\|_{L^2(\Omega_d)}^2                                \\
+			                           & \qquad + \frac{1}{2c^2d^2}\|u\|_{L^2(\Omega_d)}^2 + 2(u,\phi)_{L^2(\Omega_d)} + \frac{1}{2c^2d^2}\|\phi\|_{L^2(\Omega_d)}^2.
 		      \end{align*}
-		      Now if $d$ is small enough so that \[\frac{1}{2cd} > 1,\]
-		      i.e. if \[d < \frac{1}{2c},\]
+		      Now if $d$ is small enough so that \[\frac{1}{2c^2d^2} > 1,\]
+		      i.e. if \[d < \frac{1}{c\sqrt{2}},\]
 		      then by applying this inequality and the inequality from the previous problem again, we have that
 		      \begin{align*}
 			      a((u,\phi),(u,\phi)) & \geq \frac{1}{2}\|\nabla u\|_{L^2(\Omega_d)}^2 + \frac{1}{2}\|\nabla \phi\|_{L^2(\Omega_d)}^2 + \|u+\phi\|_{L^2(\Omega_d)}^2 \\
-			                           & \geq \frac{1}{4}\|\nabla u\|_{L^2(\Omega_d)}^2 + \frac{1}{4cd}\|u\|_{L^2(\Omega_d)}^2                                        \\
-			                           & \qquad + \frac{1}{4}\|\nabla \phi\|_{L^2(\Omega_d)}^2 + \frac{1}{4cd}\|\phi\|_{L^2(\Omega_d)}^2                              \\
-			                           & \geq \frac{1}{4}\|(u,\varphi)\|_{\mathbb V \times \mathbb W}^2,
+			                           & \geq \frac{1}{4}\|\nabla u\|_{L^2(\Omega_d)}^2 + \frac{1}{4c^2d^2}\|u\|_{L^2(\Omega_d)}^2                                    \\
+			                           & \qquad + \frac{1}{4}\|\nabla \phi\|_{L^2(\Omega_d)}^2 + \frac{1}{4c^2d^2}\|\phi\|_{L^2(\Omega_d)}^2                          \\
+			                           & \geq \frac{1}{4}\|(u,\phi)\|_{\mathbb V \times \mathbb W}^2,
 		      \end{align*}
-		      where the last inequality comes from the fact that \[\frac{1}{2cd} > 1 \implies \frac{1}{4cd} > \frac{1}{2}.\]
+		      where the last inequality comes from the fact that \[\frac{1}{2c^2d^2} > 1 \implies \frac{1}{4c^2d^2} > \frac{1}{2}.\]
 		      Thus $a$ is coercive if $d$ is small enough, so we once again can apply Lax-Milgram to obtain a unique solution.
 		      Similar to the last problem, the stability bound is given by
 		      \[\|(u,\phi)\|_{\mathbb V \times \mathbb W} \leq 4(\|f\|_{L^2(\Omega_d)} + \|g\|_{L^2(\Omega_d)}),\]

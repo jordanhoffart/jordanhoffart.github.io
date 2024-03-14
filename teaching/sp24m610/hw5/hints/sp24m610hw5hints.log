@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.28)  14 MAR 2024 08:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.28)  14 MAR 2024 13:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**sp24m610hw5hints.tex
+(./sp24m610hw5hints.tex
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-09>
 (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/base/article.cls
@@ -107,55 +107,65 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+))
+\c@lemma=\count272
+\c@corollary=\count273
+\c@definition=\count274
+\c@remark=\count275
+ (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-11-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count272
+\l__color_backend_stack_int=\count276
 \l__pdf_internal_box=\box53
-) (./main.aux)
-\openout1 = `main.aux'.
+) (./sp24m610hw5hints.aux)
+\openout1 = `sp24m610hw5hints.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 21.
  (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 10.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 21.
  (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/home/jordan/work/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] (./main.aux)
+{/home/jordan/work/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11]
+Overfull \hbox (3.89278pt too wide) in paragraph at lines 383--386
+\OT1/cmr/m/n/10 are eas-ier and han-dled sim-i-larly. Fix $(\OML/cmm/m/it/10 x; y\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[]$ \OT1/cmr/m/n/10 and con-sider the point $(\OML/cmm/m/it/10 x; \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ax \OT1/cmr/m/n/10 +
+ []
+
+[12] [13] (./sp24m610hw5hints.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-09>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 1794 strings out of 474267
- 25493 string characters out of 5743908
- 1940555 words of memory out of 5000000
- 24032 multiletter control sequences out of 15000+600000
- 565663 words of font info for 66 fonts, out of 8000000 for 9000
+ 1833 strings out of 474267
+ 26179 string characters out of 5743908
+ 1937555 words of memory out of 5000000
+ 24070 multiletter control sequences out of 15000+600000
+ 565971 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,10n,65p,286b,263s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (7 pages, 177172 bytes).
+ 56i,10n,65p,426b,297s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on sp24m610hw5hints.pdf (13 pages, 228387 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 66 compressed objects within 1 object stream
+ 132 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
