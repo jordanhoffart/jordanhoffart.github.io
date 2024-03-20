@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\title{MATH 610 Homework 6 Hints}
+\author{Jordan Hoffart}
+\date{}
+
+\usepackage{amsmath,amsthm,amssymb}
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+\maketitle
+\begin{enumerate}
+	\item
+	      Show unisolvence.
+	      That is, suppose that $p \in P$ is such that $\sigma_i p = 0$ for all $i$.
+	      Since $p$ is a piecewise quadratic, if we label $K_1 = [0,1/2]$ and $K_2 = [1/2,1]$, then there are quadratic polynomials $p_1,p_2$ such that $p|_{K_i} = p_i$.
+	      The dofs will allow you to factor the $p_i$, and the continuity conditions at $x = 1/2$ give you two more equations
+	      \begin{align*}
+		      p_1(1/2)  & = p_2(1/2),  \\
+		      p_1'(1/2) & = p_2'(1/2).
+	      \end{align*}
+	      You will want to use the following factoring results throughout the problem.
+
+	      \begin{lemma}
+		      Let $q$ be a quadratic polynomial.
+		      \begin{enumerate}
+			      \item
+			            If $q(0) = 0$, then $q(x) = x(ax+b)$ for some constants $a,b$.
+			      \item
+			            If $q'(0) = 0$, then $q(x) = ax^2 + b$ for some constants $a,b$.
+			      \item
+			            If $q(0) = q'(0) = 0$, then $q(x) = ax^2$ for some constant $a$.
+			      \item
+			            If $q(1) = 0$, then $q(x) = (x-1)(ax+b)$ for some constants $a,b$.
+			      \item
+			            If $q'(1) = 0$, then $q(x) = ax^2 - 2ax + b$ for some constants $a,b$.
+			      \item
+			            If $q(1) = q'(1) = 0$, then $q(x) = a(x-1)^2$ for some constant $a$.
+		      \end{enumerate}
+	      \end{lemma}
+	      \begin{proof}
+		      Results a and d are just the usual factoring lemma.
+
+		      Since $q$ is a quadratic polynomial, $q'$ is a degree one polynomial.
+		      Then from the usual factoring lemma, assumption b implies that $q'(x) = cx$ for some constant $c$.
+		      This in turn implies $q(x) = ax^2 + b$ for some constants $a,b$ (namely, $a = c/2$).
+
+		      Similarly, for assumption $e$, we have that $q'(x) = c(x-1)$ for some constant $c$.
+		      This implies that $q(x) = (c/2)x^2 - cx + b$ for a constant $b$.
+		      Setting $a = c/2$ gives us $q(x) = ax^2 - 2ax + b$.
+
+		      For item c, we use item b and evaluate at $x = 0$ to conclude that $b = 0$.
+		      For item f, we have from item d that $q(x) = (x-1)(ax+b)$ for some constants $a$ and $b$.
+		      Then by taking a derivative, we have that $q'(x) = ax+b + a(x-1)$.
+		      Evaluating at $x = 1$ tells us that $a + b = 0$, so that $q(x) = a(x-1)^2$ as desired.
+	      \end{proof}
+
+	      To find the shape functions, we have that shape function $\varphi_i \in P$ satisfies $\sigma_j\varphi_i = \delta_{ij}$ for all $i,j$.
+	      We also have that $\varphi_i|_{K_k} = \varphi_{i,k}$ for some quadratic polynomials $\varphi_{i,k}$.
+	      Use the lemma above and the equations $\sigma_j\varphi_i = 0$ to factor the $\varphi_{i,k}$ as much as possible.
+	      Then use the equations
+	      \begin{align*}
+		      \sigma_i\varphi_i   & = 1                   \\
+		      \varphi_{i,1}(1/2)  & = \varphi_{i,2}(1/2)  \\
+		      \varphi_{i,1}'(1/2) & = \varphi_{i,2}'(1/2)
+	      \end{align*}
+	      to solve for the coefficients that appear from factoring.
+
+	\item
+	      \begin{enumerate}
+		      \item
+		            Use a Poincar\'e inequality.
+		      \item
+		            Lax-Milgram.
+		      \item
+		            First show Galerkin orthgonality: \[a_k(u-u_h,v_h) = 0\] for all $v_h \in \mathbb V_h$.
+		            Then use coercivity, Galerkin orthogonality, and continuity to show Ce\'a's lemma: there is a constant $C$ such that \[\|u-u_h\|_1 \leq C\inf_{v_h \in \mathbb V_h}\|u-v_h\|_1\] for all $h$.
+		            Then use Ce\'a's lemma and the given approximation property to bound $\|u-u_h\|_1^2$ above.
+		      \item
+		            Let $g = u-u_h = v$.
+		            Then \[\|u-u_h\|^2 = (g,v) = a_k(w,v).\]
+		            Now use the fact that $a_k$ is symmetric, use Galerkin orthogonality, and use continuity to show that \[a_k(w,v) \leq C\|u-u_h\|_1\inf_{w_h \in \mathbb V_h}\|w - w_h\|_1.\]
+		            Combine these, use Ce\'a's lemma, apply the approximation result from above, and use the regularity assumption to finish the proof.
+	      \end{enumerate}
+
+\end{enumerate}
+\end{document}

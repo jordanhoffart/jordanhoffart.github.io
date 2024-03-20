@@ -1,0 +1,156 @@
+\documentclass{article}
+
+\title{MATH 610 HW 6 Solutions}
+\author{Jordan Hoffart}
+\date{}
+
+\usepackage{amsmath,amsthm,amssymb}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+	\item
+	      Let $K$ be the unit interval.
+	      Let $P$ be the space of piecewise quadratics on the splitting $K = [0,1/2] \cup [1/2,1]$ and which are of class $C^1$ on $K$.
+	      Let $\sigma_1 p = p(0)$, $\sigma_2 p = p'(0)$, $\sigma_3 p = p(1)$, and $\sigma_4 p = p'(1)$.
+	      Show that $(K,P,\Sigma)$ is a finite element triple with $\Sigma = \{\sigma_1,\sigma_2,\sigma_3,\sigma_4\}$.
+	      Find the corresponding shape functions to the degrees of freedom.
+	      \begin{proof}
+		      Let $K_1 = [0,1/2]$ and $K_2 = [1/2,1]$.
+		      If $p \in P$ and $\sigma_i p = 0$ for all $i$, then we have that $p|_{K_i} = p_i$ for some quadratic polynomials $p_i$.
+		      Since $p_1(0) = p_1'(0) = 0$, we have that $p_1(x) = c_1x^2$ for some constant $c_1$.
+		      Similarly, we have that $p_2(x) = c_2(1-x)^2$ for some constant $c_2$.
+		      Since $p$ is continuously differentiable at $x = 1/2$, we must have that
+		      \begin{align*}
+			      c_1/4 = p_1(1/2) & = p_2(1/2) = c_2/4 \\
+			      c_1 = p_1'(1/2)  & = p_2'(1/2) = -c_2
+		      \end{align*}
+		      which implies that $c_1 = c_2 = 0$.
+		      Thus $p = 0$, so $\Sigma$ is a unisolvent set of dofs for $P$.
+		      Hence $(K,P,\Sigma)$ is a finite element.
+
+		      Let $\varphi_i$ be the corresponding shape functions, so that $\varphi_i|_{K_j} = \varphi_{i,j}$ for some quadratic polynomials $\varphi_{i,j}$.
+		      Furthermore, $\sigma_j\varphi_i = \delta_{i,j}$ for all $i,j$.
+
+		      For $i=1$, $\varphi_{1,2}(0) = 0$ and $\varphi_{1,2}'(0) = 0$.
+		      Therefore, $\varphi_{1,2}(x) = c_2(x-1)^2$ for some constant $c_2$.
+		      Similarly, $\varphi_{1,1}(x) = a_1x^2 + b_1x + c_1$ for some constants $a_1,b_1,c_1$.
+		      Then $\varphi_{1,1}'(x) = 2a_1x + b_1$ and $\varphi_{1,1}'(0) = 0$.
+		      Therefore, $b_1 = 0$, so that $\varphi_{1,1}(x) = a_1x^2 + c_1$.
+		      We have that $\varphi_{1,1}(0) = 1$, so that \[c_1 = 1,\]
+		      so that \[\varphi_{1,1}(x) = a_1x^2 + 1\]
+		      The continuity conditions imply that
+		      \begin{align*}
+			      a_1/4 + 1 & = c_2/4 \\
+			      a_1       & = -c_2
+		      \end{align*}
+		      which implies that
+		      \begin{align*}
+			      a_1 & = -2, \\
+			      c_2 & = 2,  \\
+		      \end{align*}
+		      Therefore,
+		      \begin{equation*}
+			      \varphi_1(x) =
+			      \begin{cases}
+				      1-2x^2   & x \in K_1 \\
+				      2(x-1)^2 & x\in K_2.
+			      \end{cases}
+		      \end{equation*}
+
+		      We proceed similarly for $i = 2,3,4$ and arrive at
+		      \begin{align*}
+			      \varphi_2(x) & =
+			      \begin{cases}
+				      x(2-3x)/2 & x \in K_1 \\
+				      (x-1)^2/2 & x \in K_2
+			      \end{cases}     \\
+			      \varphi_3(x) & =
+			      \begin{cases}
+				      2x^2          & x \in K_1 \\
+				      -2x^2 + 4x -1 & x \in K_2
+			      \end{cases} \\
+			      \varphi_4(x) & =
+			      \begin{cases}
+				      -x^2/2        & x \in K_1 \\
+				      (3x^2-4x+1)/2 & x \in K_2
+			      \end{cases}.
+		      \end{align*}
+	      \end{proof}
+
+	\item
+	      Let $\Omega$ be a bounded convex polygonal domain in $\mathbb R^n$.
+	      Let $\mathbb V = H_0^1(\Omega)$ with inner product and corresponding norm \[(u,v)_1 = D(u,v) + (u,v)\] and \[\|u\|_1 = (u,u)_1^{1/2},\] where \[(u,v) = \int_\Omega uv\,dx\] and \[D(u,v) = \sum_i (\partial_i u, \partial_i v).\]
+	      For any positive constant $k$, let \[a_k(u,v) = D(u,v) - k(u,v).\]
+	      \begin{enumerate}
+		      \item
+		            Show that there is $k_0 > 0$ such that when $0 < k < k_0$, we have that $a_k$ is continuous and coercive on $\mathbb V$.
+		            \begin{proof}
+			            We have that \[|a_k(u,v)| \leq |D(u,v)| + k|(u,v)|.\]
+			            By Cauchy-Schwarz, we have that \[|D(u,v)| \leq \sum_i\|\partial_iu\|\|\partial_iv\|\] and \[|(u,v)| \leq \|u\|\|v\|,\] where $\|u\| = (u,u)^{1/2}.$
+			            By Cauchy-Schwarz again, we have that \[|a_k(u,v)| \leq \max\{1,k\}\|u\|_1\|v\|_1.\]
+			            Thus $a_k$ is continuous for all $k$.
+
+			            Now we recall the Poincar\'e inequality: there is $C_p > 0$ such that \[C_p\|u\|^2 \leq D(u,u)\] for all $u \in \mathbb V$.
+			            Therefore, we have that
+			            \begin{align*}
+				            a_k(u,u) & = D(u,u) - k\|u\|^2                                           \\
+				                     & \geq \frac{1}{2}D(u,u) + \left(\frac{C_p}{2}-k\right)\|u\|^2  \\
+				                     & \geq \min\left\{\frac{1}{2},\frac{C_p}{2}-k\right\}\|u\|_1^2.
+			            \end{align*}
+			            Therefore, when \[0 < k < k_0 := \frac{C_p}{2},\]
+			            we have that $a_k$ is also coercive.
+		            \end{proof}
+
+		      \item
+		            Let $f \in L^2(\Omega)$.
+		            Show that when $k < k_0$ there is a unique $u \in \mathbb V$ such that \[a_k(u,v) = (f,v)\] for all $v \in \mathbb V$.
+		            \begin{proof}
+			            This is just Lax-Milgram.
+		            \end{proof}
+
+		      \item
+		            Let $\mathbb V_h$ be a finite dimensional subspace of $\mathbb V$ with $h$ a mesh parameter.
+		            Then there is a unique solution $u_h \in \mathbb V_h$ such that \[a_k(u_h,v_h) = (f,v_h)\] for all $v_h \in \mathbb V_h$.
+		            Suppose that $\mathbb V_h$ has the following approximation property: there exists $C > 0$ such that \[\inf_{v_h \in \mathbb V_h}\|v-v_h\|_1 \leq Ch\|v\|_2\] for all $v \in H^2(\Omega)$ with its natural norm $\|\cdot\|_2$ and all $h > 0$.
+		            Prove Ce\'a's lemma and show that there exists $C > 0$ such that \[\|u-u_h\|_1 \leq Ch\|u\|_2\] for all $h > 0$ provided that $u \in H^2(\Omega)$.
+		            \begin{proof}
+			            Let $v_h \in \mathbb V_h$.
+			            We observe that Galerkin orthgonality holds: \[a_k(u-u_h,w_h) = 0\] for all $w_h \in \mathbb V_h$.
+			            Let \[\alpha_{p,k} = \frac{1}{\min\{1/2,C_p/2-k\}}\] be the coercivity constant from above.
+			            Let \[C_k = \max\{1,k\}\] be the continuity constant.
+			            Then
+			            \begin{align*}
+				            \|u-u_h\|_1^2 & \leq \alpha_{p,k} a(u-u_h,u-u_h)             \\
+				                          & = \alpha_{p,k} a(u-u_h,u-v_h)                \\
+				                          & \leq C_k\alpha_{p,k} \|u-u_h\|_1\|u-v_h\|_1.
+			            \end{align*}
+			            Since $v_h$ is arbitrary, we have Ce\'a's lemma: \[\|u-u_h\|_1 \leq C_k\alpha_{p,k}\inf_{v_h\in\mathbb V_h}\|u-v_h\|_1\] for all $h > 0$.
+			            Using the approximation result \[\inf_{v\in \mathbb V_h}\|u-v_h\|_1 \leq C_{app}h\|u\|_{H^2(\Omega)}\] gives us the result with \[C = C_{app}C_k\alpha_{p,k}.\]
+		            \end{proof}
+
+		      \item
+		            Use a duality argument to derive an optimal $L^2$ error estimate using the previous result.
+		            You can use without proof that there is a constant $C_{reg}$ such that for any $g \in L^2(\Omega)$, the unique solution $w \in \mathbb V$ to \[a_k(w,v) = (g,v)\] for all $v \in \mathbb V$ belongs to $H^2(\Omega)$ and \[\|w\|_2 \leq C_{reg}\|g\|.\]
+		            \begin{proof}
+			            Let $g = u-u_h = v$ and $w_h \in \mathbb V_h$.
+			            Then since $a_k$ is symmetric, we have from Galerkin orthogonality and continuity that
+			            \begin{align*}
+				            \|u-u_h\|_{L^2(\Omega)}^2 & = (g,v)                         \\
+				                                      & = a_k(w,v)                      \\
+				                                      & = a_k(v,w)                      \\
+				                                      & = a_k(u-u_h,w-w_h)              \\
+				                                      & \leq C_k\|u-u_h\|_1\|w-w_h\|_1.
+			            \end{align*}
+			            Since $w_h$ is arbitrary and $w \in H^2(\Omega)$, we have from above and the regularity assumption that
+			            \begin{align*}
+				            \|u-u_h\|^2 & \leq C_kC_{app}C_k\alpha_{p,k}h\|u\|_{H^2(\Omega)}C_{app}\|w\|_2 \\
+				                        & \leq C_k^2 C_{app}^2 C_{reg} \alpha_{p,k} h^2 \|g\| \|u\|_2.
+			            \end{align*}
+			            Since $g = u-u_h$, we are done, and we can take \[C = C_k^2 C_{app}^2 C_{reg}\alpha_{p,k}.\]
+		            \end{proof}
+	      \end{enumerate}
+\end{enumerate}
+\end{document}
