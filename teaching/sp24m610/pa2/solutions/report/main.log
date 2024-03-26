@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.28)  4 MAR 2024 18:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.28)  26 MAR 2024 17:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -306,28 +306,45 @@ Package pgfplots: loading complementary utilities for your pgf version...
 File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/home/jordan/work/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)))
+))) (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/csvsimple/csvsimple.sty (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2023-11-09 L3 programming layer (loader) 
+ (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-11-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count293
+\l__pdf_internal_box=\box63
+))
+Package: l3keys2e 2023-10-10 LaTeX2e option processing using LaTeX3 keys
+)
+Package: csvsimple 2023/10/16 v2.5.0 LaTeX CSV file processing
+)
+(/home/jordan/work/texlive/2023/texmf-dist/tex/latex/csvsimple/csvsimple-l3.sty
+Package: csvsimple-l3 2023/10/16 v2.5.0 LaTeX3 CSV file processing
+\g__csvsim_col_int=\count294
+\g__csvsim_colmax_int=\count295
+\g_csvsim_inputline_int=\count296
+\g_csvsim_row_int=\count297
+\g_csvsim_columncount_int=\count298
+)
    defining Unicode char U+2212 (decimal 8722)
  (/home/jordan/work/texlive/2023/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.groupplots.code.tex
-\pgfplots@group@current@plot=\count293
-\pgfplots@group@current@row=\count294
-\pgfplots@group@current@column=\count295
+\pgfplots@group@current@plot=\count299
+\pgfplots@group@current@row=\count300
+\pgfplots@group@current@column=\count301
  (/home/jordan/work/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (/home/jordan/work/texlive/2023/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.dateplot.code.tex
-(/home/jordan/work/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfcalendar.sty (/home/jordan/work/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfcalendar.code.tex
+)) (/home/jordan/work/texlive/2023/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.dateplot.code.tex (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfcalendar.sty (/home/jordan/work/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfcalendar.code.tex
 File: pgfcalendar.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfcalendarcurrentjulian=\count296
-\pgf@cal@easter@Y=\count297
-\pgf@cal@easter@G=\count298
-\pgf@cal@easter@C=\count299
-\pgf@cal@easter@X=\count300
-\pgf@cal@easter@Z=\count301
-\pgf@cal@easter@D=\count302
-\pgf@cal@easter@E=\count303
-\pgf@cal@easter@N=\count304
-\pgf@cal@easter@M=\count305
-\pgf@cal@easter@julianday=\count306
+\pgfcalendarcurrentjulian=\count302
+\pgf@cal@easter@Y=\count303
+\pgf@cal@easter@G=\count304
+\pgf@cal@easter@C=\count305
+\pgf@cal@easter@X=\count306
+\pgf@cal@easter@Z=\count307
+\pgf@cal@easter@D=\count308
+\pgf@cal@easter@E=\count309
+\pgf@cal@easter@N=\count310
+\pgf@cal@easter@M=\count311
+\pgf@cal@easter@julianday=\count312
 ))) (/home/jordan/work/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
 File: tikzlibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/home/jordan/work/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
@@ -336,39 +353,35 @@ File: pgflibrarypatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/home/jordan/work/texlive/2023/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code.tex
 File: pgflibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2023-11-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count307
-\l__pdf_internal_box=\box63
-) (./main.aux)
+)) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
  (/home/jordan/work/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count308
+\scratchcounter=\count313
 \scratchdimen=\dimen276
 \scratchbox=\box64
-\nofMPsegments=\count309
-\nofMParguments=\count310
+\nofMPsegments=\count314
+\nofMParguments=\count315
 \everyMPshowfont=\toks39
-\MPscratchCnt=\count311
+\MPscratchCnt=\count316
 \MPscratchDim=\dimen277
-\MPnumerator=\count312
-\makeMPintoPDFobject=\count313
+\MPnumerator=\count317
+\makeMPintoPDFobject=\count318
 \everyMPtoPDFconversion=\toks40
 ) (/home/jordan/work/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -379,245 +392,135 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 16.
+(Font)              <12> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 16.
+(Font)              <8> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 16.
+(Font)              <6> on input line 17.
 [1
 
 {/home/jordan/work/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<../data/problem-1/problem_1_plot.png, id=11, 462.528pt x 346.896pt>
+File: ../data/problem-1/problem_1_plot.png Graphic file (type png)
+<use ../data/problem-1/problem_1_plot.png>
+Package pdftex.def Info: ../data/problem-1/problem_1_plot.png  used on input line 21.
+(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
+<../data/problem-1/problem_1_errors.png, id=13, 462.528pt x 346.896pt>
+File: ../data/problem-1/problem_1_errors.png Graphic file (type png)
+<use ../data/problem-1/problem_1_errors.png>
+Package pdftex.def Info: ../data/problem-1/problem_1_errors.png  used on input line 24.
+(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
+ [1
+
+ <../data/problem-1/problem_1_plot.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 19.
+(Font)              <7> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 19.
-<../data/problem-1/problem_1_S_100.png, id=11, 462.528pt x 346.896pt>
-File: ../data/problem-1/problem_1_S_100.png Graphic file (type png)
-<use ../data/problem-1/problem_1_S_100.png>
-Package pdftex.def Info: ../data/problem-1/problem_1_S_100.png  used on input line 20.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- (../data/problem-1/problem_1_S_100_errors.tex
+(Font)              <5> on input line 26.
+
+Overfull \hbox (12.83418pt too wide) in paragraph at lines 26--27
+[][] 
+ []
+
+[2 <../data/problem-1/problem_1_errors.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 1.
-)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--23
- [] 
+(Font)              <14.4> on input line 29.
+<../data/problem-2/problem_2_q_1_plot_0.png, id=24, 462.528pt x 346.896pt>
+File: ../data/problem-2/problem_2_q_1_plot_0.png Graphic file (type png)
+<use ../data/problem-2/problem_2_q_1_plot_0.png>
+Package pdftex.def Info: ../data/problem-2/problem_2_q_1_plot_0.png  used on input line 30.
+(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
+<../data/problem-2/problem_2_q_1_plot_1.png, id=25, 462.528pt x 346.896pt>
+File: ../data/problem-2/problem_2_q_1_plot_1.png Graphic file (type png)
+<use ../data/problem-2/problem_2_q_1_plot_1.png>
+Package pdftex.def Info: ../data/problem-2/problem_2_q_1_plot_1.png  used on input line 32.
+(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 32--33
+[][] 
  []
 
-<../data/problem-1/problem_1_S_100_errors.png, id=13, 462.528pt x 346.896pt>
-File: ../data/problem-1/problem_1_S_100_errors.png Graphic file (type png)
-<use ../data/problem-1/problem_1_S_100_errors.png>
-Package pdftex.def Info: ../data/problem-1/problem_1_S_100_errors.png  used on input line 24.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[1
+[3
 
- <../data/problem-1/problem_1_S_100.png>]
-<../data/problem-1/problem_1_S_1000.png, id=21, 462.528pt x 346.896pt>
-File: ../data/problem-1/problem_1_S_1000.png Graphic file (type png)
-<use ../data/problem-1/problem_1_S_1000.png>
-Package pdftex.def Info: ../data/problem-1/problem_1_S_1000.png  used on input line 26.
+ <../data/problem-2/problem_2_q_1_plot_0.png>]
+<../data/problem-2/problem_2_q_1_plot_2.png, id=31, 462.528pt x 346.896pt>
+File: ../data/problem-2/problem_2_q_1_plot_2.png Graphic file (type png)
+<use ../data/problem-2/problem_2_q_1_plot_2.png>
+Package pdftex.def Info: ../data/problem-2/problem_2_q_1_plot_2.png  used on input line 34.
 (pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- [2 <../data/problem-1/problem_1_S_100_errors.png>] (../data/problem-1/problem_1_S_1000_errors.tex)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--29
- [] 
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 34--35
+[][] 
  []
 
-<../data/problem-1/problem_1_S_1000_errors.png, id=26, 462.528pt x 346.896pt>
-File: ../data/problem-1/problem_1_S_1000_errors.png Graphic file (type png)
-<use ../data/problem-1/problem_1_S_1000_errors.png>
-Package pdftex.def Info: ../data/problem-1/problem_1_S_1000_errors.png  used on input line 30.
+<../data/problem-2/problem_2_q_0_plot_0.png, id=32, 462.528pt x 346.896pt>
+File: ../data/problem-2/problem_2_q_0_plot_0.png Graphic file (type png)
+<use ../data/problem-2/problem_2_q_0_plot_0.png>
+Package pdftex.def Info: ../data/problem-2/problem_2_q_0_plot_0.png  used on input line 37.
 (pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[3 <../data/problem-1/problem_1_S_1000.png>]
-<../data/problem-1/problem_1_S_10000.png, id=31, 462.528pt x 346.896pt>
-File: ../data/problem-1/problem_1_S_10000.png Graphic file (type png)
-<use ../data/problem-1/problem_1_S_10000.png>
-Package pdftex.def Info: ../data/problem-1/problem_1_S_10000.png  used on input line 32.
+[4 <../data/problem-2/problem_2_q_1_plot_1.png> <../data/problem-2/problem_2_q_1_plot_2.png>]
+<../data/problem-2/problem_2_q_0_plot_1.png, id=38, 462.528pt x 346.896pt>
+File: ../data/problem-2/problem_2_q_0_plot_1.png Graphic file (type png)
+<use ../data/problem-2/problem_2_q_0_plot_1.png>
+Package pdftex.def Info: ../data/problem-2/problem_2_q_0_plot_1.png  used on input line 39.
 (pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- [4 <../data/problem-1/problem_1_S_1000_errors.png>] (../data/problem-1/problem_1_S_10000_errors.tex)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--35
- [] 
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 39--40
+[][] 
  []
 
-<../data/problem-1/problem_1_S_10000_errors.png, id=36, 462.528pt x 346.896pt>
-File: ../data/problem-1/problem_1_S_10000_errors.png Graphic file (type png)
-<use ../data/problem-1/problem_1_S_10000_errors.png>
-Package pdftex.def Info: ../data/problem-1/problem_1_S_10000_errors.png  used on input line 36.
+<../data/problem-2/problem_2_q_0_plot_2.png, id=39, 462.528pt x 346.896pt>
+File: ../data/problem-2/problem_2_q_0_plot_2.png Graphic file (type png)
+<use ../data/problem-2/problem_2_q_0_plot_2.png>
+Package pdftex.def Info: ../data/problem-2/problem_2_q_0_plot_2.png  used on input line 41.
 (pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[5 <../data/problem-1/problem_1_S_10000.png>] [6 <../data/problem-1/problem_1_S_10000_errors.png>]
-<../data/problem-2/problem_2_S_100.png, id=46, 462.528pt x 346.896pt>
-File: ../data/problem-2/problem_2_S_100.png Graphic file (type png)
-<use ../data/problem-2/problem_2_S_100.png>
-Package pdftex.def Info: ../data/problem-2/problem_2_S_100.png  used on input line 40.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- (../data/problem-2/problem_2_S_100_errors.tex)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--43
- [] 
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 41--42
+[][] 
  []
 
-<../data/problem-2/problem_2_S_100_errors.png, id=47, 462.528pt x 346.896pt>
-File: ../data/problem-2/problem_2_S_100_errors.png Graphic file (type png)
-<use ../data/problem-2/problem_2_S_100_errors.png>
-Package pdftex.def Info: ../data/problem-2/problem_2_S_100_errors.png  used on input line 44.
+[5 <../data/problem-2/problem_2_q_0_plot_0.png> <../data/problem-2/problem_2_q_0_plot_1.png>] [6 <../data/problem-2/problem_2_q_0_plot_2.png>]
+<../data/problem-3/problem_3_manufactured.png, id=50, 462.528pt x 346.896pt>
+File: ../data/problem-3/problem_3_manufactured.png Graphic file (type png)
+<use ../data/problem-3/problem_3_manufactured.png>
+Package pdftex.def Info: ../data/problem-3/problem_3_manufactured.png  used on input line 47.
 (pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[7
+<../data/problem-3/problem_3_manufactured_errors.png, id=51, 462.528pt x 346.896pt>
+File: ../data/problem-3/problem_3_manufactured_errors.png Graphic file (type png)
+<use ../data/problem-3/problem_3_manufactured_errors.png>
+Package pdftex.def Info: ../data/problem-3/problem_3_manufactured_errors.png  used on input line 50.
+(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
+ [7
 
- <../data/problem-2/problem_2_S_100.png>]
-<../data/problem-2/problem_2_S_1000.png, id=52, 462.528pt x 346.896pt>
-File: ../data/problem-2/problem_2_S_1000.png Graphic file (type png)
-<use ../data/problem-2/problem_2_S_1000.png>
-Package pdftex.def Info: ../data/problem-2/problem_2_S_1000.png  used on input line 46.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- [8 <../data/problem-2/problem_2_S_100_errors.png>] (../data/problem-2/problem_2_S_1000_errors.tex)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--49
- [] 
+ <../data/problem-3/problem_3_manufactured.png>]
+Overfull \hbox (12.83418pt too wide) in paragraph at lines 52--53
+[][] 
  []
 
-<../data/problem-2/problem_2_S_1000_errors.png, id=57, 462.528pt x 346.896pt>
-File: ../data/problem-2/problem_2_S_1000_errors.png Graphic file (type png)
-<use ../data/problem-2/problem_2_S_1000_errors.png>
-Package pdftex.def Info: ../data/problem-2/problem_2_S_1000_errors.png  used on input line 50.
+<../data/problem-3/problem_3_plot.png, id=57, 462.528pt x 346.896pt>
+File: ../data/problem-3/problem_3_plot.png Graphic file (type png)
+<use ../data/problem-3/problem_3_plot.png>
+Package pdftex.def Info: ../data/problem-3/problem_3_plot.png  used on input line 56.
 (pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[9 <../data/problem-2/problem_2_S_1000.png>]
-<../data/problem-2/problem_2_S_10000.png, id=62, 462.528pt x 346.896pt>
-File: ../data/problem-2/problem_2_S_10000.png Graphic file (type png)
-<use ../data/problem-2/problem_2_S_10000.png>
-Package pdftex.def Info: ../data/problem-2/problem_2_S_10000.png  used on input line 52.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- [10 <../data/problem-2/problem_2_S_1000_errors.png>] (../data/problem-2/problem_2_S_10000_errors.tex)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--55
- [] 
- []
-
-<../data/problem-2/problem_2_S_10000_errors.png, id=67, 462.528pt x 346.896pt>
-File: ../data/problem-2/problem_2_S_10000_errors.png Graphic file (type png)
-<use ../data/problem-2/problem_2_S_10000_errors.png>
-Package pdftex.def Info: ../data/problem-2/problem_2_S_10000_errors.png  used on input line 56.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[11 <../data/problem-2/problem_2_S_10000.png>] [12 <../data/problem-2/problem_2_S_10000_errors.png>]
-<../data/problem-3/problem_3_non_constant_rhs_S_100.png, id=77, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_non_constant_rhs_S_100.png Graphic file (type png)
-<use ../data/problem-3/problem_3_non_constant_rhs_S_100.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_non_constant_rhs_S_100.png  used on input line 61.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- (../data/problem-3/problem_3_non_constant_rhs_S_100_errors.tex)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--64
- [] 
- []
-
-<../data/problem-3/problem_3_non_constant_rhs_S_100_errors.png, id=78, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_non_constant_rhs_S_100_errors.png Graphic file (type png)
-<use ../data/problem-3/problem_3_non_constant_rhs_S_100_errors.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_non_constant_rhs_S_100_errors.png  used on input line 65.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[13
-
- <../data/problem-3/problem_3_non_constant_rhs_S_100.png>]
-<../data/problem-3/problem_3_non_constant_rhs_S_1000.png, id=83, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_non_constant_rhs_S_1000.png Graphic file (type png)
-<use ../data/problem-3/problem_3_non_constant_rhs_S_1000.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_non_constant_rhs_S_1000.png  used on input line 68.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- [14 <../data/problem-3/problem_3_non_constant_rhs_S_100_errors.png>] (../data/problem-3/problem_3_non_constant_rhs_S_1000_errors.tex)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--71
- [] 
- []
-
-<../data/problem-3/problem_3_non_constant_rhs_S_1000_errors.png, id=88, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_non_constant_rhs_S_1000_errors.png Graphic file (type png)
-<use ../data/problem-3/problem_3_non_constant_rhs_S_1000_errors.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_non_constant_rhs_S_1000_errors.png  used on input line 72.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[15 <../data/problem-3/problem_3_non_constant_rhs_S_1000.png>]
-<../data/problem-3/problem_3_non_constant_rhs_S_10000.png, id=93, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_non_constant_rhs_S_10000.png Graphic file (type png)
-<use ../data/problem-3/problem_3_non_constant_rhs_S_10000.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_non_constant_rhs_S_10000.png  used on input line 75.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- [16 <../data/problem-3/problem_3_non_constant_rhs_S_1000_errors.png>] (../data/problem-3/problem_3_non_constant_rhs_S_10000_errors.tex)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--78
- [] 
- []
-
-<../data/problem-3/problem_3_non_constant_rhs_S_10000_errors.png, id=98, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_non_constant_rhs_S_10000_errors.png Graphic file (type png)
-<use ../data/problem-3/problem_3_non_constant_rhs_S_10000_errors.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_non_constant_rhs_S_10000_errors.png  used on input line 79.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[17 <../data/problem-3/problem_3_non_constant_rhs_S_10000.png>]
-<../data/problem-3/problem_3_constant_rhs_S_100.png, id=103, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_constant_rhs_S_100.png Graphic file (type png)
-<use ../data/problem-3/problem_3_constant_rhs_S_100.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_constant_rhs_S_100.png  used on input line 83.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- [18 <../data/problem-3/problem_3_non_constant_rhs_S_10000_errors.png>] (../data/problem-3/problem_3_constant_rhs_S_100_errors.tex)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--86
- [] 
- []
-
-<../data/problem-3/problem_3_constant_rhs_S_100_errors.png, id=109, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_constant_rhs_S_100_errors.png Graphic file (type png)
-<use ../data/problem-3/problem_3_constant_rhs_S_100_errors.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_constant_rhs_S_100_errors.png  used on input line 87.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[19 <../data/problem-3/problem_3_constant_rhs_S_100.png>]
-<../data/problem-3/problem_3_constant_rhs_S_1000.png, id=114, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_constant_rhs_S_1000.png Graphic file (type png)
-<use ../data/problem-3/problem_3_constant_rhs_S_1000.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_constant_rhs_S_1000.png  used on input line 90.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- [20 <../data/problem-3/problem_3_constant_rhs_S_100_errors.png>] (../data/problem-3/problem_3_constant_rhs_S_1000_errors.tex)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--93
- [] 
- []
-
-<../data/problem-3/problem_3_constant_rhs_S_1000_errors.png, id=119, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_constant_rhs_S_1000_errors.png Graphic file (type png)
-<use ../data/problem-3/problem_3_constant_rhs_S_1000_errors.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_constant_rhs_S_1000_errors.png  used on input line 94.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[21 <../data/problem-3/problem_3_constant_rhs_S_1000.png>]
-<../data/problem-3/problem_3_constant_rhs_S_10000.png, id=124, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_constant_rhs_S_10000.png Graphic file (type png)
-<use ../data/problem-3/problem_3_constant_rhs_S_10000.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_constant_rhs_S_10000.png  used on input line 97.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- [22 <../data/problem-3/problem_3_constant_rhs_S_1000_errors.png>] (../data/problem-3/problem_3_constant_rhs_S_10000_errors.tex)
-Overfull \hbox (26.44533pt too wide) in paragraph at lines 1--100
- [] 
- []
-
-<../data/problem-3/problem_3_constant_rhs_S_10000_errors.png, id=129, 462.528pt x 346.896pt>
-File: ../data/problem-3/problem_3_constant_rhs_S_10000_errors.png Graphic file (type png)
-<use ../data/problem-3/problem_3_constant_rhs_S_10000_errors.png>
-Package pdftex.def Info: ../data/problem-3/problem_3_constant_rhs_S_10000_errors.png  used on input line 101.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
-[23 <../data/problem-3/problem_3_constant_rhs_S_10000.png>] [24 <../data/problem-3/problem_3_constant_rhs_S_10000_errors.png>]
-<../data/problem-4/problem_4.png, id=139, 462.528pt x 346.896pt>
-File: ../data/problem-4/problem_4.png Graphic file (type png)
-<use ../data/problem-4/problem_4.png>
-Package pdftex.def Info: ../data/problem-4/problem_4.png  used on input line 104.
-(pdftex.def)             Requested size: 345.0pt x 258.76335pt.
- (../data/problem-4/problem_4_errors.tex) [25
-
- <../data/problem-4/problem_4.png>] (./main.aux)
+[8 <../data/problem-3/problem_3_manufactured_errors.png>] [9 <../data/problem-3/problem_3_plot.png>] (./main.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-09>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 22817 strings out of 474267
- 626556 string characters out of 5743908
- 1928555 words of memory out of 5000000
- 44638 multiletter control sequences out of 15000+600000
+ 23212 strings out of 474267
+ 632694 string characters out of 5743908
+ 1927555 words of memory out of 5000000
+ 45058 multiletter control sequences out of 15000+600000
  563237 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,6n,107p,735b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on main.pdf (26 pages, 749853 bytes).
+ 99i,6n,107p,726b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></home/jordan/work/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on main.pdf (10 pages, 939250 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
+ 93 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 138 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 

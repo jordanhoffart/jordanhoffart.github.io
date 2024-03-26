@@ -4,105 +4,54 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{pgfplots}
+\usepackage[l3]{csvsimple}
 \DeclareUnicodeCharacter{2212}{−}
 \usepgfplotslibrary{groupplots,dateplot}
 \usetikzlibrary{patterns,shapes.arrows}
 \pgfplotsset{compat=newest}
 
-\title{MATH 610 PA 1 Report}
+\title{MATH 610 PA 2 Report}
 \author{Jordan Hoffart}
-\date{\today}
+\date{}
 \begin{document}
 \maketitle
 
 \chapter*{Problem 1}
-\section*{$S = 100$}
-\includegraphics[width=\textwidth]{../data/problem-1/problem_1_S_100.png}
-\begin{center}
-	\input{../data/problem-1/problem_1_S_100_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-1/problem_1_S_100_errors.png}
-\section*{$S = 1000$}
-\includegraphics[width=\textwidth]{../data/problem-1/problem_1_S_1000.png}
-\begin{center}
-	\input{../data/problem-1/problem_1_S_1000_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-1/problem_1_S_1000_errors.png}
-\section*{$S = 10000$}
-\includegraphics[width=\textwidth]{../data/problem-1/problem_1_S_10000.png}
-\begin{center}
-	\input{../data/problem-1/problem_1_S_10000_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-1/problem_1_S_10000_errors.png}
+\section*{Solution}
+\includegraphics[width=\textwidth]{../data/problem-1/problem_1_plot.png}
+
+\section*{Errors}
+\includegraphics[width=\textwidth]{../data/problem-1/problem_1_errors.png}
+
+\csvautotabular{../data/problem-1/problem_1_errors.csv}
 
 \chapter*{Problem 2}
-\section*{$S = 100$}
-\includegraphics[width=\textwidth]{../data/problem-2/problem_2_S_100.png}
-\begin{center}
-	\input{../data/problem-2/problem_2_S_100_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-2/problem_2_S_100_errors.png}
-\section*{$S = 1000$}
-\includegraphics[width=\textwidth]{../data/problem-2/problem_2_S_1000.png}
-\begin{center}
-	\input{../data/problem-2/problem_2_S_1000_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-2/problem_2_S_1000_errors.png}
-\section*{$S = 10000$}
-\includegraphics[width=\textwidth]{../data/problem-2/problem_2_S_10000.png}
-\begin{center}
-	\input{../data/problem-2/problem_2_S_10000_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-2/problem_2_S_10000_errors.png}
+\section*{$q=1$}
+\includegraphics[width=\textwidth]{../data/problem-2/problem_2_q_1_plot_0.png}
+
+\includegraphics[width=\textwidth]{../data/problem-2/problem_2_q_1_plot_1.png}
+
+\includegraphics[width=\textwidth]{../data/problem-2/problem_2_q_1_plot_2.png}
+
+\section*{$q=0$}
+\includegraphics[width=\textwidth]{../data/problem-2/problem_2_q_0_plot_0.png}
+
+\includegraphics[width=\textwidth]{../data/problem-2/problem_2_q_0_plot_1.png}
+
+\includegraphics[width=\textwidth]{../data/problem-2/problem_2_q_0_plot_2.png}
 
 \chapter*{Problem 3}
-\section*{Non-constant rhs}
-\subsection*{$S = 100$}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_non_constant_rhs_S_100.png}
-\begin{center}
-	\input{../data/problem-3/problem_3_non_constant_rhs_S_100_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_non_constant_rhs_S_100_errors.png}
+\section*{Manufactured solution}
+\[u(x,y) = \cos(\pi x)\cos(3\pi y)\]
+\subsection*{Solution}
+\includegraphics[width=\textwidth]{../data/problem-3/problem_3_manufactured.png}
 
-\subsection*{$S = 1000$}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_non_constant_rhs_S_1000.png}
-\begin{center}
-	\input{../data/problem-3/problem_3_non_constant_rhs_S_1000_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_non_constant_rhs_S_1000_errors.png}
+\subsection*{Errors}
+\includegraphics[width=\textwidth]{../data/problem-3/problem_3_manufactured_errors.png}
 
-\subsection*{$S = 10000$}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_non_constant_rhs_S_10000.png}
-\begin{center}
-	\input{../data/problem-3/problem_3_non_constant_rhs_S_10000_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_non_constant_rhs_S_10000_errors.png}
+\csvautotabular{../data/problem-3/problem_3_errors.csv}
 
-\section*{Constant rhs}
-\subsection*{$S = 100$}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_constant_rhs_S_100.png}
-\begin{center}
-	\input{../data/problem-3/problem_3_constant_rhs_S_100_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_constant_rhs_S_100_errors.png}
-
-\subsection*{$S = 1000$}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_constant_rhs_S_1000.png}
-\begin{center}
-	\input{../data/problem-3/problem_3_constant_rhs_S_1000_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_constant_rhs_S_1000_errors.png}
-
-\subsection*{$S = 10000$}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_constant_rhs_S_10000.png}
-\begin{center}
-	\input{../data/problem-3/problem_3_constant_rhs_S_10000_errors.tex}
-\end{center}
-\includegraphics[width=\textwidth]{../data/problem-3/problem_3_constant_rhs_S_10000_errors.png}
-
-\chapter*{Problem 4}
-\includegraphics[width=\textwidth]{../data/problem-4/problem_4.png}
-\begin{center}
-	\input{../data/problem-4/problem_4_errors.tex}
-\end{center}
+\section*{Unknown solution}
+\subsection*{Solution}
+\includegraphics[width=\textwidth]{../data/problem-3/problem_3_plot.png}
 \end{document}
