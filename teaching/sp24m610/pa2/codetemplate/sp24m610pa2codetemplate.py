@@ -1,3 +1,7 @@
+"""
+Find the lines that say FIXME and fix them.
+"""
+
 import meshpy.triangle as tr
 
 import numpy as np
@@ -122,8 +126,8 @@ class Quadrature2D:
             np.array([0.66666666666666666667, 0.16666666666666666667]),
             np.array([0.16666666666666666667, 0.66666666666666666667]),
             np.array([0.16666666666666666667, 0.16666666666666666667]),
-        ]  # FIXME
-        self.weights: list[float] = [1 / 6, 1 / 6, 1 / 6]  # FIXME
+        ]
+        self.weights: list[float] = [1 / 6, 1 / 6, 1 / 6]
         self.size: int = len(self.points)
 
     def point(self, q: int) -> np.ndarray:
@@ -181,8 +185,8 @@ class Quadrature1D:
     def __init__(self) -> None:
         self.points: list[float] = [
             0.5 + 0.5 * point for point in [np.sqrt(1 / 3), -np.sqrt(1 / 3)]
-        ]  # FIXME
-        self.weights: list[float] = [0.5, 0.5]  # FIXME
+        ]
+        self.weights: list[float] = [0.5, 0.5]
         self.size: int = len(self.points)
 
     def point(self, q: int) -> float:
@@ -197,10 +201,10 @@ class Basis1D:
         self.n_basis_functions: int = 2
 
     def value(self, i: int, x: float) -> float:
-        return (i == 0) * (1 - x) + (i == 1) * x  # FIXME
+        return (i == 0) * (1 - x) + (i == 1) * x
 
     def derivative(self, i: int) -> float:
-        return (i == 1) - (i == 0)  # FIXME
+        return (i == 1) - (i == 0)
 
 
 class Mapping1D2D:
@@ -215,9 +219,9 @@ class Mapping1D2D:
         v1: np.ndarray
         v0, v1 = get_local_vertices(self.mesh, edge)
 
-        self.v0: np.ndarray = v0  # FIXME
-        self.J: np.ndarray = v1 - v0  # FIXME
-        self.lenJ: float = float(np.linalg.norm(self.J))  # FIXME
+        self.v0: np.ndarray = v0
+        self.J: np.ndarray = v1 - v0
+        self.lenJ: float = float(np.linalg.norm(self.J))
 
     def map(self, x: float) -> np.ndarray:
         return self.v0 + x * self.J
@@ -249,21 +253,26 @@ def assemble_cells(
             JxW_p: float = cell_mapping.JxW(w_p)
             for i in range(cell_basis.n_basis_functions):
                 row: int = cell[i]
-                basis_ip: float = cell_basis.value(i, q_p)
-                grad_basis_i: np.ndarray = cell_mapping.transform(
-                    cell_basis.gradient(i)
+                basis_ip: float = (
+                    0  # FIXME provide the value of the ith basis function at the pth quadrature point
                 )
-                system.rhs[row] += f_p * basis_ip * JxW_p
+                grad_basis_j: np.ndarray = np.zeros(
+                    2
+                )  # FIXME provide the gradient of the ith basis function
+                local_cell_rhs = 0  # FIXME provide the local contribution to the rhs from this cell using the previously computed quantities
+                system.rhs[row] += local_cell_rhs
                 for j in range(cell_basis.n_basis_functions):
                     col: int = cell[j]
-                    basis_jp: float = cell_basis.value(j, q_p)  # FIXME
-                    grad_basis_j: np.ndarray = cell_mapping.transform(
-                        cell_basis.gradient(j)
-                    )  # FIXME
-                    system.matrix[row, col] += (
-                        problem_data.q * basis_jp * basis_ip
-                        + np.dot(grad_basis_j, grad_basis_i)
-                    ) * JxW_p  # FIXME
+                    basis_jp: float = (
+                        0  # FIXME provide the value of the jth basis function at the pth quadrature point
+                    )
+                    grad_basis_j: np.ndarray = np.zeros(
+                        2
+                    )  # FIXME provide the gradient of the jth basis function
+                    local_cell_system: float = (
+                        0  # FIXME provide the local contribution to the system matrix from this cell using the previously computed quantities
+                    )
+                    system.matrix[row, col] += local_cell_system
 
 
 def assemble_edges(
@@ -278,11 +287,16 @@ def assemble_edges(
             q_p: float = edge_quadrature.point(p)
             w_p: float = edge_quadrature.weight(p)
             JxW_p: float = edge_mapping.JxW(w_p)
-            g_p: float = problem_data.g(edge_mapping.map(q_p))  # FIXME
+            g_p: float = (
+                0  # FIXME compute the value of g at the mapped quadrature point
+            )
             for i in range(edge_basis.n_basis_functions):
                 row: int = edge[i]
-                basis_ip: float = edge_basis.value(i, q_p)
-                system.rhs[row] += g_p * basis_ip * JxW_p  # FIXME
+                basis_ip: float = (
+                    0  # FIXME provide the value of the ith basis function at the pth quadrature point
+                )
+                local_edge_rhs = 0.0  # FIXME compute the local contribution to the rhs from the edge using the quantities above
+                system.rhs[row] += local_edge_rhs
 
 
 def solve(
@@ -494,9 +508,9 @@ def problem_1():
     domain: Domain = make_square()
     max_mesh_size = 0.1
     mesh: tr.MeshInfo = triangulate_domain(domain, max_mesh_size)
-    mesh_size: float = compute_mesh_size(mesh)
     solution: np.ndarray = solve(mesh, problem_data)
 
+    mesh_size: float = compute_mesh_size(mesh)
     L2_error: float = compute_L2_error(mesh, solution, exact_solution)
     H1_error: float = compute_H1_error(mesh, solution, exact_solution)
 
@@ -505,9 +519,9 @@ def problem_1():
     for _ in range(2):
         max_mesh_size /= 2
         mesh = refine_mesh(mesh, max_mesh_size)
-        mesh_size: float = compute_mesh_size(mesh)
         solution = solve(mesh, problem_data)
 
+        mesh_size: float = compute_mesh_size(mesh)
         L2_error: float = compute_L2_error(mesh, solution, exact_solution)
         H1_error: float = compute_H1_error(mesh, solution, exact_solution)
 
@@ -519,7 +533,7 @@ def problem_1():
     error_table.write_csv("problem_1_errors.csv")
 
 
-def problem_2():  # FIXME
+def problem_2():
     print("problem 2 q = 1")
 
     def f(_: np.ndarray | None = None) -> float:
@@ -583,18 +597,15 @@ def problem_3():
     print("problem 3 manufactured solution")
 
     def exact_value(x: np.ndarray) -> float:
-        return np.cos(np.pi * x[0]) * np.cos(3 * np.pi * x[1])
+        return 0.0  # FIXME compute the value of your chosen manufactured solution
 
     def exact_gradient(x: np.ndarray) -> np.ndarray:
-        return -np.pi * np.array(
-            [
-                np.sin(np.pi * x[0]) * np.cos(3 * np.pi * x[1]),
-                3 * np.cos(np.pi * x[0]) * np.sin(3 * np.pi * x[1]),
-            ]
-        )
+        return np.array(
+            [0, 0]
+        )  # FIXME compute the gradient of your chosen manufactured solution
 
     def exact_laplacian(x: np.ndarray) -> float:
-        return -10 * np.pi**2 * exact_value(x)
+        return 0  # FIXME compute the laplacian of your chosen manufactured solution
 
     exact_solution: ExactSolution = ExactSolution(exact_value, exact_gradient)
 
