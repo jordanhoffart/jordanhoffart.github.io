@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1709458472 "main.tex" "main.pdf" "main" 1709458472 0
+["pdflatex"] 1711606542 "main.tex" "main.pdf" "main" 1711606542 0
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/home/jordan/work/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -56,8 +56,8 @@
   "/home/jordan/work/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1701202456 4714525 6254c7c186c2fadda8b854adff76b1eb ""
   "/home/jordan/work/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1701202600 8213632 e8549edc90eb0c3dbda476b3c529b7f6 ""
   "/home/jordan/work/texlive/2023/texmf.cnf" 1701202450 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "main.aux" 1709458472 132 7bf9c043aa41932d28c9de613d5ad9fa "pdflatex"
-  "main.tex" 1709458472 14298 ab7afccabe6cdba0d2bc03744fa0ae41 ""
+  "main.aux" 1711606542 132 213ef8e51b1b9c35a3c114770e4e97ae "pdflatex"
+  "main.tex" 1711606541 13086 babb77d88bef785f4f68d017be3ad4e2 ""
   (generated)
   "main.aux"
   "main.log"

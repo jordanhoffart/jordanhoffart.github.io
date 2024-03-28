@@ -103,85 +103,51 @@ is conditionally stable, i.e. there is $\overline h > 0$ and $C > 0$ such that w
 	\[-U_i \leq \max_j|f(x_j)|W_i^0.\]
 	Combining these shows that
 	\[\max_i|U_i|\leq (\max_iW_i^0)\max_j|f(x_j)|.\]
-	In conclusion, if $h < \overline h = 1/b$, then we can take $C = \max_iW_i^0$.
-	To see that $C > 0$, we have the following we apply Corollary \ref{corollary1} to $W_i^0$ and use the fact that $W_i^0$ is nontrivial to conclude that $C > 0$.
+	The constant $C_h = \max_iW_i^0$ still currently depends on $h$.
+	However, with a \emph{lot} of extra work, we can find a constant $C > 0$ such that $C_h < C$ for all $h$ sufficiently small (smaller than $1/b$ and possibly smaller than another complicated constant that depends on $b$).
+	We will accept these details without proof, as the problem is complicated enough as is.
 	This completes the proof.
 \end{proof}
 
 \section*{Problem 2}
-Let $\widehat K$ be the unit reference triangle in $\mathbb R^2$ with vertices $(0,0), (1,0),$ and $(0,1)$.
+Let $\widehat K$ be the unit reference triangle in $\mathbb R^2$ with vertices $v_1 = (0,0), v_2 = (1,0),$ and $v_3 = (0,1)$.
 \subsection*{Part 1}
 Show that there is a constant $C > 0$ such that
 \[\|v\|_{L^2(\partial \widehat K)} \leq C(\|v\|_{L^2(\widehat K)} + \|\nabla v\|_{L^2(\widehat K)})\]
 for all $v \in C^1(\widehat K)$.
 \begin{proof}
-	Let $v_1(x,y) = xv(x,y)$, $v_2(x,y) = yv(x,y)$, and $v_3(x,y) = (1-x-y)v(x,y)$.
-	Then each $v_i \in C^1(\widehat K)$ as well and each $v_i$ vanishes on one of the edges of $\widehat K$.
-	We also observe that $v(x,y) = xv(x,y) + yv(x,y) + (1-x-y)v(x,y)$ for all $(x,y) \in \widehat K$.
-	We will use the fact that the $v_i$ vanish on an edge to establish some important inequalities, and then we will use the partitioning property to obtain the final result on $v$.
-
-	Since $v_1(0,y) = 0$ for all $y$, we have that
+	Let  $e_{ij}$ be the edge connecting $v_i$ to $v_j$.
+	For $e_{12}$, we parameterize the triangle with the square as
+	\[\varphi(s,t) = (ts,1-t)\]
+	for $(s,t) \in [0,1]^2$.
+	Then $e_{12}$ is just the image of $s \mapsto \varphi(s,1)$.
+	Then the change of variables formulas for these maps are
+	\[\int_K f = \int_{[0,1]^2} f\circ\varphi(s,t) t\,ds\,dt\]
+	and
+	\[\int_{e_{12}}f = \int_0^1 f(s,0)\,ds\]
+	Then by the fundamental theorem of calculus and change-of-variables $(x,y) = (st, 1-t) = \varphi(s,t)$,
 	\begin{align*}
-		v_1(1-y,y) & = \int_0^{1-y}\partial_xv_1(x,y)\,dx,                         \\
-		           & \leq \left(\int_0^{1-y}\partial_xv_1(x,y)^2\,dx\right)^{1/2}.
+		\|v\|_{L^2(e_{12})}^2 & = \int_0^1v(s,0)^2\,ds                                                                                   \\
+		                      & = \int_0^1\int_0^1 \frac{d}{dt}\left(t^2v(\varphi(st,1-t))^2\right)\,dt\,ds                              \\
+		                      & = \int_0^1\int_0^1 2tv(\varphi(st,1-t))^2 + 2tv(\varphi(s,t))\nabla v(\varphi(s,t))\cdot (ts,-t)\,dt\,ds \\
+		                      & = 2\|v\|_{L^2(K)}^2 + 2(v, \nabla v \cdot (x,y-1))_{L^2(K)}                                              \\
+		                      & \leq 2\|v\|_{L^2(K)}^2 + 2\|v\|_{L^2(K)}\|\nabla v \cdot (x,y-1)\|_{L^2(K)}                              \\
+		                      & \leq 2\|v\|_{L^2(K)}^2 + 2\|v\|_{L^2(K)}\|\nabla v\|_{L^2(K)}                                            \\
+		                      & \leq 2(\|v\|_{L^2(K)} + \|\nabla v\|_{L^2(K)})^2.
+	\end{align*}
+	By symmetry, we can show a similar bound for edge $e_{13}$ by considering the parameterization $\varphi(s,t) = (1-t,st)$.
+	For edge $e_{23}$, we consider the parameterization $\varphi(s,t) = t(s,1-s)$.
+	Then by following a similar argument to above, we have that
+	\begin{align*}
+		\frac{1}{\sqrt{2}}\|v\|_{L^2(e_{23})}^2 & = \int_0^1 v(s,1-s)^2\,ds                                \\
+		                                        & = \int_0^1\int_0^1 \frac{d}{dt}(t^2v(ts,t(1-s)))\,dt\,ds \\
+		                                        & \leq 2(\|v\|_{L^2(K)} + \|\nabla v\|_{L^2(K)})^2.
 	\end{align*}
 	Therefore,
-	\begin{align*}
-		\int_0^1v_1(1-y,y)^2\,dy \leq \|\partial_xv_1\|_{L^2(\widehat K)}^2.
-	\end{align*}
-	Similarly,
-	\begin{align*}
-		\int_0^1v_1(x,0)^2\,dx \leq \|\partial_xv_1\|_{L^2(\widehat K)}^2.
-	\end{align*}
-	Hence,
-	\begin{align*}
-		\|v_1\|_{L^2(\partial \widehat K)}^2 = \int_0^1v_1(x,0)^2\,dx + \int_0^1v_1(1-y,y)^2\,dy \leq 2\|\partial_xv_1\|_{L^2(\widehat K)}^2.
-	\end{align*}
-	Thus
-	\begin{align*}
-		\|v_1\|_{L^2(\partial\widehat K)} & \leq \sqrt{2}\|\partial_x(xv)\|_{L^2(\widehat K)},                                     \\
-		                                  & \leq\sqrt{2}\left(\|v\|_{L^2(\widehat K)} + \|x\partial_x v\|_{L^2(\widehat K)}\right) \\
-		                                  & \leq\sqrt{2}\left(\|v\|_{L^2(\widehat K)} + \|\partial_x v\|_{L^2(\widehat K)}\right)
-	\end{align*}
-
-
-	Now since $v_2(x,0) = 0$ for all $x$, we repeat a similar argument as for $v_1$ to get
-	\begin{align*}
-		\int_0^1v_2(x,1-x)^2\,dx & \leq \|\partial_yv_2\|_{L^2(\widehat K)}^2, \\
-		\int_0^1v_2(0,y)^2\,dy   & \leq \|\partial_yv_2\|_{L^2(\widehat K)}^2.
-	\end{align*}
-	Then by proceeding similarly as above, we conclude that
-	\begin{align*}
-		\|v_2\|_{L^2(\partial\widehat K)} & \leq \sqrt{2}\|\partial_y(yv)\|_{L^2(\widehat K)},                                     \\
-		                                  & \leq\sqrt{2}\left(\|v\|_{L^2(\widehat K)} + \|\partial_y v\|_{L^2(\widehat K)}\right).
-	\end{align*}
-
-	Since $v_3(x,1-x) = 0$ for all $x$, we have that
-	\begin{align*}
-		v_3(x,0) & = -\int_0^{1-x}\partial_y v_3(x,y)\,dy, \\
-		v_3(0,y) & = -\int_0^{1-y}\partial_x v_3(x,y)\,dx,
-	\end{align*}
-	which implies
-	\begin{align*}
-		\int_0^1v_3(x,0)^2\,dx \leq \|\partial_yv_3\|_{L^2(\widehat K)}^2, \\
-		\int_0^1v_3(0,y)^2\,dy \leq \|\partial_xv_3\|_{L^2(\widehat K)}^2
-	\end{align*}
-	Therefore,
-	\begin{align*}
-		\|v_3\|_{L^2(\partial \widehat K)}^2 = \int_0^1v_3(x,0)^2\,dx + \int_0^1v_3(0,y)^2\,dy \leq \|\partial_xv_3\|_{L^2(\widehat K)}^2 + \|\partial_yv_3\|_{L^2(\widehat K)}^2.
-	\end{align*}
-	Hence,
-	\begin{align*}
-		\|v_3\|_{L^2(\partial\widehat K)} & \leq \|\partial_x((1-x-y)v)\|_{L^2(\widehat K)} + \|\partial_y((1-x-y)v)\|_{L^2(\widehat K)}            \\
-		                                  & \leq 2\|v\|_{L^2(\widehat K)} + \|\partial_x v\|_{L^2(\widehat K)} + \|\partial_yv\|_{L^2(\widehat K)}.
-	\end{align*}
-
-	Therefore, by combining our previous inequalities and invoking Cauchy-Schwarz:
-	\begin{align*}
-		\|v\|_{L^2(\partial \widehat K)} & \leq \|v_1\|_{L^2(\partial\widehat K)} +  \|v_2\|_{L^2(\partial\widehat K)} +  \|v_3\|_{L^2(\partial\widehat K)},     \\
-		                                 & \leq (1 + \sqrt{2})(\|v\|_{L^2(\widehat K)} + \|\partial_xv\|_{L^2(\widehat K)} + \|\partial_y v\|_{L^2(\widehat K)}) \\
-		                                 & \leq \sqrt{2}(1+\sqrt{2})(\|v\|_{L^2(\widehat K)} + \|\nabla v\|_{L^2(\widehat K)}).
-	\end{align*}
+	\begin{equation*}
+		\|v\|_{L^2(\partial K)} \leq \sqrt{2(2 + \sqrt{2})}(\|v\|_{L^2(K)} + \|\nabla v\|_{L^2(K)}).
+	\end{equation*}
+	For convenience, we can replace the constant by $2\sqrt{2}$ or $4$.
 \end{proof}
 
 \subsection*{Part 2}
