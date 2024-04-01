@@ -1,0 +1,184 @@
+\documentclass{article}
+
+\title{A duality argument}
+\author{Jordan Hoffart}
+\date{}
+
+\usepackage{amsmath,amsthm,amssymb}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+\maketitle
+
+We consider the following variational problem: find $u \in H^1(\Omega)$ such that
+\begin{equation}\label{eq:1}
+	a(u,v) = (f,v)
+\end{equation}
+for all $v \in H^1(\Omega)$.
+Here, $f \in L^2(\Omega)$, $(\cdot,\cdot)$ denotes the $L^2$ inner product, and $a$ is assumed to be a continuous and coercive bilinear form on $H^1(\Omega)$.
+By Lax-Milgram, we know that there is a unique $u \in H^1(\Omega)$ that solves the above problem.
+
+For each $h > 0$, we let $V_h \subset H^1(\Omega)$ be finite dimensional.
+Then we know that, for each $h > 0$, there is a unique $u_h \in V_h$ such that
+\begin{equation}\label{eq:2}
+	a(u_h, v_h) = (f,v_h)
+\end{equation}
+for all $v_h \in V_h$.
+
+We wish to estimate the error $u-u_h$ in the $L^2$ norm.
+To do this, we first estimate the error in the $H^1$ norm.
+We will make assumptions needed along the way, and then we will summarize all of our results at the end.
+
+First, we observe that we have Galerkin orthogonality:
+\begin{equation}\label{eq:3}
+	a(u-u_h,v_h) = 0
+\end{equation}
+for all $v_h \in V_h$.
+Indeed, we just take $v = v_h$ in equation \eqref{eq:1} and then subtract equation \eqref{eq:2}.
+
+In everything that follows, we use the symbol $C$ to denote a general constant whose particular value may change from line to line but does not depend on anything else involved in the estimates.
+Now we use coercivity, Galerkin orthogonality, and continuity to derive the following bound:
+\begin{align*}
+	\|u-u_h\|_1^2 & \leq Ca(u-u_h,u-u_h)          \\
+	              & = Ca(u-u_h,u-v_h)             \\
+	              & \leq C\|u-u_h\|_1\|u-v_h\|_1.
+\end{align*}
+Here, $\|\cdot\|_1$ denotes the $H^1$ norm.
+Now, since $v_h$ is arbitrary, we have that
+\begin{equation}\label{eq:4}
+	\|u-u_h\|_1 \leq C\inf_{v_h\in V_h}\|u-v_h\|_1.
+\end{equation}
+This result is known as Ce\'a's Lemma in the literature.
+The constant $C$ only depends on the continuity and coercivity of the bilinear form $a$, but not on $u$ or $u_h$.
+We restate it below.
+
+\begin{lemma}[C\'ea's Lemma]
+	Let $a$ be a continuous and coercive bilinear form on $H^1(\Omega)$.
+	Let $f \in L^2(\Omega)$.
+	Let $u \in H^1(\Omega)$ be the unique solution to
+	\[a(u,v) = (f,v)\]
+	for all $v\in H^1(\Omega)$.
+	Let $h > 0$, let $V_h \subset H^1(\Omega)$ be finite dimensional, and let $u_h \in V_h$ be the unique solution to
+	\[a(u_h,v_h) = (f,v_h)\]
+	for all $v_h \in V_h$.
+	Then for all $h > 0$,
+	\begin{equation}
+		\|u-u_h\|_1 \leq C\inf_{v_h\in V_h}\|u-v_h\|_1.
+	\end{equation}
+\end{lemma}
+
+Now we assume that $u$ has the following regularity and approximation properties: $u \in H^2(\Omega)$ and
+\begin{equation}\label{eq:8}
+	\inf_{v_h\in V_h}\|u-v_h\|_1 \leq Ch\|u\|_2.
+\end{equation}
+Here, $\|\cdot\|_2$ denotes the $H^2$ norm and $C$ does not depend on $v$ or $h$, but may depend on the source term $f$.
+Combining this with \eqref{eq:4} gives us
+\begin{equation}
+	\|u-u_h\|_1 \leq Ch\|u\|_2.
+\end{equation}
+This gives us an estimate on the error between the solution $u$ to \eqref{eq:1} and the solution $u_h$ to \eqref{eq:2} in the $H^1$ norm.
+We summarize our results below.
+\begin{theorem}[$H^1$ error]
+	Let $a$ be a continuous and coercive bilinear form on $H^1(\Omega)$.
+	Let $f \in L^2(\Omega)$.
+	Let $u \in H^1(\Omega)$ be the unique solution to
+	\[a(u,v) = (f,v)\]
+	for all $v\in H^1(\Omega)$.
+	Let $h > 0$, let $V_h \subset H^1(\Omega)$ be finite dimensional, and let $u_h \in V_h$ be the unique solution to
+	\[a(u_h,v_h) = (f,v_h)\]
+	for all $v_h \in V_h$.
+	Assume that
+	\begin{enumerate}
+		\item $u \in H^2(\Omega)$,
+		\item there is a constant $C$ such that, for all $h > 0$,
+		      \[\inf_{v_h\in V_h}\|u-v_h\|_1 \leq Ch\|u\|_2.\]
+	\end{enumerate}
+	Then there is a constant $C > 0$ such that, for all $h > 0$,
+	\begin{equation}\label{eq:6}
+		\|u-u_h\|_1 \leq Ch\|u\|_2.
+	\end{equation}
+\end{theorem}
+
+Now we wish to invoke a duality argument to derive an estimate of the $L^2$ error.
+For that, we examine the dual problem to \eqref{eq:1}: given $g \in L^2(\Omega)$, find $w \in H^1(\Omega)$ such that
+\begin{equation}\label{eq:5}
+	a(v,w) = (g,v)
+\end{equation}
+for all $v \in H^1(\Omega)$.
+We notice that the solution $w$ that we seek is now in the second argument of $a$ instead of the first like it is in \eqref{eq:1}.
+If $a$ is symmetric, then \eqref{eq:5} is exactly \eqref{eq:1}.
+Notice, however, that we did not assume that $a$ was symmetric.
+Indeed, for the purposes of a duality argument, we do not need to.
+All of what we said so far applies to non-symmetric bilinear forms.
+Therefore, once again by Lax-Milgram, for any $g \in L^2(\Omega)$, there is a unique $w = w_g$ that solves \eqref{eq:5}.
+
+We apply this to $g = u-u_h$ and test with $v = u-u_h$ to get that
+\begin{equation}
+	\|u-u_h\|^2 = (u-u_h,u-u_h) = (g,v) = a(v,w_g) = a(u-u_h,w_g).
+\end{equation}
+Here, $\|\cdot\|$ denotes the $L^2$ norm.
+Now we can use Galerkin orthogonality and continuity of $a$ to get that
+\begin{equation}
+	\|u-u_h\|^2 = a(u-u_h, w_g-w_h) \leq C\|u-u_h\|_1\|w_g-w_h\|_1
+\end{equation}
+for all $w_h \in V_h$.
+Since this holds for all $w_h \in V_h$, we have that
+\begin{equation}
+	\|u-u_h\|^2 = a(u-u_h, w_g-w_h) \leq C\|u-u_h\|_1\inf_{w_h\in V_h}\|w_g-w_h\|_1.
+\end{equation}
+We can use the error estimate \eqref{eq:6} above to get that
+\begin{equation}\label{eq:7}
+	\|u-u_h\|^2 \leq Ch\|u\|_2\inf_{w_h\in V_h}\|w_g-w_h\|_1.
+\end{equation}
+Now we make the following regularity and approximation assumption about solutions to the dual problem: for every $g \in L^2(\Omega)$, the solution to the dual problem \eqref{eq:5} $w_g \in H^2(\Omega)$ and
+\begin{equation}
+	\inf_{w_h \in V_h}\|w_g-w_h\|_1 \leq Ch\|w_g\|_2.
+\end{equation}
+Here, unlike the assumption \eqref{eq:8}, the constant $C$ is independent of $h$, $w_g$, and $g$.
+Using this regularity assumption in \eqref{eq:7} lets us conclude that
+\begin{equation}
+	\|u-u_h\|^2 \leq Ch^2\|u\|_2\|w_g\|_2.
+\end{equation}
+Now we make one last assumption: there is a constant $C$ such that for all $g \in L^2(\Omega)$,
+\begin{equation}
+	\|w_g\|_2 \leq C\|g\|.
+\end{equation}
+Applying this and remembering that $g = u-u_h$ gives us
+\begin{equation}
+	\|u-u_h\|^2 \leq Ch^2\|u\|_2\|g\| = Ch^2\|u\|_2\|u-u_h\|.
+\end{equation}
+We now summarize all of our assumptions and our conclusions.
+
+\begin{theorem}[Duality argument]
+	Let $a$ be a continuous and coercive bilinear form on $H^1(\Omega)$.
+	Let $f \in L^2(\Omega)$.
+	Let $u \in H^1(\Omega)$ be the unique solution to
+	\[a(u,v) = (f,v)\]
+	for all $v\in H^1(\Omega)$.
+	Let $h > 0$, let $V_h \subset H^1(\Omega)$ be finite dimensional, and let $u_h \in V_h$ be the unique solution to
+	\[a(u_h,v_h) = (f,v_h)\]
+	for all $v_h \in V_h$.
+	For each $g \in L^2(\Omega)$, let $w_g \in H^1(\Omega)$ be the unique solution to the dual problem
+	\[a(v,w_g) = (g,v)\]
+	for all $v \in H^1(\Omega)$.
+	Assume that
+	\begin{enumerate}
+		\item $u \in H^2(\Omega)$,
+		\item there is a constant $C$ such that, for all $h > 0$,
+		      \[\|u-u_h\|_1 \leq Ch\|u\|_2\]
+		\item for each $g \in L^2(\Omega)$, $w_g \in H^2(\Omega)$,
+		\item there is a constant $C$ such that, for each $g \in L^2(\Omega)$ and each $h > 0$,
+		      \[\inf_{w_h \in V_h}\|w_g-w_h\|_1 \leq Ch\|w_g\|_2\]
+		\item there is a constant $C$ such that for each $g \in L^2(\Omega)$,
+		      \[\|w_g\|_2 \leq C\|g\|.\]
+	\end{enumerate}
+	Then there is a constant $C > 0$ such that for all $h > 0$
+	\begin{equation}
+		\|u-u_h\| \leq Ch^2\|u\|_2.
+	\end{equation}
+\end{theorem}
+
+\end{document}
