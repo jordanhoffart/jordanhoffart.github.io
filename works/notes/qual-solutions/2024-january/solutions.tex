@@ -1,0 +1,149 @@
+\documentclass{article}
+
+\title{2024 January Numerical Analysis Qualifer Solutions}
+\author{Jordan Hoffart}
+\date{}
+
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+
+\begin{document}
+\maketitle
+\section*{Problem 1}
+Let $T$ be the unit triangle in $\mathbb R^2$ with vertices $v_1 = (0,0)$, $v_2 = (1,0)$, and $v_3 = (0,1)$.
+Denote the edges of $T$ as $e_1 = v_1v_2$, $e_2 = v_2v_3$, and $e_3 = v_3v_1$.
+Let $z_i$ be the midpoint of edge $e_i$, and let $\vec t_i$ be the counterclockwise pointing unit vector tangent to $\partial T$ on $e_i$.
+Let $TW_0$ be the space of all vector-valued functions $\vec p : T \to \mathbb R^2$ of the form $\vec p(x,y) = (a - cy, b + cx)$ for some $a,b,c \in \mathbb R$.
+Then $\mathbb P_0^2 \subset TW_0 \subset \mathbb P_1^2$.
+Let $\sigma_i : TW_0 \to \mathbb R$ be defined by $\sigma_i(\vec p) = \vec p(z_i) \cdot \vec t_i$ for $i \in \{1,2,3\}$ and $\vec p \in TW_0$, and let $\Sigma = \{\sigma_1,\sigma_2,\sigma_3\}$.
+
+\subsection*{Part a}
+Show that $(T,TW_0,\Sigma)$ is a finite element triple.
+\begin{proof}
+	Following Definition 5.2 in Ern and Guermond \cite{EG21}, it suffices to show that, given an arbitrary $\vec p \in TW_0$, if $\sigma_i(\vec p) = 0$ for each $i$, then $\vec p = \vec 0$.
+	Since $\vec p \in TW_0$, there are $a,b,c\in\mathbb R$ such that $\vec p(x,y) = (a-cy,b+cx)$ for each $(x,y) \in T$.
+	Then since $z_1 = (1/2,0)$ and $\vec t_1 = (1,0)$, we have that
+	\begin{align*}
+		\sigma_1(\vec p) = \vec p(1/2,0)\cdot(1,0) = (a,b+c/2)\cdot(1,0) = a = 0.
+	\end{align*}
+	Similarly, since $z_3 = (0,1/2)$ and $\vec t_3 = (0,-1)$, we have that
+	\begin{align*}
+		\sigma_3(\vec p) = \vec p(0,1/2)\cdot(0,-1) = (a-c/2,b)\cdot(0,-1) = -b = 0.
+	\end{align*}
+	Finally, since $z_2 = (1/2,1/2)$ and $\vec t_2 = (-1,1)/\sqrt{2}$, we have that
+	\begin{align*}
+		\sigma_2(\vec p) = \vec p(1/2,1/2)\cdot(-1,1)/\sqrt{2} & = (a-c/2,b+c/2)\cdot(-1,1)/\sqrt{2} \\
+		                                                       & = (b + c - a)/\sqrt{2} = 0.
+	\end{align*}
+	Thus $a,b,c$ satisfy the linear system
+	\begin{align*}
+		a          & = 0, \\
+		b          & = 0, \\
+		-a + b + c & = 0,
+	\end{align*}
+	which implies $a = b = c = 0$.
+	This in turn implies $\vec p = \vec 0$, which completes the proof.
+\end{proof}
+
+\subsection*{Part b}
+Find a basis $\{\vec \varphi_1, \vec \varphi_2, \vec \varphi_3\}$ of $TW_0$ that is dual to $\Sigma$.
+That is, $\sigma_i(\vec\varphi_j) = \delta_{ij}$ with $\delta_{ij} = 0$ if $i \neq j$ and $\delta_{ij} = 1$ if $i = j$.
+\begin{proof}
+	Since each $\vec\varphi_i \in TW_0$, there are $a_i,b_i,c_i \in \mathbb R$ such that $\vec\varphi_i(x,y) = (a_i-c_iy,b_i+c_ix)$ for all $(x,y) \in T$.
+	Reusing some of the computations from the previous part then tells us that
+	\begin{align*}
+		\sigma_1(\vec\varphi_i) & = a_i = \delta_{i1},                          \\
+		\sigma_3(\vec\varphi_i) & = -b_i = \delta_{i3},                         \\
+		\sigma_2(\vec\varphi_i) & = (b_i + c_i - a_i) / \sqrt{2} = \delta_{i2}.
+	\end{align*}
+	Solving these explicitly for $a_i, b_i$, and $c_i$ gives us
+	\begin{align*}
+		\vec\varphi_1(x,y) & = (1-y, x),       \\
+		\vec\varphi_2(x,y) & = \sqrt{2}(-y,x), \\
+		\vec\varphi_3(x,y) & = (y,x-1)
+	\end{align*}
+	for all $(x,y) \in T$.
+\end{proof}
+
+\subsection*{Part c}
+Let $(\Pi\vec u)(x,y) = \sum_{i=1}^3\sigma_i(\vec u)\vec\varphi_i(x,y)$ for $(x,y) \in T$ and $\vec u \in H^2(T)^2$.
+Show that there exists $C > 0$ such that
+\[\|\vec u - \Pi\vec u\|_{L^2(T)^2} \leq C(|\vec u|_{H^1(T)^2} + |\vec u|_{H^2(T)^2})\]
+for all $\vec u \in H^2(T)^2$.
+You can use standard analysis results like trace, Sobolev, Poincar\'e inequalities and the Bramble-Hilbert Lemma without proof, but state precisely which results you are using.
+\begin{proof}
+	We follow part of an argument from Theorem 11.13 in Ern and Guermond \cite{EG21} adapted to this special case.
+	We will make use of the Sobolev Embedding Theorem (Theorem 2.31 in Ern and Guermond \cite{EG21}) as well as a Poincar\'e inequality found in Lemma 3.24 of Ern and Guermond \cite{EG21}.
+	We will explicitly restate these results as needed.
+
+	We first observe that for any $\vec p \in TW_0$, $\Pi\vec p = \vec p$.
+	Indeed, this follows from the previous two parts, since any $\vec p \in TW_0$ can be expanded in the basis $\vec \varphi_i$ with its coefficients given by $\sigma_i(\vec p)$.
+	In other words, $TW_0$ is pointwise invariant under $\Pi$.
+
+	Next, we recall the following Sobolev inequality which states that $H^2(T)^2$ continuously embeds into $C^0(T)^2$, which is a consequence of Theorem 2.31 in Ern and Guermond \cite{EG21}.
+	Therefore, there is a constant $C_0 > 0$ such that
+	\begin{equation}
+		\max_{(x,y) \in T}|\vec v(x,y)| \leq C_0\|\vec v\|_{H^2(T)^2}
+	\end{equation}
+	for all $\vec v \in H^2(T)^2$.
+	In particular, this implies that functions in $H^2(T)^2$ are continuous and bounded on $T$, and that
+	\begin{equation}
+		|\vec v(z_i)| \leq C_0\|\vec v\|_{H^2(T)^2}
+	\end{equation}
+	for all $\vec v \in H^2(T)^2$.
+
+	Next, we show that there is a constant $C_1 > 0$ such that
+	\begin{equation}
+		\|\vec v - \Pi\vec v\|_{L^2(T)^2} \leq C_1\|\vec v\|_{H^2(T)^2}
+	\end{equation}
+	for all $\vec v \in H^2(T)^2$.
+	For this, we have that
+	\begin{align*}
+		\|\vec v - \Pi\vec v\|_{L^2(T)^2} & \leq \|\vec v\|_{L^2(T)^2} + \|\Pi\vec v\|_{L^2(T)^2},                                                                   \\
+		                                  & \leq \|\vec v\|_{H^2(T)^2} + \sum_{i=1}^3|\sigma_i(\vec v)|\|\vec\varphi_i\|_{L^2(T)^2}                                  \\
+		                                  & \leq \|\vec v\|_{H^2(T)^2} + (\max_i\|\vec\varphi_i\|_{L^2(T)^2})\sum_i|\vec v(z_i)\cdot\vec t_i|                        \\
+		                                  & \leq \|\vec v\|_{H^2(T)^2} + (\max_i\|\vec\varphi_i\|_{L^2(T)^2})\underbrace{(\max_i|\vec t_i|)}_{=1}\sum_i|\vec v(z_i)| \\
+		                                  & \leq (1 + 3C_0\max_i\|\vec\varphi_i\|_{L^2(T)^2})\|\vec v\|_{H^2(T)^2},
+	\end{align*}
+	where in the first and second lines we used the triangle inequality, in the 4th line we used Cauchy-Schwarz, and in the last line we used the Sobolev inequality (2) from above.
+	This shows the claim with $C_1 = 1 + 3C_0\max_i\|\vec\varphi_i\|_{L^2(T)^2}$.
+
+	Now let $\vec u \in H^2(T)^2$ be arbitrary and let $\vec p \in \mathbb P_0^2$.
+	Set $\vec v = \vec u - \vec p$.
+	Since $\vec p \in \mathbb P_0^2 \subset TW_0$ and $TW_0$ is pointwise invariant under $\Pi$, we have that $\Pi\vec p = \vec p$.
+	Then $\Pi \vec v = \Pi\vec u - \Pi\vec p = \Pi\vec u - \vec p$, so that
+	\[\vec v - \Pi\vec v = \vec u - \vec p - (\Pi\vec u - \vec p) = \vec u - \Pi\vec u.\]
+	Therefore, we apply the previous claim (3) to $\vec v$ and get
+	\begin{align}
+		\|\vec u - \Pi\vec u\|_{L^2(T)^2} = \|\vec v - \Pi\vec v\|_{L^2(T)^2} \leq C_1\|\vec v\|_{H^2(T)^2} = C_1\|\vec u - \vec p\|_{H^2(T)^2}.
+	\end{align}
+	Since $\vec p \in \mathbb P_0^2$, we have that
+	\begin{equation*}
+		\|\vec u - \vec p\|_{H^2(T)^2}^2 = \|\vec u - \vec p\|_{L^2(T)^2}^2 + |\vec u|_{H^1(T)^2}^2 + |\vec u|_{H^2(T)^2}^2,
+	\end{equation*}
+	so that
+	\begin{equation}
+		\|\vec u - \vec p\|_{H^2(T)^2} \leq \|\vec u - \vec p\|_{L^2(T)^2} + |\vec u|_{H^1(T)^2} + |\vec u|_{H^2(T)^2}.
+	\end{equation}
+	Combining this with the previous inequality (4) gives us
+	\begin{equation}
+		\|\vec u - \Pi\vec u\|_{L^2(T)^2} \leq C_1\|\vec u - \vec p\|_{L^2(T)^2} + C_1(|\vec u|_{H^1(T)^2} + |\vec u|_{H^2(T)^2})
+	\end{equation}
+	for all $\vec u \in H^2(T)^2$ and any $\vec p \in \mathbb P_0^2$.
+
+	Now we recall the Poincar\'e inequality, which states that there is a constant $C_2 > 0$ such that \[\|\vec u-\underline {\vec u}\|_{L^2(T)^2} \leq C_2|\vec u|_{H^1(T)^2}\]
+	for all $\vec u \in H^2(T)^2$, where \[\underline{\vec u} = \frac{1}{|T|}\int_T\vec u(x,y)\,dx\,dy\]
+	is the average of $\vec u$ over $T$, which belongs to $\mathbb P_0^2$.
+	Therefore, by taking $\vec p = \underline{\vec u}$ in the previous inequality (6) and using the Poincar\'e inequality, we have that
+	\begin{align*}
+		\|\vec u - \Pi\vec u\| & \leq C_1C_2|\vec u|_{H^1(T)^2} + C_1(|\vec u|_{H^1(T)^2} + |\vec u|_{H^2(T)^2}) \\
+		                       & \leq C(|\vec u|_{H^1(T)^2} + |\vec u|_{H^2(T)^2})
+	\end{align*}
+	where $C = C_1(C_2 + 1)$ is independent of $\vec u \in H^2(T)^2$. Since $\vec u$ is arbitrary, we are done.
+\end{proof}
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
+
