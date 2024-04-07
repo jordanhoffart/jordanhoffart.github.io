@@ -1,0 +1,404 @@
+INFO:  latexindent version 3.23.4, 2023-11-19, a script to indent .tex files
+       latexindent lives here: /home/jordan/.local/share/nvim/mason/packages/latexindent/
+       Sun Apr  7 02:38:12 2024
+       Reading input from STDIN
+INFO:  Processing switches:
+INFO:  Directory for backup files and indent.log:
+       .
+INFO:  YAML settings read: defaultSettings.yaml
+       Reading defaultSettings.yaml from /home/jordan/.local/share/nvim/mason/packages/latexindent/defaultSettings.yaml
+       Reading defaultSettings.yaml (2nd attempt) from /home/jordan/.local/share/nvim/mason/packages/latexindent/../../texmf-dist/scripts/latexindent/defaultSettings.yaml
+       and then, if necessary, /home/jordan/.local/share/nvim/mason/packages/latexindent/LatexIndent/defaultSettings.yaml
+INFO:  YAML reading settings
+       Home directory is /home/jordan
+       latexindent.pl didn't find indentconfig.yaml or .indentconfig.yaml
+       see all possible locations: https://latexindentpl.readthedocs.io/en/latest/sec-appendices.html#indentconfig-options)
+INFO:  -l switch used without filename, will search for the following files in turn:
+       localSettings.yaml,latexindent.yaml,.localSettings.yaml,.latexindent.yaml
+INFO:  YAML settings read: -l switch
+       Multiple localSettings found, separated by commas:
+       localSettings.yaml, latexindent.yaml, .localSettings.yaml, .latexindent.yaml
+       Adding ./.latexindent.yaml to YAML read paths
+INFO:  YAML settings, reading from the following files:
+       Reading USER settings from ./.latexindent.yaml
+       ---
+       backupExtension: .bak
+       commandCodeBlocks:
+         commandNameSpecial:
+           -
+             amalgamate: '1'
+           - '@ifnextchar\['
+         roundParenthesesAllowed: '1'
+         stringsAllowedBetweenArguments:
+           -
+             amalgamate: '1'
+           - node
+           - at
+           - to
+           - decoration
+           - \+\+
+           - \-\-
+           - \#\#\d
+       cycleThroughBackUps: '0'
+       defaultIndent: '  '
+       dos2unixlinebreaks: '0'
+       fileContentsEnvironments:
+         filecontents: '1'
+         filecontents*: '1'
+       fileExtensionPreference:
+         .bib: '4'
+         .cls: '3'
+         .sty: '2'
+         .tex: '1'
+       fineTuning:
+         UnNamedGroupingBracesBrackets:
+           follow: \{|\[|,|&|\)|\(|\$
+         arguments:
+           before: (?:#\d\h*;?,?\/?)+|\<.*?\>
+           between: _|\^|\*
+         commands:
+           name: '[+a-zA-Z@\*0-9_\:]+?'
+         environments:
+           name: '[a-zA-Z@\*0-9_\\]+'
+         ifElseFi:
+           name: (?!@?if[a-zA-Z@]*?\{)@?if[a-zA-Z@]*?
+         items:
+           canBeFollowedBy: (?:\[[^]]*?\])|(?:<[^>]*?>)
+         keyEqualsValuesBracesBrackets:
+           follow: (?:(?<!\\)\{)|,|(?:(?<!\\)\[)
+           name: '[a-zA-Z@\*0-9_\/.:\#-]+[a-zA-Z@\*0-9_\/.\h\{\}:\#-]*?'
+         modifyLineBreaks:
+           betterFullStop: "(?x)                                # ignore spaces in the below\n(?:                                 #\n  \\.\\)                              # .) \n  (?!\\h*[a-z])                      # not *followed by* a-z\n)                                   #\n|                                   # OR\n(?:                                 #\n  (?<!                              # not *preceded by*\n    (?:                             #\n      (?:[eE]\\.[gG])                # e.g OR E.g OR e.G OR E.G\n      |                             #\n      (?:[iI]\\.[eE])                # i.e OR I.e OR i.E OR I.E\n      |                             #\n      (?:etc)                       # etc\n      |                             #\n      (?:[wW]\\.[rR]\\.[tT])          # w.r.t OR W.r.t OR w.R.t OR w.r.T OR W.R.t OR W.r.T OR w.R.T OR W.R.T\n    )                               #\n  )                                 #\n)                                   # \n\\.                                  # .\n(?!                                 # not *followed by*\n  (?:                               #\n    [a-zA-Z0-9-~,]                  #\n    |                               #\n    \\),                             # ),\n    |                               #\n    \\)\\.                            # ).\n  )                                 #\n)                                   #"
+           comma: ','
+           doubleBackSlash: \\\\(?:\h*\[\h*\d+\h*[a-zA-Z]+\h*\])?
+         namedGroupingBracesBrackets:
+           follow: \h|\R|\{|\[|\$|\)|\(
+           name: '[0-9\.a-zA-Z@\*><]+?'
+         trailingComments:
+           afterComment: .*?
+           notPreceededBy: (?<!\\)
+       indentAfterHeadings:
+         chapter:
+           indentAfterThisHeading: '0'
+           level: '2'
+         paragraph:
+           indentAfterThisHeading: '0'
+           level: '6'
+         part:
+           indentAfterThisHeading: '0'
+           level: '1'
+         section:
+           indentAfterThisHeading: '0'
+           level: '3'
+         subparagraph:
+           indentAfterThisHeading: '0'
+           level: '7'
+         subsection:
+           indentAfterThisHeading: '0'
+           level: '4'
+         subsection*:
+           indentAfterThisHeading: '0'
+           level: '4'
+         subsubsection:
+           indentAfterThisHeading: '0'
+           level: '5'
+       indentAfterItems:
+         description: '1'
+         description*: '1'
+         enumerate: '1'
+         enumerate*: '1'
+         itemize: '1'
+         itemize*: '1'
+         list: '1'
+       indentPreamble: '0'
+       indentRules:
+         anotherenvironment: "\t\t\t\t"
+         chapter: ' '
+         item: '      '
+         myenvironment: "\t\t"
+         myitem: '        '
+         section: ' '
+       indentRulesGlobal:
+         UnNamedGroupingBracesBrackets: '0'
+         afterHeading: '0'
+         commands: '0'
+         environments: '0'
+         filecontents: '0'
+         ifElseFi: '0'
+         items: '0'
+         keyEqualsValuesBracesBrackets: '0'
+         mandatoryArguments: '0'
+         namedGroupingBracesBrackets: '0'
+         optionalArguments: '0'
+         specialBeginEnd: '0'
+       itemNames:
+         item: '1'
+         myitem: '1'
+       logFilePreferences:
+         Dumper:
+           Deparse: '1'
+           Indent: '1'
+           Pair: ' => '
+           Quotekeys: '0'
+           Sortkeys: '1'
+           Terse: '1'
+           Useqq: '1'
+         endLogFileWith: '--------------'
+         showAmalgamatedSettings: '0'
+         showDecorationFinishCodeBlockTrace: '0'
+         showDecorationStartCodeBlockTrace: '0'
+         showEveryYamlRead: '1'
+         showGitHubInfoFooter: '1'
+       lookForAlignDelims:
+         BNiceArrayC: '1'
+         BNiceArrayRC: '1'
+         BNiceMatrix: '1'
+         Bmatrix: '1'
+         NiceArray: '1'
+         NiceArrayCwithDelims: '1'
+         NiceArrayRCwithDelims: '1'
+         NiceMatrix: '1'
+         NiceTabular: '1'
+         VNiceArrayC: '1'
+         VNiceArrayRC: '1'
+         VNiceMatrix: '1'
+         Vmatrix: '1'
+         align: '1'
+         align*: '1'
+         alignat: '1'
+         alignat*: '1'
+         aligned: '1'
+         alignedat: '1'
+         array: '1'
+         bNiceArrayC: '1'
+         bNiceArrayRC: '1'
+         bNiceMatrix: '1'
+         bmatrix: '1'
+         cases: '1'
+         cases*: '1'
+         dcases: '1'
+         dcases*: '1'
+         drcases: '1'
+         drcases*: '1'
+         flalign: '1'
+         flalign*: '1'
+         listabla: '1'
+         longtable: '1'
+         longtblr: '1'
+         matrix: '1'
+         pNiceArrayC: '1'
+         pNiceArrayRC: '1'
+         pNiceMatrix: '1'
+         pmatrix: '1'
+         rcases: '1'
+         rcases*: '1'
+         split: '1'
+         tabu: '1'
+         tabular:
+           alignContentAfterDoubleBackSlash: '0'
+           alignDoubleBackSlash: '1'
+           alignFinalDoubleBackSlash: '0'
+           alignRowsWithoutMaxDelims: '1'
+           delimiterJustification: left
+           delimiterRegEx: (?<!\\)(&)
+           delims: '1'
+           dontMeasure: '0'
+           justification: left
+           lookForChildCodeBlocks: '1'
+           multiColumnGrouping: '0'
+           spacesAfterAmpersand: '1'
+           spacesAfterDoubleBackSlash: '1'
+           spacesBeforeAmpersand: '1'
+           spacesBeforeDoubleBackSlash: '1'
+         tabularx:
+           delims: '1'
+         talltblr: '1'
+         tblr: '1'
+         vNiceArrayC: '1'
+         vNiceArrayRC: '1'
+         vNiceMatrix: '1'
+         vmatrix: '1'
+       lookForPreamble:
+         .bib: '0'
+         .cls: '0'
+         .sty: '0'
+         .tex: '1'
+         STDIN: '1'
+       maxNumberOfBackUps: '0'
+       maximumIndentation: '-1'
+       modifyLineBreaks:
+         commands:
+           CommandNameFinishesWithLineBreak: '0'
+           CommandStartsOnOwnLine: '0'
+         condenseMultipleBlankLinesInto: '1'
+         environments:
+           BeginStartsOnOwnLine: '0'
+           BodyStartsOnOwnLine: '0'
+           EndFinishesWithLineBreak: '0'
+           EndStartsOnOwnLine: '0'
+         ifElseFi:
+           BodyStartsOnOwnLine: '0'
+           ElseFinishesWithLineBreak: '0'
+           ElseStartsOnOwnLine: '0'
+           FiFinishesWithLineBreak: '0'
+           FiStartsOnOwnLine: '0'
+           IfStartsOnOwnLine: '0'
+           OrFinishesWithLineBreak: '0'
+           OrStartsOnOwnLine: '0'
+         items:
+           ItemFinishesWithLineBreak: '0'
+           ItemStartsOnOwnLine: '0'
+         keyEqualsValuesBracesBrackets:
+           EqualsFinishesWithLineBreak: '0'
+           EqualsStartsOnOwnLine: '0'
+           KeyStartsOnOwnLine: '0'
+         mandatoryArguments:
+           LCuBStartsOnOwnLine: '0'
+           MandArgBodyStartsOnOwnLine: '0'
+           RCuBFinishesWithLineBreak: '0'
+           RCuBStartsOnOwnLine: '0'
+         namedGroupingBracesBrackets:
+           NameFinishesWithLineBreak: '0'
+           NameStartsOnOwnLine: '0'
+         oneSentencePerLine:
+           manipulateSentences: '0'
+           multipleSpacesToSingle: '1'
+           removeSentenceLineBreaks: '1'
+           sentenceIndent: ''
+           sentencesBeginWith:
+             A-Z: '1'
+             a-z: '0'
+             other: '0'
+           sentencesDoNOTcontain:
+             other: \\begin
+           sentencesEndWith:
+             basicFullStop: '0'
+             betterFullStop: '1'
+             exclamationMark: '1'
+             other: '0'
+             questionMark: '1'
+           sentencesFollow:
+             blankLine: '1'
+             commentOnPreviousLine: '1'
+             exclamationMark: '1'
+             fullStop: '1'
+             other: '0'
+             par: '1'
+             questionMark: '1'
+             rightBrace: '1'
+           textWrapSentences: '0'
+         optionalArguments:
+           LSqBStartsOnOwnLine: '0'
+           OptArgBodyStartsOnOwnLine: '0'
+           RSqBFinishesWithLineBreak: '0'
+           RSqBStartsOnOwnLine: '0'
+         preserveBlankLines: '1'
+         specialBeginEnd:
+           SpecialBeginStartsOnOwnLine: '0'
+           SpecialBodyStartsOnOwnLine: '0'
+           SpecialEndFinishesWithLineBreak: '0'
+           SpecialEndStartsOnOwnLine: '0'
+         textWrapOptions:
+           blocksBeginWith:
+             0-9: '0'
+             A-Z: '1'
+             a-z: '1'
+             other: '0'
+           blocksEndBefore:
+             commentOnOwnLine: '1'
+             filecontents: '1'
+             other: \\begin\{|\\\[|\\end\{
+             verbatim: '1'
+           blocksFollow:
+             blankLine: '1'
+             commentOnPreviousLine: '1'
+             filecontents: '1'
+             headings: '1'
+             other: \\\]|\\item(?:\h|\[)
+             par: '1'
+             verbatim: '1'
+           columns: '0'
+           comments:
+             inheritLeadingSpace: '0'
+             wrap: '0'
+           huge: overflow
+           multipleSpacesToSingle: '1'
+           removeBlockLineBreaks: '1'
+           separator: ''
+           when: before
+         verbatim:
+           VerbatimBeginStartsOnOwnLine: '0'
+           VerbatimEndFinishesWithLineBreak: '0'
+       noAdditionalIndent:
+         comment: '1'
+         document: '1'
+         exercises: '1'
+         foreach: '0'
+         frame: '0'
+         mydefinition: '1'
+         myexample: '1'
+         mysolution: '1'
+         problem: '1'
+         widepage: '1'
+       noAdditionalIndentGlobal:
+         UnNamedGroupingBracesBrackets: '0'
+         afterHeading: '0'
+         commands: '1'
+         environments: '0'
+         filecontents: '0'
+         ifElseFi: '0'
+         items: '0'
+         keyEqualsValuesBracesBrackets: '0'
+         mandatoryArguments: '0'
+         namedGroupingBracesBrackets: '0'
+         optionalArguments: '0'
+         specialBeginEnd: '0'
+       noIndentBlock:
+         cmhtest: '1'
+         noindent: '1'
+       onlyOneBackUp: '0'
+       preambleCommandsBeforeEnvironments: '0'
+       removeTrailingWhitespace:
+         afterProcessing: '1'
+         beforeProcessing: '0'
+       replacements:
+         -
+           lookForThis: '0'
+           that: pl.latexindent
+           this: latexindent.pl
+           when: before
+       specialBeginEnd:
+         displayMath:
+           begin: (?<!\\)\\\[
+           end: \\\]
+           lookForThis: '1'
+         displayMathTeX:
+           begin: \$\$
+           end: \$\$
+           lookForThis: '1'
+         inlineMath:
+           begin: (?<!\$)(?<!\\)\$(?!\$)
+           body: '[^$]*?'
+           end: (?<!\\)\$(?!\$)
+           lookForThis: '1'
+         specialBeforeCommand: '0'
+       verbatimCommands:
+         lstinline: '1'
+         verb: '1'
+       verbatimEnvironments:
+         lstlisting: '1'
+         minted: '1'
+         verbatim: '1'
+
+WARN:  modifyLineBreaks specified and m switch is *not* active
+       perhaps you intended to call
+            latexindent.pl -m -l ./.latexindent.yaml -
+INFO:  Phase 1: searching for objects
+INFO:  Phase 2: finding surrounding indentation
+INFO:  Phase 3: indenting objects
+INFO:  Phase 4: final indentation check
+INFO:  Output routine:
+       Not outputting to file; see -w and -o switches for more options.
+       --------------
+INFO:  Please direct all communication/issues to:
+        https://github.com/cmhughes/latexindent.pl

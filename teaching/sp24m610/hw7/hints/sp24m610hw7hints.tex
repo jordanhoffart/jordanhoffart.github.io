@@ -1,0 +1,111 @@
+\documentclass{article}
+
+\title{MATH 610 Homework 7 Hints}
+\author{Jordan Hoffart}
+\date{}
+
+\usepackage{amsmath,amsthm,amssymb}
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+\maketitle
+\section*{Exercise 1}
+\begin{enumerate}
+  \item This is a standard problem that we have seen before, and this is also a standard Lax-Milgram argument.
+        Determine $V$, $a : V\times V \to \mathbb R$ and $L : V \to \mathbb R$ such that the weak formulation is to find $u \in V$ such that \[a(u,v) = L(v)\] for all $v \in V$.
+        Choose an appropriate norm $\|\cdot\|_V$ on $V$, and then show that $a$ is continuous and coercive and $L$ is continuous on $V$.
+
+        For the purposes of a later problem, we make a few remarks about the constant of continuity and the constant of coercivity for $a$.
+        The constant of continuity for $a$ will depend on $q$ and we denote it by $C_q$.
+        That is, \[|a(u,v)| \leq C_q\|u\|_V\|v\|_V\] for all $u,v \in V$.
+        Moreover, if you do things correctly, you can show that there is a constant $C > 0$ independent of $q$ such that $C_q \to C$ as $q \to 0$.
+
+        The constant of coercivity may also depend on $q$, and we denote it by $\beta_q$.
+        That is, \[a(u,u) \geq \beta_q \|u\|_V^2\] for all $u \in V$.
+        If you choose $V$ correctly, then you can use a Poincar\'e inequality to show that the coercivity constant can be chosen independently of $q$.
+        That is, you can find $\beta > 0$ independent of $q$ such that \[a(u,u) \geq \beta \|u\|_V^2\] for all $u \in V$.
+
+  \item Observe that we are doing a conforming approximation and that continuity and coercivity are preserved on subspaces.
+
+  \item This is similar to what we did on a previous homework.
+        Show that Galerkin orthogonality holds.
+        Then show that Ce\'a's Lemma holds: there is a constant $C_q' > 0$ such that \[\|u-u_h\|_{H^1(\Omega)} \leq C_q'\inf_{v_h\in V_h}\|u-v_h\|_{H^1(\Omega)}.\]
+        You can use without proof the following approximation property for $V_h$, which is also a hint from a previous homework: there is a constant $C > 0$ such that \[\inf_{v_h\in V_h}\|v-v_h\|_{H^1(\Omega)} \leq Ch\|v\|_{H^2(\Omega)}\] for all $v \in H^2(\Omega)$.
+        Combining these results will show that there is a constant $c_{1,q} > 0$ such that \[\|u-u_h\|_{H^1(\Omega)} \leq c_{1,q}h\|u\|_{H^2(\Omega)}\] for all $h > 0$.
+
+        The constant $c_{1,q}$ will in general depend on $q$, but if you do things correctly, then you can show that there is a constant $c_1 > 0$ such that $c_{1,q} \to c_1$ as $q \to 0$.
+        This will be needed in a later problem.
+
+  \item Show that, since $u \in H^2(\Omega)$, then \[-\Delta u + qu = f.\]
+        You can use without proof that if \[\int_\Omega w\varphi = 0\] for all $\varphi \in C_0^\infty(\Omega)$, then $w = 0$.
+        Then, by working with components, show that the integration by parts lemma for scalar-valued $H^1$ functions implies that, for a vector-valued function $v$ with each component $v_i \in H^1(\Omega)$ and a scalar-valued $w \in H^1(\Omega)$, we have the following version of integration-by-parts: \[\int_\Omega \nabla \cdot  v w = -\int_\Omega v \cdot \nabla w + \int_{\partial \Omega} n \cdot v w\]
+        Combine these to get the formula for $\alpha$.
+
+        Now, to get the error estimate for $\alpha - \alpha_h$, use continuity and Galerkin orthogonality to show \[|\alpha - \alpha_h| \leq C_q'\|u-u_h\|_{H^1(\Omega)}\inf_{w_h\in V_h}\|w-w_h\|_{H^1(\Omega)}.\]
+        Then use the previous part and the given approximation property of $V_h$ to get \[|\alpha - \alpha_h| \leq c_{2,q}h^2\|u\|_{H^2(\Omega)}.\]
+        Here, the constant $c_{2,q}$ will depend on $q$ but not on $h$ or $u$.
+
+        Now, for the case $q = 0$, walk back through your arguments for the previous questions and modify them for the $q = 0$ case.
+        If you do things correctly, you will be able to show that, with small modifications, all of the arguments will carry through, just now with new constants.
+\end{enumerate}
+\section*{Exercise 2}
+\begin{enumerate}
+  \item First, since $w_h|_K$ is affine-linear on $K$, then $\nabla w_h$ is constant on $K$.
+        Furthermore, for an edge $e$ contained in $K$ on the boundary, the outward normal $n$ is constant on $e$.
+        Therefore, we have the following tricks:
+        \begin{align*}
+          \left(\int_e|n \cdot \nabla w_h|^2\right)^{1/2} & = \ell_e^{1/2}|n|_e \cdot \nabla w_h|_K|, \\
+          \left(\int_K |\nabla w_h|^2\right)^{1/2}        & = |K|^{1/2}|\nabla w_h|_K|,
+        \end{align*}
+        where $\ell_e$ is the length of the edge $e$ and $|K|$ is the area of the triangle.
+        Using these tricks and Cauchy-Schwarz, show that
+        \begin{align*}
+          \int_e n \cdot \nabla w_h v_h \leq \frac{\ell_e^{1/2}}{|K|^{1/2}}\left(\int_K|\nabla w_h|^2\right)^{1/2}\left(\int_ev_h^2\right)^{1/2}.
+        \end{align*}
+
+        Now we derive a few useful facts from shape-regularity and \\quasi-uniformity.
+        Recall that shape-regularity means that there is a constant $C > 0$ such that \[\frac{h_K}{\rho_K} \leq C\] for all triangles $K \in \mathcal T_h$ and all $h > 0$.
+        Here, $h_K$ is the diameter of the triangle and $\rho_K$ is the diameter of the largest circle that can fit inside the triangle.
+        Using the area of the circle, this implies that \[|K| \geq \frac{1}{2}\pi(\rho_K/2)^2 \geq Ch_K^2\] for some constant $C$ independent of $h$ and $K$.
+        Using this, show that \[\frac{\ell_e}{|K|} \leq \frac{C}{h_K}\] for some constant $C$ independent of $h$ and $K$.
+
+        Now we recall that quasi-uniformity means that there is a constant $C > 0$ such that \[\frac{h}{h_K} \leq C\] for all $K \in \mathcal T_h$ and all $h > 0$.
+        Combine all of our observations to get the final estimate.
+
+  \item First, we define a norm on $V_h$.
+        Let \[\|u_h\|_h = \left(\|\nabla u_h\|_{L^2(\Omega)}^2 + \frac{\alpha}{h}\|u_h\|_{L^2(\partial\Omega)}^2\right)^{1/2}\]
+        for all $u_h \in V_h$.
+        Show that this is a norm on $V_h$.
+        You do not need to prove the triangle inequality or the homogeneity property.
+        I only want to see you show that if $\|u_h\|_h = 0$, then $u_h = 0$.
+
+        Now, with this norm, show that $a_h$ is continuous and coercive and $L$ is continuous on $V_h$, with $a_h$ and $L$ being the left-hand and right-hand sides of the given equation we are seeking a solution for.
+        Recall, or accept without proof, that for a finite-dimensional vector space $V_h$, any bilinear form or linear form is automatically continuous on $V_h$.
+        Therefore, I do not want you to show continuity.
+        I only want you to show that $a_h$ is coercive on $V_h$ with the given norm.
+        For that, observe that
+        \begin{align*}
+          a_h(u_h,u_h) & = \|u_h\|_h^2 - \int_{\partial\Omega}n\cdot\nabla u_hu_h                                                         \\
+                       & = \frac{1}{2}\|u_h\|_h^2 + \underbrace{\frac{1}{2}\|u_h\|_h^2 - \int_{\partial\Omega}n\cdot\nabla u_hu_h}_{(*)}.
+        \end{align*}
+        Now, let $\mathcal T_h^\partial$ be the set of all mesh cells that have an edge on the boundary, and let $\mathcal T_h^\circ = \mathcal T_h\setminus\mathcal T_h^\partial$.
+        For each $K \in \mathcal T_h^\partial$, let $\mathcal E_K^\partial$ be the set of edges of $K$ that lie on the boundary.
+        Observe that we can write
+        \[\int_\Omega|\nabla u_h|^2 = \sum_{K\in\mathcal T_h^\circ}\int_K|\nabla u_h|^2 + \sum_{K\in\mathcal T_h^\partial}\int_K|\nabla u_h|^2\]
+        and
+        \[\int_{\partial \Omega}\frac{\alpha}{h}u_h^2 - n\cdot\nabla u_hu_h = \sum_{K\in\mathcal T_h^\partial}\sum_{e\in\mathcal E_K^\partial}\int_e\frac{\alpha}{h}u_h^2 - n\cdot\nabla u_hu_h.\]
+        Use these observations to start bounding $a_h(u_h,u_h)$ from below in a way that allows you to apply the previous estimate.
+        If you do things correctly, you can then apply Young's inequality \[a^2 + b^2 \geq 2ab\] with \[a = \left(\int_K|\nabla u_h|^2\right)^{1/2}\] and \[b = \left(\frac{\alpha}{h}\int_eu_h^2\right)^{1/2}.\]
+        If you do this correctly, then you can conclude that for $\alpha \geq C > 0$ with some constant $C$ independent of $h$, we have that the term $(*)$ above is non-negative, which then implies coercivity.
+        Conclude with Lax-Milgram.
+\end{enumerate}
+\end{document}
