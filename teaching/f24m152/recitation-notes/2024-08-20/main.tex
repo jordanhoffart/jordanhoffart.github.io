@@ -1,0 +1,77 @@
+\documentclass{article}
+\title{Recitation notes}
+\author{Jordan Hoffart}
+\date{August 20, 2024}
+\usepackage{amsmath,amsthm,amssymb}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\begin{document}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\maketitle
+\section{Fundamental theorem of calculus}
+\begin{definition}[Antiderivative]
+	Let $f$ be a function defined on an interval $I$.
+	An antiderivative of $f$ is a differentiable function $F$ defined on $I$ such that
+	\begin{equation}
+		F'(x) = f(x)
+	\end{equation}
+	for all $x$ in $I$.
+\end{definition}
+\begin{theorem}[Fundamental theorem of calculus, part 1]
+	If $f$ is a continuous function on an interval $[a,b]$ and we define the function $F$ on $[a,b]$ by
+	\begin{equation}
+		F(x) = \int_a^xf(t)\,dt
+	\end{equation}
+	then $F$ is an antiderivative of $f$ on $[a,b]$.
+\end{theorem}
+\begin{theorem}[Fundamental theorem of calculus, part 2]
+	If $f$ is a continuous function on an interval $[a,b]$
+	and if $F$ is an antiderivative of $f$ on $[a,b]$, then
+	\begin{equation}
+		\int_a^b f(x)\,dx = F(b) - F(a).
+	\end{equation}
+\end{theorem}
+\section{Substitution rule}
+\begin{definition}[Indefinite integral]
+	If $f$ is a function with an antiderivative $F$, then the indefinite integral of $f$ is the collection of all antiderivatives of $f$.
+	We denote this collection by 
+	\begin{equation}
+		\int f(x)\,dx.
+	\end{equation}
+	The use of the letter $x$ in our notation is arbitrary.
+	We can use any other symbol, as long as we are consistent.
+	That is, all of these notations represent the indefinite integral of $f$:
+	\begin{equation}
+		\int f(x)\,dx = \int f(y)\,dy = \int f(z)\,dz = \int f(u)\,du = \dots
+	\end{equation}
+	as well as any other choices of the symbol of integration.
+\end{definition}
+\begin{theorem}[Substitution rule for indefinite integrals]
+	If $g$ is a differentiable and invertible function, and if $f$ is a continuous function on the range of $g$, then 
+	\begin{enumerate}
+		\item For every antiderivative $F$ of $f$, $F \circ g$ is an antiderivative of $(f \circ g)g'$.
+		\item For every antiderivative $G$ of $(f\circ g)g'$, $G \circ g^{-1}$ is an antiderivative of $f$.
+	\end{enumerate}
+	We summarize this by writing
+	\begin{equation}
+		\int f(g(x))g'(x)\,dx = \int f(u)\,du
+	\end{equation}
+	with $u = g(x)$.
+\end{theorem}
+\begin{proof}
+	Let $F$ be an antiderivate of $f$.
+	Then $(F\circ g)'(x) = F'(g(x))g'(x) = f(g(x))g'(x)$, so $F \circ g$ is an antiderivative of $(f \circ g)g'$.
+	
+	Now let $G$ be an antiderivative of $(f\circ g)g'$.
+	Then 
+	\[(G \circ g^{-1})'(x) = G'(g^{-1}(x))\frac{1}{g'(g^{-1}(x))} = f(x),\]
+	so $G \circ g^{-1}$ is an antiderivative of $f$.
+\end{proof}
+\begin{theorem}[Substitution rule for definite integrals]
+	If $g$ is a differentiable and invertible function on an interval $[a,b]$, and if $f$ is a continuous function on the interval between $g(a)$ and $g(b)$, then 
+	\begin{equation}
+		\int_a^b f(g(x))g'(x)\,dx = \int_{g(a)}^{g(b)}f(u)\,du.
+	\end{equation}
+\end{theorem}
+\end{document}
