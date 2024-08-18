@@ -2,13 +2,35 @@
 \title{Recitation notes}
 \author{Jordan Hoffart}
 \date{August 20, 2024}
-\usepackage{amsmath,amsthm,amssymb}
+\usepackage{amsmath,amsthm,amssymb,hyperref}
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
 \begin{document}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
 \maketitle
+\section{Organizational matters}
+\begin{enumerate}
+	\item MATH 152 Sections 504/505/506.
+	\item Canvas page \url{https://canvas.tamu.edu/courses/331381}.
+	      % \item Syllabus \url{https://canvas.tamu.edu/courses/331381/pages/math-152-syllabus-fall-2024-2?module_item_id=10956389}.
+	\item Website \url{https://jordanhoffart.github.io/teaching/f24m152}
+	\item Course page \url{https://www.math.tamu.edu/courses/math152/}
+	\item Tuesday recitations in HEB 137/222.
+	      Thursday labs in BLOC 123/124.
+	\item Recitations
+	      \begin{enumerate}
+		      \item Review last week's material.
+		      \item Take a quiz.
+	      \end{enumerate}
+	\item Labs
+	      \begin{enumerate}
+		      \item Bring your own device.
+		      \item Programming in Python.
+		      \item More details on Thursday.
+	      \end{enumerate}
+\end{enumerate}
 \section{Fundamental theorem of calculus}
 \begin{definition}[Antiderivative]
 	Let $f$ be a function defined on an interval $I$.
@@ -18,13 +40,39 @@
 	\end{equation}
 	for all $x$ in $I$.
 \end{definition}
+\begin{example}
+	Let $f(x) = 3x^2$.
+	Then $F(x) = x^3$ is an antiderivative of $f$.
+	In fact, for any constant $C$, $F(x) = x^3 + C$ is an antiderivative of $f$.
+	One can show that every antiderivative of $f$ is of this form.
+	That is, if $F$ is an antiderivative of $f$, then there is a constant $C$ such that $F(x) = x^3 + C$.
+\end{example}
+\begin{theorem}[General form of an antiderivative]
+	If $F$ is an antiderivative of $f$, then for any constant $C$, $F + C$ is also an antiderivative of $f$.
+	Conversely, if $F,G$ are antiderivatives of a function $f$ on an interval $I$, then there is a constant $C$ such that
+	\begin{equation}
+		F(x) = G(x) + C
+	\end{equation}
+	for all $x$ in $I$.
+\end{theorem}
 \begin{theorem}[Fundamental theorem of calculus, part 1]
-	If $f$ is a continuous function on an interval $[a,b]$ and we define the function $F$ on $[a,b]$ by
+	If $f$ is a continuous function on an interval $I$ containing a point $a$ and we define the function $F$ on $I$ by
 	\begin{equation}
 		F(x) = \int_a^xf(t)\,dt
 	\end{equation}
-	then $F$ is an antiderivative of $f$ on $[a,b]$.
+	then $F$ is an antiderivative of $f$ on $I$.
 \end{theorem}
+\begin{example}
+	Let $f(x) = e^{x^2}$ on $[0,1]$.
+	Then
+	\begin{equation}
+		F(x) = \int_0^x e^{t^2}\,dt
+	\end{equation}
+	is an antiderivative of $f$, so
+	\begin{equation}
+		\frac{d}{dx}\int_0^x e^{t^2}\,dt = \frac{d}{dx}F(x) = f(x) = e^{x^2}.
+	\end{equation}
+\end{example}
 \begin{theorem}[Fundamental theorem of calculus, part 2]
 	If $f$ is a continuous function on an interval $[a,b]$
 	and if $F$ is an antiderivative of $f$ on $[a,b]$, then
@@ -32,10 +80,17 @@
 		\int_a^b f(x)\,dx = F(b) - F(a).
 	\end{equation}
 \end{theorem}
+\begin{example}
+	Let $f(x) = \cos x$, so that $F(x) = \sin x$ is an antiderivative of $f$.
+	Then
+	\begin{equation}
+		\int_0^\pi \cos x\, dx = \int_0^\pi f(x)\,dx = F(\pi) - F(0) = \sin \pi - \sin 0 = 0.
+	\end{equation}
+\end{example}
 \section{Substitution rule}
 \begin{definition}[Indefinite integral]
 	If $f$ is a function with an antiderivative $F$, then the indefinite integral of $f$ is the collection of all antiderivatives of $f$.
-	We denote this collection by 
+	We denote this collection by
 	\begin{equation}
 		\int f(x)\,dx.
 	\end{equation}
@@ -46,32 +101,72 @@
 		\int f(x)\,dx = \int f(y)\,dy = \int f(z)\,dz = \int f(u)\,du = \dots
 	\end{equation}
 	as well as any other choices of the symbol of integration.
+
+	If $F$ is an antiderivative of $f$, we will abuse notation and denote the indefinite integral of $f$ by
+	\begin{equation}
+		\int f(x)\,dx = F(x) + C.
+	\end{equation}
 \end{definition}
 \begin{theorem}[Substitution rule for indefinite integrals]
-	If $g$ is a differentiable and invertible function, and if $f$ is a continuous function on the range of $g$, then 
-	\begin{enumerate}
-		\item For every antiderivative $F$ of $f$, $F \circ g$ is an antiderivative of $(f \circ g)g'$.
-		\item For every antiderivative $G$ of $(f\circ g)g'$, $G \circ g^{-1}$ is an antiderivative of $f$.
-	\end{enumerate}
-	We summarize this by writing
+	If $g$ is a differentiable function on an interval $I$, and if $f$ is a continuous function on an interval $J$ containing the range $g(I)$ of $g$, then
+	$G : I \to \mathbb R$ is an antiderivative of $(f\circ g)g'$ iff $G = F \circ g$ for some antiderivative $F : J \to \mathbb R$ of $f$.
+	We formally summarize this by writing
 	\begin{equation}
 		\int f(g(x))g'(x)\,dx = \int f(u)\,du
 	\end{equation}
 	with $u = g(x)$.
+	We also summarize this by writing
+	\begin{equation}
+		\int f(g(x))g'(x)\,dx = F(g(x)) + C.
+	\end{equation}
 \end{theorem}
 \begin{proof}
-	Let $F$ be an antiderivate of $f$.
-	Then $(F\circ g)'(x) = F'(g(x))g'(x) = f(g(x))g'(x)$, so $F \circ g$ is an antiderivative of $(f \circ g)g'$.
-	
+	Let $F$ be an antiderivate of $f$ and suppose $G = F\circ g$.
+	Then $(F\circ g)'(x) = F'(g(x))g'(x) = f(g(x))g'(x)$, so $G = F \circ g$ is an antiderivative of $(f \circ g)g'$.
+
 	Now let $G$ be an antiderivative of $(f\circ g)g'$.
-	Then 
-	\[(G \circ g^{-1})'(x) = G'(g^{-1}(x))\frac{1}{g'(g^{-1}(x))} = f(x),\]
-	so $G \circ g^{-1}$ is an antiderivative of $f$.
+	We pick a point $a \in J$ and let
+	\begin{equation}
+		\widetilde F(x) = \int_a^x f(t)\,dt.
+	\end{equation}
+	Then we have that $\widetilde F$ is an antiderivative of $f$.
+	From above, we then have that $\widetilde F \circ g$ is an antiderivative of $(f\circ g)g'$.
+	Since $G$ is also an antiderivative of $(f\circ g)g'$, there is a constant $C$ such that
+	\begin{equation}
+		G(x) = \widetilde F(g(x)) + C
+	\end{equation}
+	for all $x$ in $I$.
+	Then we let
+	\begin{equation}
+		F(x) = \widetilde F(x) + C,
+	\end{equation}
+	so that $F$ is an antiderivative of $f$ for which $G = F \circ g$.
 \end{proof}
+\begin{example}
+	Let $f(x) = \cos x$ and $g(x) = x^3$ on $\mathbb R$.
+	Then by formally setting $u = g(x)$,
+	\begin{align}
+		\int \cos (x^3) 3x^2\,dx & = \int f(g(x))g'(x)\,dx \\
+		                         & = \int f(u)\,du         \\
+		                         & = \int \cos u \,du      \\
+		                         & = \sin u + C            \\
+		                         & = \sin x^3 + C.
+	\end{align}
+\end{example}
 \begin{theorem}[Substitution rule for definite integrals]
-	If $g$ is a differentiable and invertible function on an interval $[a,b]$, and if $f$ is a continuous function on the interval between $g(a)$ and $g(b)$, then 
+	If $g$ is a differentiable function on an interval $[a,b]$, and if $f$ is a continuous function on the interval between $g(a)$ and $g(b)$, then
 	\begin{equation}
 		\int_a^b f(g(x))g'(x)\,dx = \int_{g(a)}^{g(b)}f(u)\,du.
 	\end{equation}
 \end{theorem}
+\begin{example}
+	Let $g(x) = \sin x$ on $[0,\pi]$ and let $f(x) = x^2$.
+	Then
+	\begin{align}
+		\int_0^\pi \sin(x)^2\cos x\,dx & = \int_a^b f(g(x))g'(x)\,dx  \\
+		                               & = \int_{g(a)}^{g(b)}f(u)\,du \\
+		                               & = \int_0^0 u^2\,du           \\
+		                               & = 0.
+	\end{align}
+\end{example}
 \end{document}
