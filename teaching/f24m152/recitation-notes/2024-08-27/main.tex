@@ -16,86 +16,58 @@
 \begin{document}
 \maketitle
 \begin{enumerate}
-	\item Section 5.5 Problems
+	\item Section 5.3 problems
 	      \begin{enumerate}
-		      \item Problem 27: Compute the indefinite integral
+		      \item Problem 19: Evaluate the integral
 		            \begin{equation}
-			            \int (x^2+1)(x^3+3x)^4\,dx.
+			            \int_1^3 x^3 + 2x - 4 \,dx
 		            \end{equation}
 		            \begin{proof}[Solution]
-			            We make the substitution
-			            \begin{equation}
-				            u = x^3 + 3x.
-			            \end{equation}
-			            Then
 			            \begin{align}
-				            du & = 3(x^2+1) dx,
-			            \end{align}
-			            so that
-			            \begin{align}
-				            \int (x^2+1)(x^3+3x)^4\,dx & = \frac{1}{3} \int u^4\,du,   \\
-				                                       & = \frac{1}{15}u^5 + C         \\
-				                                       & = \frac{1}{15}(x^3+3x)^5 + C.
+				            \int_1^3 x^3 + 2x - 4 \,dx & = (\frac{1}{4}x^4 + x^2 - 4x)\bigg|_1^3          \\
+				                                       & = \frac{1}{4}81 + 9 - 12 - (\frac{1}{4} + 1 - 4) \\
+				                                       & = \frac{80}{4}                                   \\
+				                                       & = 20
 			            \end{align}
 		            \end{proof}
-		      \item Problem 48: Compute the indefinite integral
+		      \item Problem 39: Evaluate the integral
 		            \begin{equation}
-			            \int x^3\sqrt{x^2+1}\,dx.
+			            \int_{1/\sqrt{3}}^{\sqrt{3}} \frac{8}{1+x^2}\,dx
 		            \end{equation}
 		            \begin{proof}[Solution]
-			            We make the substitution
-			            \begin{equation}
-				            u = x^2 + 1.
-			            \end{equation}
-			            Then
 			            \begin{align}
-				            du  & = 2x dx, \\
-				            x^2 & = u-1,
-			            \end{align}
-			            so that
-			            \begin{align}
-				            \int x^3\sqrt{x^2+1}\,dx & = \frac{1}{2}\int (u-1)\sqrt{u}\,du,                                               \\
-				                                     & = \frac{1}{2}\int u^{3/2} - u^{1/2}\,du                                            \\
-				                                     & = \frac{1}{2}\left(\frac{2}{5}u^{5/2} - \frac{2}{3}u^{3/2}\right) + C              \\
-				                                     & = \frac{1}{2}\left(\frac{2}{5}(x^2+1)^{5/2} - \frac{2}{3}(x^2+1)^{3/2}\right) + C.
+				            \int_{1/\sqrt{3}}^{\sqrt{3}} \frac{8}{1+x^2}\,dx & = 8 \arctan x \bigg|_{1/\sqrt{3}}^{\sqrt{3}} \\
+				                                                             & = 8 (\pi / 3 - \pi / 6)                      \\
+				                                                             & = 4 \pi / 3.
 			            \end{align}
 		            \end{proof}
 	      \end{enumerate}
-	\item Section 6.1 Problems
+	\item Section 5.5 Problems
 	      \begin{enumerate}
-		      \item Problem 2: Find the area bounded by $y = e^x$, $y = xe^{x^2}$, and $x = 0$.
-		            \begin{center}
-			            \includegraphics[width=0.5\textwidth]{problem-6-1-2.png}
-		            \end{center}
+		      \item Problem 15: Compute the indefinite integral with $u$ substituion
+		            \begin{equation}
+			            \int \cos^3\theta \sin \theta \,d\theta
+		            \end{equation}
 		            \begin{proof}[Solution]
-			            The area $A$ is computed by
+			            Let $u = \cos \theta$.
+			            Then
 			            \begin{align}
-				            A & = \int_0^1 e^x - xe^{x^2}\,dx  \\
-				              & = e-1 - \int_0^1 xe^{x^2}\,dx.
-			            \end{align}
-			            We make the substitution
-			            \begin{equation}
-				            u = x^2,
-			            \end{equation}
-			            so that
-			            \begin{align}
-				            A & = e - 1 - \frac{1}{2}\int_0^1 e^u\,du \\
-				              & = e - 1 - \frac{1}{2}(e - 1)          \\
-				              & = \frac{e-1}{2}.
+				            \int \cos^3\theta \sin \theta \,d\theta & = -\int u^3\,du                 \\
+				                                                    & = -\frac{1}{4}u^4 + C           \\
+				                                                    & = -\frac{1}{4}\cos^4\theta + C.
 			            \end{align}
 		            \end{proof}
-		      \item Problem 22: Find the area bounded by $y = x^3$ and $y = x$.
+		      \item Problem 21: Compute the indefinite integral by using $u$ substitution
+		            \begin{equation}
+			            \int \frac{(\ln x)^2}{x}\,dx
+		            \end{equation}
 		            \begin{proof}[Solution]
-			            Sketching the two curves gives us
-			            \begin{center}
-				            \includegraphics[width=0.5\textwidth]{problem-6-1-22.png}
-			            \end{center}
-			            Therefore, the area $A$ is computed as
+			            Let $u = \ln x$.
+			            Then
 			            \begin{align}
-				            A & = \int_{-1}^0 x^3 - x \,dx + \int_0^1 x - x^3\,dx \\
-				              & = 2 \int_0^1 x - x^3\,dx                          \\
-				              & = 2\left(\frac{1}{2} - \frac{1}{4}\right)         \\
-				              & = \frac{1}{2}.
+				            \int \frac{(\ln x)^2}{x}\,dx & = \int u^2 \, du            \\
+				                                         & = \frac{1}{3}u^3 + C        \\
+				                                         & = \frac{1}{3}(\ln x)^3 + C.
 			            \end{align}
 		            \end{proof}
 	      \end{enumerate}
