@@ -1,7 +1,7 @@
 body {
   background-color: #ffffff;
   color: #000000;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", Arial, sans-serif;
   line-height: 1.5;
   max-width: 80ch;
   margin: auto;
@@ -9,13 +9,21 @@ body {
 }
 
 h1,
-h2,
+h2
+{
+  color: #500000;
+  font-weight: 400;
+  font-family: "Oswald", Arial, sans-serif;
+}
+
 h3,
 h4,
 h5,
-h6 {
-  color: #500000;
-  font-family: "Oswald", sans-serif;
+h6
+{
+  color: #732f2f;
+  font-weight: 600;
+  font-family: "Work Sans", Arial, sans-serif;
 }
 
 img {
@@ -30,15 +38,15 @@ img {
 }
 
 a {
-  color: #006483;
-  text-decoration: none;
-  border-bottom: 1px dotted #006483;
+  color: #500000;
+  text-decoration: underline;
+  font-weight: bold;
+  text-decoration-thickness: 2px;
 }
 
 a:hover {
-  color: #004362;
+  color: #732f2f;
   text-decoration: none;
-  border-bottom: 1px solid #004362;
 }
 
 li {
@@ -56,7 +64,7 @@ nav ul {
   padding: 1ch 0 1ch 0;
   margin: 0;
   background-color: #ffffff;
-  border-bottom: 1px solid #e4002b;
+  border-bottom: 1px solid #500000;
 }
 
 nav ul li {
