@@ -9,8 +9,7 @@ body {
 }
 
 h1,
-h2
-{
+h2 {
   color: #500000;
   font-weight: 400;
   font-family: "Oswald", Arial, sans-serif;
@@ -19,8 +18,7 @@ h2
 h3,
 h4,
 h5,
-h6
-{
+h6 {
   color: #732f2f;
   font-weight: 600;
   font-family: "Work Sans", Arial, sans-serif;
@@ -100,7 +98,7 @@ nav ul.breadcrumb li {
   padding: 0 0 1ch 0;
 }
 
-nav ul.breadcrumb li + li:before {
+nav ul.breadcrumb li+li:before {
   display: inline-block;
   margin: 0;
   content: ">";
