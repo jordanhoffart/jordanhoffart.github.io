@@ -1,0 +1,12 @@
+FALL 2022 MATH 610 Practical 3 Rubric
+-------------------------------------
+
+Problem 1
+    u_h, e_h plots for k = 1,...,7 --- 8pts
+    error table                    --- 8pts
+    order of convergence           --- 9pts
+
+Problem 2
+    u_h, e_h plots for k = 1,...,7 --- 8pts
+    error table                    --- 8pts
+    order of convergence           --- 9pts

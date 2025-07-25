@@ -1,0 +1,409 @@
+\documentclass{article}
+
+\title{MATH 610 Homework 5 Hints}
+\author{Jordan Hoffart}
+\date{}
+
+\usepackage{amsmath,amsthm,amssymb}
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+
+\maketitle
+
+\section*{Exercise 1}
+\begin{enumerate}
+	\item  Multiply the first equation by a test function $v$ and integrate by parts.
+	      Do the same for the second equation with a test function $\psi$.
+	      Then add them together.
+	\item Let $(\cdot,\cdot)_{\mathbb V}$ and $(\cdot,\cdot)_{\mathbb W}$ be inner products on $\mathbb V$ and $\mathbb W$ respectively.
+	      Recall that \[\|v\|_{\mathbb V}^2 = (v,v)_{\mathbb V}\] and \[\|w\|_{\mathbb W}^2 = (w,w)_{\mathbb W}\] are the norms on $\mathbb V$ and $\mathbb W$ respectively induced by these inner products.
+	      In the product space $\mathbb V \times \mathbb W$, we can define an inner product as \[((u,\varphi),(v,\psi))_{\mathbb V \times \mathbb W} = (u,v)_{\mathbb V} + (\varphi,\psi)_{\mathbb W}.\]
+	      Then the norm induced by this inner product is related to the norms on $\mathbb V$ and $\mathbb W$ via
+	      \[\|(u,\varphi)\|_{\mathbb V \times \mathbb W}^2 = \|u\|_{\mathbb V}^2 + \|\varphi\|_{\mathbb W}^2.\]
+	      This is the norm that we will use on $\mathbb V \times \mathbb W$ to do our analysis.
+
+	      To show Lax-Milgram, you need to show that
+	      \begin{enumerate}
+		      \item The bilinear form $a: (\mathbb V \times \mathbb W) \times (\mathbb V \times \mathbb W) \to \mathbb R$ is continuous, meaning that there is a constant $C > 0$ such that \[|a((u,\varphi),(v,\psi))| \leq C\|(u,\varphi)\|_{\mathbb V \times \mathbb W}\|(v,\psi)\|_{\mathbb V \times \mathbb W}\] for all $(u,\varphi), (v,\psi) \in \mathbb V \times \mathbb W$.
+		            You can show this directly, but it may be tedious.
+		            Another way that could save you some time would be to use the following fact.
+		            \begin{lemma}
+			            Let $X$ be a normed vector space with norm $\|\cdot\|$. If $a : X \times X \to \mathbb R$ and $b : X \times X \to \mathbb R$ are continuous bilinear forms on $X$, and if $c$ is any scalar, then their linear combination $ca + b: X \times X \to \mathbb R$ defined by \[(ca+b)(x,y) = ca(x,y) + b(x,y)\] is also a continuous bilinear form on $X$.
+		            \end{lemma}
+		      \item The bilinear form $a$ is coercive, meaning that there is a constant $\alpha > 0$ such that \[a((u,\varphi),(u,\varphi)) \geq \alpha \|(u,\varphi)\|_{\mathbb V \times \mathbb W}^2\] for all $(u,\varphi) \in \mathbb V \times \mathbb W$.
+		            If you chose your spaces $\mathbb V$ and $\mathbb W$ correctly, you can make use of a Poincar\'e inequality to help show this.
+		      \item The right-hand side defines a continuous linear functional on $\mathbb V \times \mathbb W$, meaning that if we set \[F((v,\psi)) = \int_\Omega fv + g\psi\,dx,\]
+		            then there is a constant $\Lambda > 0$ such that \[|F((v,\psi))| \leq \Lambda \|(v,\psi)\|_{\mathbb V \times \mathbb W}\] for all $(v,\psi) \in \mathbb V \times \mathbb W$.
+		            Once again, you can show this directly, or you can do something similar to above by using the following lemma:
+		            \begin{lemma}
+			            Let $X$ be a normed vector space with norm $\|\cdot\|$. If $a : X \to \mathbb R$ and $b : X \to \mathbb R$ are continuous linear forms on $X$, and if $c$ is any scalar, then their linear combination $ca + b: X \to \mathbb R$ defined by \[(ca+b)(x) = ca(x) + b(x)\] is also a continuous linear form on $X$.
+		            \end{lemma}
+	      \end{enumerate}
+	      The stability bound will involve the continuity of $F$ and the coercivity of $a$.
+	\item First suppose that $u$ is smooth and vanishes on the boundary.
+	      Use the fundamental theorem of calculus at a point $(x,y) \in \Omega_d$ and a point $(x,-d) \in \partial \Omega_d$.
+	      Then use Cauchy-Schwarz and then integrate $x$ and $y$ over $\Omega_d$.
+	      If you bound things appropriately, you will get the result for smooth functions that vanish on the boundary.
+	      The full result follows from density of such functions in $H^1_0(\Omega_d)$.
+	      Just state the density result, but do not show it.
+	\item The only thing that should change should be the bilinear form and the fact that we work on $\Omega_d$ instead of $\Omega$.
+	      The continuity of $a$ and the continuity of the right-hand side should be more or less the same as the previous problem.
+	      What is different now is the coercivity argument.
+	      To show that, consider using the following trick: for any $u \in H_0^1(\Omega_d)$,
+	      \begin{align*}
+		      \|\nabla u\|_{L^2(\Omega_d)}^2 & = \frac{1}{2}\|\nabla u\|_{L^2(\Omega_d)^2} + \frac{1}{2}\|\nabla u\|_{L^2(\Omega_d)^2}   \\
+		                                     & \geq \frac{1}{2}\|\nabla u\|_{L^2(\Omega_d)^2} + \frac{1}{2c^2d^2}\|u\|_{L^2(\Omega_d)^2}
+	      \end{align*}
+	      and consider what happens when $d$ is small enough such that \[\frac{1}{2c^2d^2} > 1.\]
+	      The stability bound will involve the continuity of $F$ and the coercivity of $a$.
+\end{enumerate}
+
+\section*{Exercise 2}
+\begin{enumerate}
+	\item There are a few different ways to approach this problem.
+	      We can either work on a general triangle $K$ or the unit triangle $\widehat K$.
+	      The notes in Appendix \ref{app:tri} show that the general result follows from the unit triangle.
+
+	      Let us work on the reference triangle $\widehat K$ for concreteness.
+	      Since there is more than one way to affinely map the reference triangle onto $K$, let us agree for concreteness that $\widehat a_1 = (0,0)$, $\widehat a_2 = (1,0)$, $\widehat a_3 = (0,1)$, and the mapping is chosen such that vertex $\widehat a_i$ is mapped onto vertex $a_i$ and midpoint $\widehat a_{ij}$ is mapped onto midpoint $a_{ij}$.
+
+	      Using the notation and definitions from Appendix \ref{app:tri}, the polynomial space $\widehat P$ that we work with on $\widehat K$ is still the set of $\mathbb P^2$ polynomials, but now on $\widehat K$.
+	      Similarly, the dofs $\widehat \sigma_i, \widehat \sigma_{ij} \in \widehat \Sigma$ on $\widehat K$ are essentially the same as the corresponding ones on $K$, just now we replace the vertices $a_i$ on $K$ by the vertices $\widehat a_i$ on $\widehat K$ and we replace the midpoints $a_{ij}$ on $K$ by the midoints $\widehat a_{ij}$ on $\widehat K$.
+
+	      The task now is to show that $\widehat \Sigma$ is a unisolvent set of dofs on $\widehat K$.
+	      From the equivalent (and more standard) definition in Appendix \ref{app:uni}, this means that we need to show if $\widehat p \in \widehat P$ satisfies $\widehat \sigma_i \widehat p = 0$ and $\widehat \sigma_{ij} \widehat p = 0$ for all $i,j$, then $\widehat p = 0$.
+
+	      Since we explicitly know the vertices and midpoints on $\widehat K$, and since we can write out a generic $\widehat p \in \widehat P$ as \[\widehat p(\widehat x, \widehat y) = a + b\widehat x + c\widehat y + d\widehat x\widehat y + e\widehat x^2 + f\widehat y^2,\]
+	      you can explicitly obtain a system of linear equations in the coefficients of the form \[A\begin{pmatrix} a \\ b \\ c \\ d \\ e \\ f \end{pmatrix} = 0.\]
+	      Then if you show that $A$ is invertible, you have unisolvence.
+	      While inverting a $6 \times 6$ matrix with a computer is trivial, and therefore good enough for the homework, for those that wish to do the qualifying exam, you do \emph{not} want to waste your time inverting this matrix by hand.
+	      Therefore, I will show you another line of reasoning that is conceptually more difficult but is actually computationally feasible by hand.
+
+	      The main idea that we will exploit comes from factoring multivariable polynomials.
+	      The relevant background information is included in Appendix \ref{app:factor}, from which the most important result is Lemma \ref{lem:factor} as well as its corollaries.
+	      You do \emph{not} need to know the proofs in that section, but they are included for completeness.
+
+	      How we use the results from that section is as follows.
+	      We know that the degree of $\widehat p$ is at most 2.
+	      Using three points that lie on a straight line defined by some equation of the form $a \widehat x + b \widehat y + c = 0$ and which $\widehat p$ vanishes at the points, the factoring lemma tells us that, since $\widehat p$ vanishes at 3 points on the line, we can factor out the equation of the line from $\widehat p$.
+	      In other words, there is a degree at most 1 polynomial $\widehat q$ such that \[\widehat p(\widehat x, \widehat y) = (a\widehat x + b\widehat y + c)\widehat q(\widehat x, \widehat y).\]
+	      Now use two other points for which $\widehat p$ vanishes and which do \emph{not} lie on the line $a\widehat x + b\widehat y + c = 0$ in order to factor $\widehat q$.
+	      If you did things correctly, you will be able to factor $\widehat p$ as \[\widehat p(\widehat x, \widehat y) = (a\widehat x + b\widehat y + c)(d\widehat x + e\widehat y + f)C\] for some constant $C$.
+	      Now pick a point that does not lie on the two lines and which $\widehat p$ vanishes and see what this implies.
+
+	\item Following the hints, we find the local shape functions $\widehat \varphi_i$ and $\widehat \varphi_{ij}$ on $\widehat K$ such that
+	      \begin{align*}
+		      \widehat \sigma_i \widehat \varphi_j       & = \delta_{ij}     \\
+		      \widehat \sigma_{ij} \widehat \varphi_k    & = 0               \\
+		      \widehat \sigma_k \widehat \varphi_{ij}    & = 0               \\
+		      \widehat \sigma_{ij} \widehat \varphi_{kl} & = \delta_{ij,kl},
+	      \end{align*}
+	      where the last equation means that $\widehat\varphi_{kl}$ takes the value $1$ at dof $\widehat\sigma_{kl}$ and takes the value $0$ at the other dofs.
+	      From the discussion in Appendices \ref{app:shape} and \ref{app:tri} and the previous part, there is exactly one set of functions that satisfies this, and they form a basis for $\widehat P$ the set of $\mathbb P^2$ polynomials on $\widehat K$.
+
+	      The question now is how to actually find explicit formulas for these shape functions.
+	      Similar to the previous problem, there are two ways to do this, one more computationally feasible than the other.
+
+	      The first approach, which is only practical if you have a computer to assist you, is to write out basis function with respect to the monomial basis $\{1,\widehat x,\widehat y,\widehat x\widehat y,\widehat x^2,\widehat y^2\}$.
+	      If we agree to relabel the dofs as $\widehat \sigma_4 = \widehat \sigma_{12}$, $\widehat \sigma_5 = \widehat \sigma_{23}$, and $\widehat \sigma_{31}$ as well as the corresponding shape functions, then we can write each shape function as
+	      \[\widehat\varphi_i = a_i + b_i\widehat x + c_i \widehat y + d_i \widehat x\widehat y + e_i\widehat x^2 + f_i \widehat y^2\]
+	      for some coefficients that are to-be-determined.
+	      Then using the fact that \[\widehat \sigma_j \widehat\varphi_i = \delta_{ij}\] for all $i,j$ (including the relabeling) gives us the following matrix system of the form \[A\begin{pmatrix} a_1 & a_2 & \cdots & a_6 \\ b_1 & b_2 & \cdots & b_6 \\ \vdots & \vdots & \ddots & \vdots \\ f_1 & f_2 & \cdots & f_6 \end{pmatrix} = I,\]
+	      where $A$ is the coefficient matrix from the last problem and $I$ is the $6\times 6$ identity matrix.
+	      Now you just use a computer to assist you and invert $A$ to get all the coefficients of the shape functions with respect to the monomial basis.
+	      Reading off the coefficients will allow you to write down explicitly what $\widehat\varphi_i$ is supposed to be.
+
+	      The approach above is conceptually simple but practically inefficient and error prone, especially when you have to do this by hand on a qualifying exam.
+	      Here is the other approach, which is harder to understand but can be done by hand.
+	      It is similar to the previous problem, and will once again exploit some facts about factoring multivariable polynomials as in Appendix \ref{app:factor}.
+
+	      Let us illustrate the idea for $\widehat \varphi_1$.
+	      The other shape functions can be found in a similar way.
+	      Reading off the equations from applying the dofs to $\widehat\varphi_1$ and simplifying tells us that
+	      \begin{align*}
+		      \widehat\varphi_1(\widehat a_1)    & = 1,   \\
+		      \widehat\varphi_1(\widehat a_2)    & = 0,   \\
+		      \widehat\varphi_1(\widehat a_3)    & = 0,   \\
+		      \widehat\varphi_1(\widehat a_{23}) & = 0,   \\
+		      \widehat\varphi_1(\widehat a_{12}) & = 1/2, \\
+		      \widehat\varphi_1(\widehat a_{31}) & = 1/2.
+	      \end{align*}
+	      Now we use the factor theorem from Appendix \ref{app:factor} iteratively, first with the points $\widehat a_2, \widehat a_{23}$, and $\widehat a_3$.
+	      Then we use the (generalized) factor theorem again with the points $\widehat a_{12}$ and $\widehat a_{31}$.
+	      Finally, we use the point $\widehat a_1$.
+	      Doing everything correctly will give us an explicit formula for $\widehat\varphi_1$.
+	      Proceeding in a similar fashion also gives us the formulas for the other shape functions.
+
+	      Proceeding with either approach gives you the shape functions on the reference element.
+	      Then, as explained in Appendix \ref{app:tri}, we obtain the physical shape functions $\varphi_i$ by setting \[\varphi_i = \widehat \varphi_i \circ T_K^{-1}.\]
+	      Do not try to explicitly compute $T_K^{-1}$ or $\varphi_i$.
+	      Just give me the basis functions $\widehat\varphi_i$ on $\widehat K$.
+
+	\item Just use a change-of-variables back to the reference triangle:
+	      \begin{align*}
+		      m_{11} & = \int_K \varphi_1(x)^2\,dx                                              \\
+		             & = \int_{\widehat K} \varphi_1(T_K(\widehat x))^2|\det DT_K|\,d\widehat x \\
+		             & = 2|K|\int_{\widehat K} \widehat \varphi_1(\widehat x)^2\,d\widehat x,
+	      \end{align*}
+
+	      where we used the fact (from a previous homework) that \[|K| = \int_K 1\,dx = \int_{\widehat K}|\det DT_K|\,d\widehat x = \frac{1}{2}|\det DT_K|.\]
+	      Do not try to find the area of the general triangle $K$, but do use your work from the previous problem (and a computer to help you if you wish) to explicitly compute \[\int_{\widehat K}\widehat\varphi_1(\widehat x)^2\,d\widehat x = \int_0^1\int_0^{\widehat x_2}\widehat\varphi_1(\widehat x_1,\widehat x_2)^2\,d\widehat x_1\,d\widehat x_2.\]
+\end{enumerate}
+
+\section*{Exercise 3}
+\begin{enumerate}
+	\item Take the general polynomial $p(x,y)$ and evaluate it at the dofs to get a system of equations involving the coefficients $a,b,c,d$ where the right-hand side is set to $0$.
+	      Show that this implies that $p = 0$.
+	\item Observe that all 4 midpoints have $1/2$ as one of the coordinates.
+	      Can you think of a degree 1 polynomial in one variable $q(t)$ that vanishes at $t = 1/2$?
+	      This will let you build a direct counterexample: a polynomial $p(x,y) \in \mathcal P$ such that $p \neq 0$ but $p$ vanishes at all the dofs.
+\end{enumerate}
+
+\newpage
+\appendix
+
+\section{Equivalent definitions of unisolvence}\label{app:uni}
+Let $K$ be a triangle, $P$ a space of polynomials on $K$, and $\Sigma$ a set of dofs on $P$.
+We will show two definitiosn of unisolvence are equivalent.
+First, let's take the definition given in the homework, which is more intuitive.
+\begin{definition}
+	$\Sigma$ is unisolvent on $P$ if any $p \in P$ is uniquely determined by its values on all $\sigma \in \Sigma$.
+	In other words, $\Sigma$ is unisolvent iff whenever $p, q \in P$ are such that $\sigma p = \sigma q$ for all $\sigma \in \Sigma$, we have that $p = q$.
+\end{definition}
+Now we show that this is equivalent to the more standard definition, which is easier to check.
+\begin{lemma}
+	$\Sigma$ is unisolvent iff whenever $p \in P$ satisfies $\sigma p = 0$ for all $p \in P$, we have that $p = 0$.
+\end{lemma}
+\begin{proof}
+	For the forward direction, since the $\sigma$ are linear, we just take $q = 0$ in the definition.
+	For the reverse direction, if $p,q \in P$ are such that $\sigma p = \sigma q$ for all $\sigma \in \Sigma$, then once again by linearity we can set $r = p - q \in P$ and we have that $\sigma r = 0$ for all $\sigma$.
+	This then implies that $r = 0$, so that $p = q$.
+	This proves the other direction.
+\end{proof}
+
+\section{Finite element triples and local shape functions}\label{app:shape}
+We recall the abstract definition of a finite element as a triple due to Ciarlet.
+We do not present the full definition, but only a special case.
+\begin{definition}
+	Let $K$ be a non-degenerate triangle in $\mathbb R^2$, $P$ an $n$-dimensional space of polynomials on $K$, and $\Sigma$ a set of $n$ linear functionals $\sigma_1,\dots,\sigma_n$ on $P$ that we call degrees of freedom (dofs).
+	The triple $(K, P, \Sigma)$ is called a finite element if the map \[p \in P \mapsto \Phi p = (\sigma_1p,\dots,\sigma_np) \in \mathbb R^n\] is a linear isomorphism.
+\end{definition}
+
+\begin{remark}
+	More generally, $K$ can be any domain in $\mathbb R^d$ for an arbitrary dimension $d$ and $P$ can be any $n$-dimensional space of functions on $K$ (even vector-valued and not necessarily polynomial), but we do not need that for now.
+\end{remark}
+
+The second condition says that, to know which polynomial we are working with, it suffices to know its values at the dofs.
+This is the essential idea of unisolvence.
+In other words, we have the following.
+
+\begin{lemma}
+	Let $(K, P, \Sigma)$ be a triple as above.
+	Then $(K, P, \Sigma)$ is a finite element iff $\Sigma$ is unisolvent.
+\end{lemma}
+\begin{proof}
+	For the forward direction, if $\sigma_i p = 0$ for all $i$, then $\Phi p = 0$.
+	Since $\Phi$ is an isomorphism, this implies $p = 0$, so that $\Sigma$ is unisolvent.
+
+	Conversely, if $\Sigma$ is unisolvent, then the linear map $\Phi$ is injective ($\Phi p = 0 \iff \sigma_i p = 0 \text{ for all } i \implies p = 0$).
+	However, since $\dim P = n = \dim \mathbb R^n$, the rank-nullity theorem from linear algebra implies that $\Phi$ is also surjective, i.e. it is a linear isomorphism.
+\end{proof}
+
+The fact that $\Phi$ is a linear isomorphism (equivalently, that $\Sigma$ is unisolvent) guarantees the existence and uniqueness of local shape functions with respect to the dofs.
+We now recall the definition of such shape functions.
+\begin{definition}
+	Let $(K, P, \Sigma)$ be a triple like above (not necessarily a finite element).
+	Then a set of local shape functions on $K$ with respect to this triple (if such a set exists) is a set of functions $\varphi_1,\dots,\varphi_n \in P$ such that \[\sigma_i\varphi_j = \delta_{ij}\] for all $i,j$.
+	We say that the $\varphi_j$ are dual to the dofs if they have this property.
+\end{definition}
+
+As promised, here is how unisolvence guarantees that such shape functions exist.
+\begin{lemma}
+	If $(K, P, \Sigma)$ is a finite element triple (meaning that $\Sigma$ is unisolvent), then there is exactly one set of local shape functions for this triple, and they form a basis for $P$.
+\end{lemma}
+\begin{proof}
+	Let $e_i$ be the $i$th standard basis vector of $\mathbb R^n$.
+	Then we set $\varphi_i = \Phi^{-1}e_i \in P$, which is well-defined since $\Sigma$ is unisolvent.
+	Since $\Phi\varphi_i = e_i$ by construction, reading the coefficients tells us that \[\sigma_j\varphi_i = \delta_{ij}\] for all $i,j$.
+	Thus the $\varphi_i$ form a set of local shape functions that are dual to the $\sigma_i$.
+	This shows existence.
+
+	Now we prove uniqueness.
+	If $\psi_i$ are another set of local shape functions, then by definition they satisfy \[\sigma_i\psi_j = \delta_{ij}\] for all $i,j$.
+	However, this is equivalent to saying that \[\Phi\psi_i = e_i\] for each $i$.
+	Since $\Phi$ is an isomorphism, this means that $\psi_i = \Phi^{-1}e_i = \varphi_i$ for all $i$.
+	This proves uniqueness.
+
+	Finally, we show that the $\varphi_i$ are a basis for $P$.
+	Since each $\varphi_i$ is distinct and there are $n = \dim P$ of them, it suffices to show that they are linearly independent.
+	If \[\sum_ic_i\varphi_i = 0\] for some coefficients $c_i$, then by applying $\sigma_j$ to both sides, we have that \[c_j = \sum_ic_i\delta_{ij} = \sum_ic_i\sigma_j\varphi_i = \sigma_j(\sum_ic_i\varphi_i) = \sigma_j 0 = 0.\]
+	Thus $c_j = 0$ for all $j$, so that they are linearly independent and thus a basis for $P$.
+\end{proof}
+
+Thus, unisolvence not only guarantees existence of shape functions, but also uniqueness and the fact that they form a basis.
+
+\section{Finite elements on the reference triangle}\label{app:tri}
+Let $K$ be a non-degenerate triangle, let $P$ be a space of polynomials on $K$, and let $\Sigma$ be a set of degrees of freedom (dofs) on $P$, which is a set of linear functionals $\sigma : P \to \mathbb R$.
+
+Now let $\widehat K$ be the reference triangle.
+Then we can map $\widehat K$ to $K$ via an affine linear map $T_K : \widehat K \to K$.
+Furthermore, for any polynomial $p \in P$, $p \circ T_K$ is a polynomial on $\widehat K$ of the same degree.
+
+Let \[\widehat P = \{p\circ T_K : p \in P\}\] be the collection of all such polynomials on $\widehat K$.
+Since $K$ is a non-degenerate triangle, $T_K$ is invertible, which implies that for any $\widehat p \in \widehat P$, there is a unique $p \in P$ such that \[\widehat p = p\circ T_K.\]
+In other words, the map $\psi_K : P \to \widehat P$ defined by $\psi_K p = p \circ T_K$ is a linear isomorphism.
+In fact, its inverse is just given by \[\psi_K^{-1}\widehat p = \widehat p \circ T_K^{-1}.\]
+
+Since $\psi_K$ is a linear isomorphism, for any $\sigma \in \Sigma$, the composition $\sigma \circ \psi_K^{-1}$ is a dof on $\widehat P$.
+Let \[\widehat \Sigma = \{\sigma \circ \psi_K^{-1} : \sigma \in \Sigma\}\] be the collection of all such dofs on $\widehat P$.
+Similar to $P$ and $\widehat P$, we have that, for every $\widehat \sigma \in \widehat \Sigma$, there is a unique $\sigma \in \Sigma$ such that \[\widehat \sigma = \sigma \circ \psi_K^{-1},\] namely, \[\sigma = \widehat\sigma \circ \psi_K.\]
+In other words, the association \[\sigma \in \Sigma \mapsto \sigma \circ \psi_K^{-1} \in \widehat \Sigma\] is a bijection between $\Sigma$ and $\widehat \Sigma$ (in fact, it is also a linear isomorphism, but we don't need this).
+
+This now gives us two different triples, the triple $(K, P, \Sigma)$ on $K$ and the triple $(\widehat K, \widehat P, \widehat \Sigma)$ on $\widehat K$.
+With how we defined everything, we have the following relationship between them.
+\begin{lemma}
+	$\Sigma$ is a unisolvent set of dofs on $P$ iff $\widehat \Sigma$ is a unisolvent set of dofs on $\widehat P$.
+\end{lemma}
+\begin{proof}
+	Suppose that $\Sigma$ is unisolvent on $P$.
+	From the previous section, this means that if $p \in P$ satisfies $\sigma p = 0$ for all $\sigma \in \Sigma$, then $p = 0$.
+	Then if $\widehat p \in \widehat P$ is such that $\widehat \sigma \widehat p = 0$ for all $\widehat \sigma \in \widehat \Sigma$, we have that \[ (\widehat \sigma \circ \psi_K)(\psi_K^{-1}\widehat p) = 0\] for all $\widehat \sigma \in \widehat \Sigma$.
+	From our discussion above, this means that the polynomial $p = \psi_K^{-1} \widehat p \in P$ satisfies \[\sigma p = 0\] for all $\sigma \in \Sigma$.
+	Since $\Sigma$ is unisolvent, this implies that $p = 0$, which in turn implies that $\widehat p = \psi_K p = 0$.
+	Thus $\widehat \Sigma$ is also unisolvent. This proves one direction. The other direction follows a similar argument.
+\end{proof}
+
+Setting things up in this way gives us more than just a relation between unisolvence.
+It also gives us a relation between the local shape functions on the elements.
+
+Suppose now that $(K, P, \Sigma)$ is a finite element triple as in the previous section.
+This means that $\dim P = n$ and $\Sigma = \{\sigma_1,\dots,\sigma_n\}$ is a unisolvent set of dofs.
+From how we set everything up, this also implies that (and is in fact equivalent to) $(\widehat K, \widehat P, \widehat \Sigma)$ is a finite element triple, with $\dim \widehat P = n$ and $\widehat \Sigma = \{\widehat \sigma_1,\dots,\widehat \sigma_n\}$ also being a unisolvent set of dofs.
+
+Also from the previous section, we have a unique set of local shape functions $\varphi_1,\dots,\varphi_n$ for the finite element on $K$ as well as a unique set of local shape functions $\widehat\varphi_1,\dots,\widehat\varphi_n$ on $\widehat K$.
+They are related in very much the same way that the polynomials in $P$ and $\widehat P$ are related.
+\begin{lemma}
+	In the setting described above, the local shape functions are related via \[\varphi_i \circ T_K = \widehat\varphi_i\] for each $i$.
+	Equivalently, \[\psi_K\varphi_i = \widehat\varphi_i.\]
+\end{lemma}
+\begin{proof}
+	By uniqueness of the shape functions, it suffices to show that \[\widehat\sigma_i(\varphi_j\circ T_K) = \delta_{ij}\] for all $i,j$.
+	However, by unpacking our definitions, we have that $\sigma_i = \widehat \sigma_i \circ \psi_K$.
+	Therefore, \[\delta_{ij} = \sigma_i\varphi_j = \widehat \sigma_i(\psi_K\varphi_j) = \widehat \sigma_i(\varphi_j \circ T_K),\]
+	which is what we wanted to show.
+\end{proof}
+
+
+\section{Factoring multivariable polynomials}\label{app:factor}
+We discuss when we can factor a multivariable polynomial.
+As a warmup, we recall some basic factoring results for 1d polynomials.
+The proofs in this section are included for completeness, and they utilize nothing more than Taylor's Theorem plus some inductive arguments.
+
+\begin{lemma}
+	Let $p$ be a real-valued polynomial in 1 variable of degree $k \geq 1$.
+	Then $p(a) = 0$ iff there is a polynomial $q$ of degree $k-1$ such that \[p(x) = (x-a)q(x)\] for all $x \in \mathbb R$.
+\end{lemma}
+\begin{proof}
+	Fix $x$ and set $h = a-x$.
+	Performing a Taylor expansion of $p$ at $x$ using $x + h$ and using the fact that $p(a) = p(x+h) = 0$ tells us that
+	\[0 = p(x) + (a-x)p'(x) + \cdots + \frac{(a-x)^k}{k!}p^{(k)}(x).\]
+	Thus \[p(x) = (x-a)p'(x) + \cdots + (-1)^{k+1}\frac{(x-a)^k}{k!}p^{(k)}(x).\]
+	Setting
+	\[q(x) = p'(x) - \frac{(x-a)}{2}p''(x) + \cdots + (-1)^{k+1}\frac{(x-a)^{k-1}}{k!}p^{(k)}(x)\]
+	proves one direction.
+	The other direction holds from evaluating at $x = a$.
+\end{proof}
+
+\begin{corollary}
+	If $p$ is a degree at most $n$ polynomial that vanishes at $n + 1$ points, then $p = 0$.
+\end{corollary}
+\begin{proof}
+	Suppose $p$ vanishes at the points $a_0,\dots,a_n$.
+	Then since $p$ vanishes at $a_n$, we have that $p(x) = (x-a_n)q(x)$ where the degree of $q$ is at most $n-1$.
+	Since $a_n$ is distinct from the other $a_i$ but $p$ vanishes at the other $a_i$, we must have that $q$ is a degree at most $n-1$ polynomial that vanishes at $n$ distinct points.
+	Repeating this argument inductively allows us to conclude that $p(x) = (x-a_n)\cdots(x-a_1)C$ for some constant $C$.
+	But $p(a_0) = 0$ and $a_0$ is distinct from the other $a_i$, so we must have that $C = 0$.
+	Thus $p = 0$ identically.
+\end{proof}
+
+This has a very easy extension to polynomials of more than one variable, which we now show.
+\begin{corollary}
+	Let $p$ be a real-valued polynomial in $m$ variables of total degree at most $n$.
+	If $p$ vanishes at $n+1$ points lying along a straight line, then $p$ vanishes on that line.
+\end{corollary}
+\begin{proof}
+	Parameterize the line with a degree one vector-valued polynomial $r(t)$.
+	Then $p(r(t))$ is a degree at most $n$ polynomial that vanishes at $n+1$ distinct points $t_0,\dots,t_n$.
+	From the previous corollary, $p(r(t)) = 0$ for all $t$, which means that $p = 0$ on the line.
+\end{proof}
+
+Now we generalize the factoring lemma for 1d polynomials to 2d polynomials.
+This could be generalized further to polynomials of any finite number of variables, but we will keep it simple and only discuss the 2d case.
+We first recall the 2d version of Taylor's Theorem, which follows from the 1d version plus some chain rule.
+
+\begin{lemma}
+	Let $p$ be a polynomial in 2 variables of total degree $n$.
+	Then for $(x,y) \in \mathbb R^2$,
+	\[p(x+h,y+k) = p(x,y) + \sum_{m=1}^n\frac{1}{m!}\sum_{i=0}^m \binom{m}{i} \partial_x^{m-i}\partial_y^i p(x,y)h^{m-i}k^i.\]
+\end{lemma}
+\begin{proof}
+	Let $r(t) = (x + ht, y + kt)$.
+	Then let $q(t) = p(r(t))$.
+	Then $q$ is a polynomial of degree $n$ in $t$, so by Taylor's Theorem,
+	\[q(1) = q(0) + q'(0) + \cdots + \frac{1}{n!}q^{(n)}(0).\]
+	By the chain rule, we have that
+	\begin{align*}
+		q'(0)      & = \partial_x p(x,y)h + \partial_y p(x,y)k,                                    \\
+		q''(0)     & = \partial_x^2 p(x,y)h^2 + 2\partial_{xy}^2 p(x,y)hk + \partial_y^2p(x,y)k^2, \\
+		\vdots                                                                                     \\
+		q^{(n)}(0) & = \sum_{i=0}^n \binom{n}{i}\partial_x^{n-i}\partial_y^ip(x,y)h^{n-i}k^i.
+	\end{align*}
+	Putting this altogether gives us the result.
+\end{proof}
+
+Here is now the main result of this section, which gives us a condition for when we can factor a degree one polynomial term out of a multivariable polynomial.
+\begin{lemma}\label{lem:factor}
+	Let $p$ be a real-valued polynomial in 2 variables of total degree $n \geq 1$.
+	Let $L$ be the line consisting of all points $(x,y)$ such that $ax + by + c = 0$.
+	Then $p$ vanishes on $L$ iff there is a polynomial $q$ of total degree $n-1$ such that
+	\[p(x,y) = (ax + by + c)q(x,y)\]
+	for all $(x,y) \in \mathbb R^2$.
+\end{lemma}
+\begin{proof}
+	Suppose without loss of generality that $a,b,c,\neq 0$, as these special cases are easier and handled similarly.
+	Fix $(x,y) \in \mathbb R^2$ and consider the point $(x, -(ax + c)/b)$ on $L$ with the same $x$ coordinate.
+	Then by applying the previous lemma with $h = 0$ and $k = -(ax + c)/b - y$, we have that
+	\[0 = p(x,y) + \sum_{m=1}^n\frac{1}{m!}\partial_y^mp(x,y)(-1)^m((ax + c)/b + y)^m.\]
+	Therefore, after rearranging and factoring a term,
+	\[p(x,y) = (ax + by + c)\frac{1}{b}\sum_{m=1}^n\frac{(-1)^{m+1}}{m!}\partial_y^mp(x,y)(y + (ax + c)/b)^{m-1}.\]
+	Setting
+	\[q(x,y) = \frac{1}{b}\sum_{m=1}^n\frac{(-1)^{m+1}}{m!}\partial_y^mp(x,y)(y + (ax + c)/b)^{m-1}\]
+	proves one direction.
+	The other direction holds by evaluating at a point on $L$.
+\end{proof}
+
+To see if a degree $n$ polynomial vanishes on a line, it suffices to know that it vanishes at $n+1$ points that lie on that line.
+\begin{corollary}
+	If a degree $n \geq 1$ polynomial $p$ in 2 variables vanishes at $n+1$ points that lie on a straight line, and if the line is characterized as the set of solutions to $L(x,y) = 0$ for a degree one polynomial $L$, then $p(x,y) = L(x,y)q(x,y)$ for some degree $n-1$ polynomial $q$.
+\end{corollary}
+
+Finally, the value $0$ is nothing special.
+We obtain a slightly more general result if we know that a polynomial is constant on a line, or, equivalently, if a polynomial takes the same value at $n+1$ points that lie on a straight line.
+
+\begin{corollary}
+	If a degree $n \geq 1$ polynomial in 2 variables takes the same value $C$ at $n+1$ points that lie on a straight line, and if the line is characharacterized as the set of solutions to $L(x,y) = 0$ for a degree one polynomial $L$, then $p(x,y) = L(x,y)q(x,y) + C$ for some degree $n-1$ polynomial $q$.
+\end{corollary}
+\begin{proof}
+	Apply the previous corollary to the polynomial $r(x,y) = p(x,y) - C$.
+\end{proof}
+\end{document}

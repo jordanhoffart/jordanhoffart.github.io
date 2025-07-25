@@ -1,0 +1,72 @@
+\documentclass{report}
+
+\usepackage{booktabs}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage[l3]{csvsimple}
+\DeclareUnicodeCharacter{2212}{−}
+\usepgfplotslibrary{groupplots,dateplot}
+\usetikzlibrary{patterns,shapes.arrows}
+\pgfplotsset{compat=newest}
+
+\title{MATH 610 PA 2 Report}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+\chapter*{Problem 1}
+\section*{Solution}
+% replace with plot
+\includegraphics[width=\textwidth]{problem_1_plot.png}
+
+\section*{Errors}
+% replace with plot
+\includegraphics[width=\textwidth]{problem_1_errors.png}
+
+% uncomment and replace with csv file 
+%\csvautotabular{problem_1_errors.csv}
+
+\chapter*{Problem 2}
+\section*{$q=1$}
+% replace with plot
+\includegraphics[width=\textwidth]{problem_2_q_1_plot_0.png}
+
+% replace with plot
+\includegraphics[width=\textwidth]{problem_2_q_1_plot_1.png}
+
+% replace with plot
+\includegraphics[width=\textwidth]{problem_2_q_1_plot_2.png}
+
+\section*{$q=0$}
+% replace with plot
+\includegraphics[width=\textwidth]{problem_2_q_0_plot_0.png}
+
+% replace with plot
+\includegraphics[width=\textwidth]{problem_2_q_0_plot_1.png}
+
+% replace with plot
+\includegraphics[width=\textwidth]{problem_2_q_0_plot_2.png}
+
+\chapter*{Problem 3}
+\section*{Manufactured solution}
+% write your chosen manufactured solution
+\[u(x,y) = \cos(\pi x)\cos(3\pi y)\]
+\subsection*{Solution}
+
+% replace with plot
+\includegraphics[width=\textwidth]{problem_3_manufactured.png}
+
+\subsection*{Errors}
+% replace with plot
+\includegraphics[width=\textwidth]{problem_3_manufactured_errors.png}
+
+% uncomment and replace with csv file 
+%\csvautotabular{problem_3_errors.csv}
+
+\section*{Unknown solution}
+\subsection*{Solution}
+% replace with plot
+\includegraphics[width=\textwidth]{problem_3_plot.png}
+\end{document}
