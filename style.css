@@ -14,16 +14,6 @@ header {
   text-align: center;
 }
 
-header nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-header nav ul li {
-  display: inline-block;
-  margin: 1em;
-}
-
 img {
   display: block;
   margin: auto;
@@ -31,4 +21,17 @@ img {
 
 li {
   margin: 1em 0%;
+}
+
+header nav ul li {
+  display: inline-block;
+  margin: 1em;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+header nav ul {
+  padding: 0;
 }
