@@ -1,3 +1,7 @@
+:root {
+  color-scheme: light dark;
+}
+
 address {
   font-style: normal;
 }
@@ -51,5 +55,26 @@ header nav ul {
     align-content: space-evenly;
     max-block-size: 24%;
     padding: 0;
+  }
+}
+
+@media print {
+  body {
+    font-family: serif;
+  }
+  header nav {
+    display: none;
+  }
+  a {
+    text-decoration: none;
+  }
+  .noprint {
+    display: none;
+  }
+}
+
+@media screen {
+  .print {
+    display: none;
   }
 }
