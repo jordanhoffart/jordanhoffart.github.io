@@ -67,6 +67,7 @@ header nav ul {
   }
   a {
     text-decoration: none;
+    color: black;
   }
   .noprint {
     display: none;
