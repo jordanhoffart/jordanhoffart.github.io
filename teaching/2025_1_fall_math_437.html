@@ -4,6 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../style.css" />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <title>2025 Fall MATH 437</title>
   </head>
 
@@ -303,6 +308,46 @@
               href="https://colab.research.google.com/drive/10VOH_UZQJKDuqLkeNl0kl5ZxvGEPHKPy?usp=sharing"
               >Template</a
             >
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Homework 11</h2>
+        <ul>
+          <li>
+            <a href="2025_1_fall_math_437/homework-11.pdf"
+              >Questions</a
+            >
+          </li>
+          <li>
+            Modified Euler method: \[y_{i+1} = y_i + \frac{h}{2}(f(t_i,y_i) +
+            f(t_{i+1},y_i + hf(t_i,y_i)))\]
+          </li>
+          <li>
+            Heun's method: \[y_{i+1} = y_i + \frac{h}{4}f(t_i,y_i) +
+            \frac{3h}{4}f(t_i + \frac{2h}{3}, y_i + \frac{2h}{3}f(t_i,y_i))\]
+          </li>
+          <li>
+            For question 3, do the following procedure:
+            <ol>
+              <li>
+                Determine the amplification factor \(\omega(z)\) as a function
+                of \(z \in \mathbb C\). It should be a quadratic polynomial.
+              </li>
+              <li>
+                Use the definition of stability and \(\omega(z)\) to define the
+                region of absolute stability by an inequality satifies by points
+                \((x,y)\) in the \(xy\) plane. Remeber that complex numbers can
+                be identified with points in the plane by \(z = x + iy\).
+              </li>
+              <li>
+                Put that inequality expression into your favorite symbolic
+                graphing calculator. I like
+                <a href="https://www.desmos.com/calculator">desmos</a>. Attach a
+                screenshot of the inequality expression and the graph of the
+                region as your answer.
+              </li>
+            </ol>
           </li>
         </ul>
       </section>
