@@ -6,5 +6,6 @@
 *.out
 *.pdf
 *.snm
+*.synctex.gz
 *.toc
 !lab*pdf
