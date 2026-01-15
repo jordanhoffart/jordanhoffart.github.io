@@ -1,0 +1,121 @@
+\documentclass{article}
+
+\title{MATH 437 Lab Notes}
+\author{Jordan Hoffart}
+\date{January 21, 2026}
+
+\usepackage{amsmath,amsthm,amssymb}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}[proposition]{Theorem}
+
+\usepackage{algpseudocode,algorithm}
+
+\begin{document}
+
+\maketitle
+
+\section{Bisection method}
+
+Let $f(x)$ be a continuous function on the interval $[a,b]$.
+
+\begin{proposition}
+  If $f(a)f(b) < 0$, then there is a point $p \in (a,b)$ such that $f(p) = 0$.
+\end{proposition}
+\begin{proof}
+  If $f(a)f(b) < 0$, then $f(a)$ and $f(b)$ have opposite signs.
+  That is, $f(a) > 0$ and $f(b) < 0$, or $f(a) < 0$ and $f(b) > 0$.
+  By the Intermediate Value Theorem, $f$ attains all possible values between $f(a)$ and $f(b)$.
+  In particular, there is a point $p \in (a,b)$ where $f(p) = 0$.
+\end{proof}
+
+The bisection method is an algorithm to find the point $p$.
+The algorithm is as follows for the case that $f(a) < 0 < f(b)$.
+\begin{algorithm}
+  \caption{Bisection method}
+  \begin{algorithmic}[1]
+    \State $x_{\text{left}} := a$, $x_{\text{right}} := b$, $n := 0$, $x := (x_{\text{left}} + x_{\text{right}}) / 2$
+    \While{$|x_{\text{left}} - x_{\text{right}}| > \text{tol}$ and $n \leq n_{\text{max}}$}
+    \If{$f(x) = 0$}
+    \State return $x$
+    \ElsIf{$f(x) < 0$}
+    \State $x_{\text{left}} \gets x$
+    \Else
+    \State $x_{\text{right}} \gets x$
+    \EndIf
+    \State $n \gets n+1$
+    \State $x \gets (x_{\text{left}} + x_{\text{right}}) / 2$
+    \EndWhile
+    \State return $x$
+  \end{algorithmic}
+\end{algorithm}
+
+\section{Fixed point methods}
+
+Given a continuous function $g(x)$, suppose we want to solve the equation $x = g(x)$.
+One possible iterative method is defined by
+\begin{equation}\label{eq:iterative_method}
+  x_{n+1} = g(x_n),
+\end{equation}
+where we provide a starting value $x_0$.
+Whether or not this converges to a solution as $n \to \infty$ depends on the properties of $g$ and the starting value $x_0$.
+
+\begin{theorem}
+  If $g(x) \in [a,b]$ for all $x \in [a,b]$, then $g$ has a fixed point in $[a,b]$.
+\end{theorem}
+\begin{proof}
+  Let $h(x) = g(x) - x$.
+  Then $h(a) \leq 0$, $h(b) \geq 0$ and $h$ is continuous.
+  If $h(a) = 0$, then $a$ is a fixed point of $g$.
+  If $h(b) = 0$, then $b$ is a fixed point of $g$.
+  If $h(a)$ and $h(b)$ are both nonzero, then $h(a) < 0 < h(b)$.
+  By the previous proposition, there exists $x_0 \in (a,b)$ such that $h(x_0) = 0$, i.e. $g(x_0) = x_0$.
+\end{proof}
+
+\begin{theorem}
+  Suppose that $g$ is differentiable and that there exists $k$ such that $|g'(x)| \leq k < 1$ for all $x \in [a,b]$.
+  Then, $g$ has a unique fixed point in $[a,b]$, and the iterative method \eqref{eq:iterative_method} converges to this point for any initial value $x_0 \in [a,b]$.
+\end{theorem}
+\begin{proof}
+  By the Mean Value Theorem, for distinct $x,y \in [a,b]$, there exists $z \in [a,b]$ such that
+  \begin{equation}
+    g(x) - g(y) = g'(z)(x-y).
+  \end{equation}
+  Therefore, since $|g'(z)| \leq k < 1$, we have that
+  \begin{equation}
+    |g(x) - g(y)| \leq k|x-y| < |x-y|
+  \end{equation}
+  for all distinct $x,y \in [a,b]$.
+
+  Now, let $x_0 \in [a,b]$, and set $x_{n+1} = g(x_n)$ for all $n \geq 0$.
+  From above, for all $n \geq 0$,
+  \begin{equation}
+    |x_{n+2} - x_{n+1}| = |g(x_{n+1}) - g(x_n)| \leq k |x_{n+1} - x_n|.
+  \end{equation}
+  By repeating this, we have
+  \begin{equation}
+    |x_{n+2} - x_{n+1}| \leq k^{n+1} |x_1 - x_0|
+  \end{equation}
+  for all $n$.
+  Therefore, for any $m > n \geq 0$, by writing $m = n + (m-n)$,
+  \begin{multline}
+      |x_m - x_n| \leq |x_{n + (m-n)} - x_{n + (m-n-1)}| \\
+      + |x_{n + (m-n-1)} - x_{n + (m-n-2)}| + \cdots + |x_{n+1} - x_n| \\
+      \leq (k^{m-n-1} + k^{m-n-2} + \cdots + k^n)|x_1 - x_0|.
+  \end{multline}
+  Since $k < 1$, the terms in the last inequality are the Cauchy tail of the convergent geometric series $\sum_i k^i$.
+  Therefore, $|x_m - x_n| \to 0$ as $m, n \to \infty$, so the sequence $(x_n)_n$ is a Cauchy sequence of real numbers in the closed and bounded interval $[a,b]$.
+  The sequence therefore must converge to some number $p \in [a,b]$.
+
+  Since $g(x_n) = x_{n+1}$ and $g$ is continuous, taking limits of this equation yields $g(p) = p$, so $p$ is a fixed point of $g$.
+  If $q$ is another fixed point of $g$, then, from above,
+  \begin{equation}
+    |p-q| = |g(p) - g(q)| < |p-q|,
+  \end{equation}
+  which is a contradiction, so $p$ is the only fixed point of $g$.
+\end{proof}
+
+\section{Newton's method}
+
+\end{document}
