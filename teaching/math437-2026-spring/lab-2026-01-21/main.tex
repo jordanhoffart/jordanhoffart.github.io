@@ -1,0 +1,152 @@
+\documentclass{beamer}
+
+\title{MATH 437 Lab}
+\subtitle{Zoom W 8:00am -- 8:50am}
+\author{Jordan Hoffart}
+\date{January 21, 2026}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{page number in head/foot}[framenumber]
+
+\usecolortheme[RGB={80,0,0}]{structure}
+
+\begin{document}
+
+\begin{frame}[noframenumbering,plain]
+  \titlepage
+  \begin{center}
+    \includegraphics[width=2in]{tamu.eps}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Updates}
+  \vfill
+  \begin{itemize}
+    \item We meet on Zoom now
+      \vfill
+    \item Regular Zoom office hours will be W 8:50am -- 10:00am (right after lab)
+      \vfill
+    \item Typed lecture notes on my website \url{https://jordanhoffart.github.io/teaching/math437-2026-spring.html}
+      \vfill
+    \item Homework 1 due this Saturday Jan 24 11:59pm on Canvas
+  \end{itemize}
+  \vfill
+\end{frame}
+
+\begin{frame}{About homeworks}
+  \vfill
+  \begin{itemize}
+    \item Turn in a pdf of answers and code output on Canvas
+      \vfill
+    \item I'll try to be specific about what exactly I want turned in for each question. When in doubt, ask!
+      \vfill
+    \item Homeworks are 20 points per assignment, following the same grade percentages as the syllabus (A 90\% -- 100\%, B 80\% -- 89\%, C 70\% -- 79\%, D 60\% -- 69\%, F 0\% -- 59\%)
+      \vfill
+    \item No late work unless you have a good reason and you let me know before the due date
+      \vfill
+    \item Accepted late work gets a 10\% grade penalty
+      \vfill
+  \end{itemize}
+  \vfill
+\end{frame}
+
+\begin{frame}{Homework 1}
+  \vfill
+  \begin{itemize}
+    \item Assignment on Canvas: \url{https://canvas.tamu.edu/courses/433393/assignments/2937946}
+      \vfill
+    \item Fixed-point methods and Newton's method
+      \vfill
+    \item 5 questions, let's look at them. I fixed some typos and ambiguities in the problems on the slides, so refer to them here instead of the problem set on Canvas.
+  \end{itemize}
+  \vfill
+\end{frame}
+
+\begin{frame}{Question 1}
+  Let $f$ be a twice differentiable function with a root $p$ and $f'(p) \neq 0$. Let
+  \begin{equation*}
+    g(x) = x - \frac{f(x)}{f'(x)} + f(x)^2f''(x).
+  \end{equation*}
+  \begin{itemize}
+    \item[(1)] Show $g(p) = p$.
+    \item[(2)] Show $g'(p) = 0$.
+  \end{itemize}
+  \vfill
+  \begin{block}{Comments}
+    Nothing to say here. Just compute and remember the quotient rule, product rule, and chain rule for part 2.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Question 2}
+  Use the fixed point iteration $x = g(x)$ for
+  \begin{equation*}
+    g(x) = x^3 - x + 1.
+  \end{equation*}
+  \vfill
+  \begin{itemize}
+    \item[(1)] Do 3 iterations starting with $x_0 = 1.1$.
+      \vfill
+    \item[(2)] Does the method converge to the fixed point $p = 1$ with this initial value? Why or why not?
+\end{itemize}
+  \vfill
+  \begin{block}{Comments}
+    Recall that the fixed point iteration is $x_{n+1} = g(x_n)$.
+    Tell me the values of $x_1$, $x_2$, and $x_3$ to 6 digits.
+    For the second part, the reasoning does not have to be rigorous.
+    Just 1 or 2 sentences for completion.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Question 3}
+  Determine an interval $[a,b]$ for which the fixed-point iteration will converge for
+  \begin{equation*}
+    x = \frac{5}{x^2} + 2.
+  \end{equation*}
+  Implement the fixed-point iteration and choose a starting value $x_0$ that gives convergence.
+  Iterate until the residual is within $10^{-5}$ and report the iterates in a table.
+  \vfill
+  \begin{block}{Comments}
+    I changed the problem slightly from what's on Canvas.
+    The rows of the table should be $n$, $x_n$, $r_n$, where $n$ is the iteration number, $x_n$ is the computed iterate, and
+    \begin{equation*}
+      r_n := |x_n - g(x_n)|
+    \end{equation*}
+    is the residual.
+    Stop when $r_n < 10^{-5}$.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Question 4}
+  Consider the fixed point problem $x = g(x)$ with $g(x) = x^3 - 6$.
+  \vfill
+  \begin{itemize}
+    \item[(1)] Take $x_0 = 2.001$ and run 5 iterations of the fixed-point algorithm. Does the method converge to the fixed point $p = 2$? Why or why not?
+      \vfill
+    \item[(2)] Now do 5 iterations of Newton's method on the function $f(x) = x - g(x)$ starting with $x_0 = 3$. Does the method converge to the root $p = 2$?
+  \end{itemize}
+  \vfill
+  \begin{block}{Comments}
+    Same comments as question 2. Recall that Newton's method is
+    \begin{equation*}
+      x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
+    \end{equation*}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Question 5}
+  Implement Newton's method and find the root $p \in [1,2]$ of
+  \begin{equation*}
+    f(x) = e^x + 2^{-x} + 2\cos x - 6
+  \end{equation*}
+  until the residual is within $10^{-5}$.
+  \vfill
+  \begin{block}{Comments}
+    Recall that the residual is $r_n := |f(x_n)|$. Turn in a table similar to question 3.
+  \end{block}
+\end{frame}
+
+\end{document}

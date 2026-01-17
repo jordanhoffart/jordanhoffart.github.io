@@ -22,13 +22,12 @@
 
 \maketitle
 
-\newpage
 
 \tableofcontents
 
-\newpage
+\section{Lecture 1}
 
-\section{Bisection method}
+\subsection{Bisection method}
 
 Let $f(x)$ be a continuous function on the interval $[a,b]$.
 
@@ -63,9 +62,8 @@ The algorithm is as follows for the case that $f(a) < 0 < f(b)$.
   \end{algorithmic}
 \end{algorithm}
 
-\newpage
 
-\section{Fixed point methods}
+\subsection{Fixed point methods}
 
 Given a continuous function $g(x)$, suppose we want to solve the equation $x = g(x)$.
 One possible iterative method is defined by
@@ -130,9 +128,9 @@ Whether or not this converges to a solution as $n \to \infty$ depends on the pro
   which is a contradiction, so $p$ is the only fixed point of $g$.
 \end{proof}
 
-\newpage
+\section{Lecture 2}
 
-\section{Newton's method}
+\subsection{Newton's method}
 
 Newton's method is a fixed-point method to find the roots of a differentiable function $f(x)$.
 It is defined by the following algorithm:
@@ -174,9 +172,8 @@ For an initial value $x_0$ sufficiently close to $p$, Newton's method converges 
   By using Theorem \ref{thm:fixed_point} with $k = 1/2$, $a = p-\delta$, $b = p+\delta$, we conclude that whenever $x_0 \in [a,b]$, Newton's method converges to $p$.
 \end{proof}
 
-\newpage
 
-\section{Quadratic convergence of Newton's method}
+\subsection{Quadratic convergence of Newton's method}
 
 \begin{definition}[Order of convergence]
   Suppose that a sequence $x_n \to p$ as $n \to \infty$.
@@ -217,9 +214,7 @@ For an initial value $x_0$ sufficiently close to $p$, Newton's method converges 
   when $n \geq N$, so Newton's method converges quadratically.
 \end{proof}
 
-\newpage
-
-\section{Secant method}
+\subsection{Secant method}
 
 In Newton's method, we may replace $f'(x)$ by a backward difference approximation
 \begin{equation*}
