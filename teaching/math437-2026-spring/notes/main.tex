@@ -88,8 +88,8 @@ Whether or not this converges to a solution as $n \to \infty$ depends on the pro
 \end{proof}
 
 \begin{theorem}[Convergence of fixed-point methods]\label{thm:fixed_point}
-  Suppose $g$ is differentiable, $g(x) \in [a,b]$ for all $x \in [a,b]$, and there exists $k$ such that $|g'(x)| \leq k < 1$ for all $x \in [a,b]$.
-  Then, $g$ has a unique fixed point in $[a,b]$, and the iterative method \eqref{eq:iterative_method} converges to this point for any initial value $x_0 \in [a,b]$.
+  Suppose $g$ is differentiable, and there exists $k$ such that $|g'(x)| \leq k < 1$ for all $x \in [a,b]$.
+  Then, $g$ has a unique fixed point, and the iterative method \eqref{eq:iterative_method} converges to this point for any initial value $x_0 \in [a,b]$.
 \end{theorem}
 \begin{proof}
   By the Mean Value Theorem, for distinct $x,y \in [a,b]$, there exists $z \in [a,b]$ such that
@@ -119,8 +119,8 @@ Whether or not this converges to a solution as $n \to \infty$ depends on the pro
       \leq (k^{m-n-1} + k^{m-n-2} + \cdots + k^n)|x_1 - x_0|.
   \end{multline}
   Since $k < 1$, the terms in the last inequality are the Cauchy tail of the convergent geometric series $\sum_i k^i$.
-  Therefore, $|x_m - x_n| \to 0$ as $m, n \to \infty$, so the sequence $(x_n)_n$ is a Cauchy sequence of real numbers in the closed and bounded interval $[a,b]$.
-  The sequence therefore must converge to some number $p \in [a,b]$.
+  Therefore, $|x_m - x_n| \to 0$ as $m, n \to \infty$, so the sequence $(x_n)_n$ is a Cauchy sequence of real numbers.
+  The sequence therefore must converge to some number $p$.
 
   Since $g(x_n) = x_{n+1}$ and $g$ is continuous, taking limits of this equation yields $g(p) = p$, so $p$ is a fixed point of $g$.
   If $q$ is another fixed point of $g$, then, from above,
