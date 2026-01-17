@@ -1,26 +1,38 @@
 \documentclass{article}
 
-\title{MATH 437 Lab Notes}
+\title{MATH 437 Notes}
 \author{Jordan Hoffart}
-\date{January 21, 2026}
+\date{}
 
 \usepackage{amsmath,amsthm,amssymb}
 
 \theoremstyle{plain}
 \newtheorem{proposition}{Proposition}
 \newtheorem{theorem}[proposition]{Theorem}
+\newtheorem{lemma}[proposition]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[proposition]{Definition}
 
 \usepackage{algpseudocode,algorithm}
+
+\usepackage{float}
 
 \begin{document}
 
 \maketitle
 
+\newpage
+
+\tableofcontents
+
+\newpage
+
 \section{Bisection method}
 
 Let $f(x)$ be a continuous function on the interval $[a,b]$.
 
-\begin{proposition}
+\begin{proposition}[Existence of roots]
   If $f(a)f(b) < 0$, then there is a point $p \in (a,b)$ such that $f(p) = 0$.
 \end{proposition}
 \begin{proof}
@@ -32,7 +44,7 @@ Let $f(x)$ be a continuous function on the interval $[a,b]$.
 
 The bisection method is an algorithm to find the point $p$.
 The algorithm is as follows for the case that $f(a) < 0 < f(b)$.
-\begin{algorithm}
+\begin{algorithm}[H]
   \caption{Bisection method}
   \begin{algorithmic}[1]
     \State $x_{\text{left}} := a$, $x_{\text{right}} := b$, $n := 0$, $x := (x_{\text{left}} + x_{\text{right}}) / 2$
@@ -51,6 +63,8 @@ The algorithm is as follows for the case that $f(a) < 0 < f(b)$.
   \end{algorithmic}
 \end{algorithm}
 
+\newpage
+
 \section{Fixed point methods}
 
 Given a continuous function $g(x)$, suppose we want to solve the equation $x = g(x)$.
@@ -61,7 +75,7 @@ One possible iterative method is defined by
 where we provide a starting value $x_0$.
 Whether or not this converges to a solution as $n \to \infty$ depends on the properties of $g$ and the starting value $x_0$.
 
-\begin{theorem}
+\begin{theorem}[Existence of fixed points]
   If $g(x) \in [a,b]$ for all $x \in [a,b]$, then $g$ has a fixed point in $[a,b]$.
 \end{theorem}
 \begin{proof}
@@ -73,30 +87,30 @@ Whether or not this converges to a solution as $n \to \infty$ depends on the pro
   By the previous proposition, there exists $x_0 \in (a,b)$ such that $h(x_0) = 0$, i.e. $g(x_0) = x_0$.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[Convergence of fixed-point methods]\label{thm:fixed_point}
   Suppose that $g$ is differentiable and that there exists $k$ such that $|g'(x)| \leq k < 1$ for all $x \in [a,b]$.
   Then, $g$ has a unique fixed point in $[a,b]$, and the iterative method \eqref{eq:iterative_method} converges to this point for any initial value $x_0 \in [a,b]$.
 \end{theorem}
 \begin{proof}
   By the Mean Value Theorem, for distinct $x,y \in [a,b]$, there exists $z \in [a,b]$ such that
-  \begin{equation}
+  \begin{equation*}
     g(x) - g(y) = g'(z)(x-y).
-  \end{equation}
+  \end{equation*}
   Therefore, since $|g'(z)| \leq k < 1$, we have that
-  \begin{equation}
+  \begin{equation*}
     |g(x) - g(y)| \leq k|x-y| < |x-y|
-  \end{equation}
+  \end{equation*}
   for all distinct $x,y \in [a,b]$.
 
   Now, let $x_0 \in [a,b]$, and set $x_{n+1} = g(x_n)$ for all $n \geq 0$.
   From above, for all $n \geq 0$,
-  \begin{equation}
+  \begin{equation*}
     |x_{n+2} - x_{n+1}| = |g(x_{n+1}) - g(x_n)| \leq k |x_{n+1} - x_n|.
-  \end{equation}
+  \end{equation*}
   By repeating this, we have
-  \begin{equation}
+  \begin{equation*}
     |x_{n+2} - x_{n+1}| \leq k^{n+1} |x_1 - x_0|
-  \end{equation}
+  \end{equation*}
   for all $n$.
   Therefore, for any $m > n \geq 0$, by writing $m = n + (m-n)$,
   \begin{multline}
@@ -110,12 +124,111 @@ Whether or not this converges to a solution as $n \to \infty$ depends on the pro
 
   Since $g(x_n) = x_{n+1}$ and $g$ is continuous, taking limits of this equation yields $g(p) = p$, so $p$ is a fixed point of $g$.
   If $q$ is another fixed point of $g$, then, from above,
-  \begin{equation}
+  \begin{equation*}
     |p-q| = |g(p) - g(q)| < |p-q|,
-  \end{equation}
+  \end{equation*}
   which is a contradiction, so $p$ is the only fixed point of $g$.
 \end{proof}
 
+\newpage
+
 \section{Newton's method}
+
+Newton's method is a fixed-point method to find the roots of a differentiable function $f(x)$.
+It is defined by the following algorithm:
+\begin{equation}
+  x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
+\end{equation}
+If we set $g(x) = f(x)/f'(x)$, then the above equation is of the form \eqref{eq:iterative_method}, so that Newton's method is indeed a fixed-point method.
+
+\begin{lemma}\label{lem:newton}
+  Suppose $f$ is twice differentiable and $f'(p) \neq 0$.
+  Let $g(x) = x - f(x)/f'(x)$.
+  \begin{enumerate}
+    \item
+      $p$ is a fixed point of $g$ iff $f(p) = 0$.
+    \item
+      If $f(p) = 0$, then $g'(p) = 0$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  \begin{enumerate}
+    \item If $p$ is a fixed point of $g$, then $p = g(p) = p - f(p)/f'(p)$, so $f(p) = 0$.
+      Conversely, if $f(p) = 0$, then $g(p) = p - f(p) / f'(p) = p$.
+    \item
+      \begin{equation*}
+        g'(x) = 1 - \frac{f'(x)^2 - f(x)f''(x)}{f'(x)^2} = \frac{f(x)f''(x)}{f'(x)^2}.
+      \end{equation*}
+      Since $f(p) = 0$, $g'(p) = 0$.
+  \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Convergence of Newton's method]
+Suppose $f$ is twice differentiable, has a root at $p$ and $f'(p) \neq 0$.
+For an initial value $x_0$ sufficiently close to $p$, Newton's method converges to $p$.
+\end{theorem}
+\begin{proof}
+  We let $g(x) = f(x)/f'(x)$.
+  Then, $g$ is continuously differentiable, and, by the previous lemma, $p$ is a fixed point of $g$ and $g'(p) = 0$.
+  Therefore, there exists $\delta > 0$ such that, whenever $|x-p| \leq \delta$, $|g'(x)| \leq 1/2 < 1$.
+  By using Theorem \ref{thm:fixed_point} with $k = 1/2$, $a = p-\delta$, $b = p+\delta$, we conclude that whenever $x_0 \in [a,b]$, Newton's method converges to $p$.
+\end{proof}
+
+\newpage
+
+\section{Quadratic convergence of Newton's method}
+
+\begin{definition}[Order of convergence]
+  Suppose that a sequence $x_n \to p$ as $n \to \infty$.
+  We say that the sequence converges with order $r > 0$ if there is a constant $0 \leq \lambda < \infty$ such that
+  \begin{equation}
+    |x_{n+1} - p| \leq \lambda |x_n - p|^r
+  \end{equation}
+  for all $n$ sufficiently large.
+  For $r = 1$, we say the sequence converges linearly, and for $r = 2$, we say the sequence converges quadratically.
+\end{definition}
+
+\begin{theorem}[Quadratic convergence of Newton's method]
+  Let $f$ be a 3-times continuously differentiable function with a root at $p$ and $f'(p) \neq 0$.
+  Suppose that an initial value $x_0$ is chosen sufficiently close to $p$ so that Newton's method converges to $p$.
+  Then, the method converges quadratically.
+\end{theorem}
+\begin{proof}
+  We let $g(x) = f(x)/f'(x)$.
+  Then, $g$ is a twice continuously differentiable function.
+  Using Taylor's Theorem around $p$, for all $n$, there exists $\xi_n$ between $x_n$ and $p$ such that
+  \begin{equation*}
+    x_{n+1} = g(x_n) = g(p) + g'(p)(x_n - p) + g''(\xi_n)(x_n - p)^2.
+  \end{equation*}
+  From Lemma \ref{lem:newton}, $g(p) = p$ and $g'(p) = 0$, so
+  \begin{equation*}
+    |x_{n+1} - p| = |g''(\xi_n)||x_n-p|^2.
+  \end{equation*}
+  There exists $N > 0$ such that $|x_n - p| \leq 1$ for all $n \geq N$.
+  Thus, for all $n \geq N$, $\xi_n$ lies in the interval $[p-1, p+1]$.
+  Since $g''$ is continuous on the closed and bounded interval $[p-1,p+1]$, we may set
+  \begin{equation*}
+    \lambda := \max_{\xi \in [p-1,p+1]}|g''(\xi)|.
+  \end{equation*}
+  Then, we conclude that
+  \begin{equation*}
+    |x_{n+1} - p| \leq \lambda |x_n-p|^2
+  \end{equation*}
+  when $n \geq N$, so Newton's method converges quadratically.
+\end{proof}
+
+\newpage
+
+\section{Secant method}
+
+In Newton's method, we may replace $f'(x)$ by a backward difference approximation
+\begin{equation*}
+  f'(x_n) \approx \frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}.
+\end{equation*}
+Doing so gives us the secant method:
+\begin{equation}
+  x_{n+1} = x_n - \frac{f(x_n)}{f(x_n) - f(x_{n-1})}(x_n - x_{n-1}),
+\end{equation}
+where now we must provide 2 initial conditions $x_0$, $x_1$.
 
 \end{document}
