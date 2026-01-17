@@ -88,7 +88,7 @@ Whether or not this converges to a solution as $n \to \infty$ depends on the pro
 \end{proof}
 
 \begin{theorem}[Convergence of fixed-point methods]\label{thm:fixed_point}
-  Suppose that $g$ is differentiable and that there exists $k$ such that $|g'(x)| \leq k < 1$ for all $x \in [a,b]$.
+  Suppose $g$ is differentiable, $g(x) \in [a,b]$ for all $x \in [a,b]$, and there exists $k$ such that $|g'(x)| \leq k < 1$ for all $x \in [a,b]$.
   Then, $g$ has a unique fixed point in $[a,b]$, and the iterative method \eqref{eq:iterative_method} converges to this point for any initial value $x_0 \in [a,b]$.
 \end{theorem}
 \begin{proof}
