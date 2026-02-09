@@ -1,0 +1,16 @@
+<ul class="publications">
+  {% assign pubs = site.data.publications | sort: "year" | reverse %} {% for pub
+  in pubs %}
+  <li>
+    <strong>{{ pub.authors }}</strong>, “{{ pub.title }}”, {% if pub.venue %}
+    <em>{{ pub.venue }}</em>, {% else %} <em>preprint</em>, {% endif %} {{
+    pub.year }} {% case pub.status %} {% when "submitted" %} —
+    <em>submitted</em> {% when "accepted" %} — <em>to appear</em> {% endcase %}
+    {% if pub.arxiv %} —
+    <a href="https://arxiv.org/abs/{{ pub.arxiv.id }}">
+      arXiv:{{ pub.arxiv.id }}
+    </a>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>

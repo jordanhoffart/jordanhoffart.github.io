@@ -1,0 +1,8 @@
+- name: Home
+  link: /
+- name: CV
+  link: /assets/pdfs/cv.pdf
+- name: Research
+  link: /research/
+- name: Teaching
+  link: /teaching/
