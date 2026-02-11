@@ -35,3 +35,16 @@ Wednesdays 8 -- 8:50am on Zoom (950 8441 1711, password in email)
 - [Slides](meeting-02-04/slides.pdf)
 - [Whiteboard](meeting-02-04/whiteboard.pdf)
 - [Hints](homework-3/hints.pdf)
+- [Solutions](homework-3/solutions.pdf)
+- [Code solutions](homework-3/code-solutions.zip)
+
+### February 11 --- Exam 1 practice
+
+- [Slides](meeting-02-11/slides.pdf)
+- [Solutions](exam-1/practice-solutions.pdf)
+
+### Feburary 18 --- Homework 4
+
+- [Slides](meeting-02-18/slides.pdf)
+- [Hints](homework-4/hints.pdf)
+- [Code templates](homework-4/code-templates.zip)
