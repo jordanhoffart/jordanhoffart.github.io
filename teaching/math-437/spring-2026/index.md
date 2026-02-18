@@ -1,9 +1,9 @@
 ---
 layout: default
-title: MATH 437 - Spring 2026
+title: MATH 437 — Spring 2026
 ---
 
-# MATH 437 --- Spring 2026 <br> Principles of Numerical Analysis
+# MATH 437 — Spring 2026 <br> Principles of Numerical Analysis
 
 ## Contact
 
@@ -12,25 +12,25 @@ title: MATH 437 - Spring 2026
 
 ## Meetings
 
-Wednesdays 8 -- 8:50am on Zoom (950 8441 1711, password in email)
+Wednesdays 8 – 8:50am on Zoom (950 8441 1711, password in email)
 
 ## Material
 
 [Notes](notes.pdf)
 
-### January 21 --- Homework 1
+### January 21 — Homework 1
 
 - [Slides](meeting-01-21/slides.pdf)
 - [Solutions](homework-1/solutions.pdf)
 - [Code solutions](homework-1/code-solutions.zip)
 
-### January 28 --- Homework 2
+### January 28 — Homework 2
 
 - [Slides](meeting-01-28/slides.pdf)
 - [Solutions](homework-2/solutions.pdf)
 - [Code solutions](homework-2/code-solutions.zip)
 
-### February 4 --- Homework 3
+### February 4 — Homework 3
 
 - [Slides](meeting-02-04/slides.pdf)
 - [Whiteboard](meeting-02-04/whiteboard.pdf)
@@ -38,12 +38,12 @@ Wednesdays 8 -- 8:50am on Zoom (950 8441 1711, password in email)
 - [Solutions](homework-3/solutions.pdf)
 - [Code solutions](homework-3/code-solutions.zip)
 
-### February 11 --- Exam 1 practice
+### February 11 — Exam 1 Practice
 
 - [Slides](meeting-02-11/slides.pdf)
 - [Solutions](exam-1/practice-solutions.pdf)
 
-### Feburary 18 --- Homework 4
+### February 18 — Homework 4
 
 - [Slides](meeting-02-18/slides.pdf)
 - [Hints](homework-4/hints.pdf)
