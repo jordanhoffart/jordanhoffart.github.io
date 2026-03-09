@@ -56,6 +56,8 @@ Wednesdays 8 – 8:50am on Zoom (950 8441 1711, password in email)
 - [Slides](meeting-02-25/slides.pdf)
 - [Hints](homework-5/hints.pdf)
 - [Code templates](homework-5/code-templates.zip)
+- [Solutions](homework-5/solutions.pdf)
+- [Code solutions](homework-5/code-solutions.zip)
 
 ### March 4 — Exam 2 Practice
 
