@@ -68,3 +68,10 @@ Wednesdays 8 -- 8:50am on Zoom (950 8441 1711, password in email)
 
 - [Slides](meeting-03-25/slides.pdf)
 - [Hints](homework-6/hints.pdf)
+- [Solutions](homework-6/solutions.pdf)
+- [Code solutions](homework-6/code-solutions.zip)
+
+### April 1 --- Exam 3 Practice
+
+- [Slides](meeting-04-01/slides.pdf)
+- [Solutions](exam-3/practice-solutions.pdf)
