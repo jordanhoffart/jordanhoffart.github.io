@@ -75,3 +75,9 @@ Wednesdays 8 -- 8:50am on Zoom (950 8441 1711, password in email)
 
 - [Slides](meeting-04-01/slides.pdf)
 - [Solutions](exam-3/practice-solutions.pdf)
+
+### April 8 --- Homework 7
+
+- [Slides](meeting-04-08/slides.pdf)
+- [Hints](homework-7/hints.pdf)
+- [Code templates](homework-7/code-templates.zip)
