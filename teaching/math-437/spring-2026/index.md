@@ -80,4 +80,14 @@ Wednesdays 8 -- 8:50am on Zoom (950 8441 1711, password in email)
 
 - [Slides](meeting-04-08/slides.pdf)
 - [Hints](homework-7/hints.pdf)
+- [Solutions](homework-7/solutions.pdf)
 - [Code templates](homework-7/code-templates.zip)
+- [Code solutions](homework-7/code-solutions.zip)
+
+### April 15 --- Homework 8
+
+- [Slides](meeting-04-15/slides.pdf)
+- [Hints](homework-8/hints.pdf)
+<!-- - [Solutions](homework-8/solutions.pdf) -->
+- [Code templates](homework-8/code-templates.zip)
+<!-- - [Code solutions](homework-7/code-solutions.zip) -->
