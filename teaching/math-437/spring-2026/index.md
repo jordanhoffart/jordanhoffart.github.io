@@ -88,9 +88,9 @@ Wednesdays 8 -- 8:50am on Zoom (950 8441 1711, password in email)
 
 - [Slides](meeting-04-15/slides.pdf)
 - [Hints](homework-8/hints.pdf)
-<!-- - [Solutions](homework-8/solutions.pdf) -->
+- [Solutions](homework-8/solutions.pdf)
 - [Code templates](homework-8/code-templates.zip)
-<!-- - [Code solutions](homework-8/code-solutions.zip) -->
+- [Code solutions](homework-8/code-solutions.zip)
 
 ### April 22 --- Final Exam Practice
 
